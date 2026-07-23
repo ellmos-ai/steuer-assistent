@@ -24,6 +24,20 @@ Alle nennenswerten Änderungen an `steuer-assistent`. Format angelehnt an
   englische Kurzzusammenfassung vorangestellt.
 - `LICENSE`, `CHANGELOG.md`, `SECURITY.md` ergänzt.
 
+### Veröffentlicht (2026-07-23)
+
+- Nutzerentscheidung D-20260723-020: Veröffentlichung des Moduls; ein
+  Codex-Zweitreview wurde vom User als nicht erforderlich entschieden
+  (vertieftes Gutachten inkl. Rechtsprechungsschicht und Fremdmodell-Review
+  agy/Gemini lag bereits vor).
+- Auflagen aus dem vertieften Rechtsgutachten (StBerG, RDG, UWG, BGB, DSGVO)
+  vor Public-Schaltung umgesetzt: Status-Konsistenz zwischen Code-Kommentar
+  und Modul-Metadaten hergestellt, realistischer Haftungstext in README
+  ergänzt, zwei zusätzliche Betriebsform-Trigger dokumentiert (Cloud-Sync/
+  Veröffentlichung eigener Nutzerdaten, Installation auf Firmen-/BYOD-
+  Rechnern), Secret-/Privacy-Sweep durchgeführt.
+- GitHub-Repository `ellmos-ai/steuer-assistent` auf `public` gestellt.
+
 ## [0.1.0] — 2026-06-22
 
 ### Hinzugefügt

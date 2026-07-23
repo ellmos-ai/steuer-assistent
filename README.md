@@ -70,12 +70,25 @@ python -B -m pytest tests -q -p no:cacheprovider
 
 ## Rechtlicher Rahmen und Betriebsform
 
-KI-gestützte Ersteinschätzung (kein Ersatz für anwaltliche Beratung), Stand
-2026-07-23: Für die aktuelle Betriebsform — reine Selbstanwendung auf lokal
-gehaltene, vom Nutzer selbst eingeordnete Daten, ohne Netzwerkverbindung,
-ohne Rechtsprüfung des Einzelfalls — ist dieses Modul nach den einschlägigen
-Vorschriften des Steuerberatungsgesetzes (StBerG, insbes. § 2 Abs. 2) keine
-„geschäftsmäßige Hilfeleistung in Steuersachen".
+**Keine Steuerberatung.** Dieses Modul ist ein reines Selbstanwendungs-Werkzeug:
+Es erfasst und summiert vom Nutzer selbst eingeordnete Belege, trifft aber
+keine steuerliche Bewertung und übernimmt keine Gewähr für ein steuerliches
+Ergebnis. Nutzung erfolgt auf eigene Verantwortung; die Gewährleistung
+richtet sich — unabhängig vom MIT-Lizenztext — nach dem gesetzlich
+zwingenden Umfang (Vorsatz und grobe Fahrlässigkeit bleiben nach deutschem
+Recht stets haftungsbewehrt, siehe §§ 276 Abs. 3, 309 Nr. 7 lit. b BGB).
+
+KI-gestützte Ersteinschätzung (kein Ersatz für anwaltliche Beratung, nicht
+abschließend anwaltlich geprüft), Stand 2026-07-23: Für die aktuelle
+Betriebsform — reine Selbstanwendung auf lokal gehaltene, vom Nutzer selbst
+eingeordnete Daten, ohne Netzwerkverbindung, ohne Rechtsprüfung des
+Einzelfalls — ist dieses Modul nach den einschlägigen Vorschriften des
+Steuerberatungsgesetzes (StBerG, insbes. § 2 Abs. 2) und des
+Rechtsdienstleistungsgesetzes (RDG, insbes. § 2 Abs. 1) keine
+„geschäftsmäßige Hilfeleistung in Steuersachen" bzw. Rechtsdienstleistung.
+Grundlage ist eine vertiefte interne Prüfung (StBerG, RDG, UWG, BGB, DSGVO,
+mit Rechtsprechungsschicht und Fremdmodell-Review); sie ist nicht Teil
+dieses Repositories.
 
 **Diese Einschätzung gilt nur für die beschriebene Betriebsform.** Eine
 erneute rechtliche Prüfung ist nötig, sobald sich die Betriebsform ändert —
@@ -87,12 +100,17 @@ insbesondere bei:
    den Betreiber (statt lokaler Selbstanwendung),
 3. **ELSTER-, ERiC- oder sonstiger amtlicher Übermittlungsanbindung**,
 4. **entgeltlicher Vermarktung** dieses Moduls oder einer daraus
-   abgeleiteten Voll-Pipeline (z. B. „steuer-suite").
+   abgeleiteten Voll-Pipeline (z. B. „steuer-suite"),
+5. **Cloud-Sync oder sonstiger Veröffentlichung erfasster Nutzerdaten durch
+   den Nutzer selbst** (z. B. öffentliches Repository der eigenen
+   Datenbank) — die DSGVO-Haushaltsausnahme (Art. 2 Abs. 2 lit. c DSGVO)
+   kann dann beim jeweiligen Nutzer entfallen,
+6. **Installation auf Firmen-/BYOD-Rechnern zur Abrechnung dienstlicher
+   (fremder) Spesen** — auch hier kann die DSGVO-Haushaltsausnahme beim
+   Nutzer entfallen, unabhängig vom Autor.
 
-Diese Einschätzung wurde ohne Prüfung der Rechtsprechung und ohne
-Fremdmodell-Review erstellt; bei Zweifeln oder vor produktivem Einsatz mit
-echten Steuerdaten Dritter empfiehlt sich eine unabhängige anwaltliche
-Prüfung.
+Bei Zweifeln oder vor produktivem Einsatz mit echten Steuerdaten Dritter
+empfiehlt sich eine unabhängige anwaltliche Prüfung.
 
 ## Origin
 

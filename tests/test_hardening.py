@@ -186,13 +186,16 @@ class HardeningCase(unittest.TestCase):
 
 
 class MetadataContractCase(unittest.TestCase):
-    def test_versions_and_private_boundaries_are_synchronized(self) -> None:
+    def test_versions_and_visibility_are_synchronized(self) -> None:
+        # Seit Nutzerentscheidung D-20260723-020 (Veroeffentlichung) ist
+        # "public" der verbindliche Soll-Zustand fuer beide Metadatendateien;
+        # sensible Datenklassifikation und Netzwerk-Abstinenz bleiben unveraendert.
         legacy = json.loads((ROOT / "ellmos-module.json").read_text(encoding="utf-8"))
         current = json.loads((ROOT / "ellmos-module.v2.json").read_text(encoding="utf-8"))
         self.assertEqual(legacy["version"], "0.2.0")
         self.assertEqual(current["version"], "0.2.0")
-        self.assertEqual(legacy["visibility"], "private")
-        self.assertEqual(current["visibility"], "private")
+        self.assertEqual(legacy["visibility"], "public")
+        self.assertEqual(current["visibility"], "public")
         self.assertEqual(current["boundaries"]["network"], "none")
         self.assertEqual(current["boundaries"]["data"], "sensitive")
         self.assertIn("domain.tax.workpaper_export", current["provides"])

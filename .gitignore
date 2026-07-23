@@ -28,4 +28,6 @@ local_settings.py
 
 # Rechtliche Rohbefunde/Gutachten und Multi-Agent-Sperren — lokal, nicht im Repo
 _gutachten/
+_codex/
+RECHTSPRUEFUNG*.md
 LOCK*.txt

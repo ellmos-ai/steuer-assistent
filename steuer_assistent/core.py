@@ -4,7 +4,9 @@
 core.py — Kernlogik des steuer-assistent Moduls
 ================================================
 
-PRIVAT — nicht veröffentlichen (rechtliche Prüfung ausstehend).
+Öffentliches Modul (MIT). Rechtliche Ersteinschätzung (StBerG, RDG, UWG, BGB,
+DSGVO) siehe README.md, Abschnitt "Rechtlicher Rahmen und Betriebsform" —
+gilt nur für die dort beschriebene Betriebsform (reine lokale Selbstanwendung).
 
 Extrahiert aus BACH agents/_experts/steuer/ (MIT).
 Eigener SQLite-Store; kein Zugriff auf bach.db.
