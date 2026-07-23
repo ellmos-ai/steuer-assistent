@@ -4,8 +4,8 @@
   "version": "0.2.0",
   "kind": "private-module",
   "visibility": "private",
-  "publish_status": "unpublished",
-  "publish_note": "Rechtliche Prüfung ausstehend. Nicht veröffentlichen.",
+  "publish_status": "github-private",
+  "publish_note": "Rechtsgutachten 2026-07-23 (Ampel GRÜN unter 4 Bedingungen, umgesetzt). Privates GitHub-Repo ellmos-ai/steuer-assistent; Public-Freigabe durch Operator ausstehend.",
   "license": "MIT",
   "origin": {
     "type": "bach-extract",
@@ -34,8 +34,8 @@
   },
   "update": {
     "method": "local-directory",
-    "repo": null,
-    "status": "private-only"
+    "repo": "https://github.com/ellmos-ai/steuer-assistent",
+    "status": "github-private"
   },
   "wiring": {
     "provides": ["steuer_beleg", "private_steuer_arbeitsunterlage"],

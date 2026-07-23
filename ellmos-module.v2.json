@@ -5,7 +5,7 @@
   "version": "0.2.0",
   "category": "domains",
   "kind": "service",
-  "status": "development",
+  "status": "released-private",
   "visibility": "private",
   "provides": [
     "domain.tax.documents",
@@ -40,7 +40,7 @@
   "source_of_truth": {
     "type": "local-directory",
     "path": ".",
-    "repository": null
+    "repository": "https://github.com/ellmos-ai/steuer-assistent"
   },
   "adapters": []
 }
