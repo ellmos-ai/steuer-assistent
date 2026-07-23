@@ -5,8 +5,8 @@
   "version": "0.2.0",
   "category": "domains",
   "kind": "service",
-  "status": "released-private",
-  "visibility": "private",
+  "status": "released",
+  "visibility": "public",
   "provides": [
     "domain.tax.documents",
     "domain.tax.workpaper_export"
