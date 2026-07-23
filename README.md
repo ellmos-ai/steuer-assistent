@@ -1,3 +1,5 @@
+![steuer-assistent Banner](assets/banner.png)
+
 # steuer-assistent
 
 *Lokale Beleg-Arbeitsunterlage für Arbeitnehmer-Werbungskosten — keine Steuerberatung.*
