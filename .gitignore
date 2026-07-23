@@ -1,0 +1,31 @@
+# Eigener Store — niemals ins Repo
+*.db
+*.db-shm
+*.db-wal
+
+# Exportierte Bundles
+*.zip
+STEUER_UNTERLAGEN*.zip
+.steuer-export-*.tmp
+
+# Belege und Scans (private Dokumente)
+belege/
+scans/
+
+# Python
+__pycache__/
+*.py[cod]
+.eggs/
+*.egg-info/
+dist/
+build/
+.venv/
+.env
+
+# Lokale Overrides
+local_settings.py
+.env.local
+
+# Rechtliche Rohbefunde/Gutachten und Multi-Agent-Sperren — lokal, nicht im Repo
+_gutachten/
+LOCK*.txt

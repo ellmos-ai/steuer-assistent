@@ -1,0 +1,44 @@
+{
+  "$schema": "ellmos-module-v1",
+  "name": "steuer-assistent",
+  "version": "0.2.0",
+  "kind": "private-module",
+  "visibility": "private",
+  "publish_status": "unpublished",
+  "publish_note": "Rechtliche Prüfung ausstehend. Nicht veröffentlichen.",
+  "license": "MIT",
+  "origin": {
+    "type": "bach-extract",
+    "bach_path": "agents/_experts/steuer/",
+    "extraction_date": "2026-06-22"
+  },
+  "capabilities": [
+    "belege-erfassen",
+    "werbungskosten-aggregation",
+    "private-arbeitsunterlage-export"
+  ],
+  "entrypoints": {
+    "python_api": "steuer_assistent.core.SteuerAssistent",
+    "cli": "steuer_assistent.cli"
+  },
+  "storage": {
+    "type": "sqlite",
+    "default_path": "%USERPROFILE%\\.steuer-assistent\\steuer.db",
+    "env_override": "STEUER_ASSISTENT_DB",
+    "tables": ["belege", "beleg_sequences", "werbungskosten_kategorien", "export_runs"]
+  },
+  "boundaries": {
+    "net": "none",
+    "paths": ["user_home/**"],
+    "prohibited": ["bach.db", "BACH-Laufzeit", "Netzwerkzugriff", "GUI"]
+  },
+  "update": {
+    "method": "local-directory",
+    "repo": null,
+    "status": "private-only"
+  },
+  "wiring": {
+    "provides": ["steuer_beleg", "private_steuer_arbeitsunterlage"],
+    "consumes": []
+  }
+}
