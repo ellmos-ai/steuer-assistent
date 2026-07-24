@@ -10,6 +10,31 @@ readme = "README.md"
 license = "MIT"
 requires-python = ">=3.10"
 dependencies = []          # stdlib + sqlite3 only
+keywords = [
+    "steuer",
+    "werbungskosten",
+    "belege",
+    "tax-worksheet",
+    "offline-first",
+    "privacy-first",
+    "elster-helper",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Office/Business :: Financial :: Accounting",
+]
+
+[project.urls]
+Homepage = "https://github.com/ellmos-ai/steuer-assistent"
+Repository = "https://github.com/ellmos-ai/steuer-assistent.git"
+Issues = "https://github.com/ellmos-ai/steuer-assistent/issues"
 
 [project.scripts]
 steuer-assistent = "steuer_assistent.cli:main"

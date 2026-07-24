@@ -3,6 +3,14 @@
 Alle nennenswerten Änderungen an `steuer-assistent`. Format angelehnt an
 [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.2.1] — 2026-07-24
+
+### Hinzugefügt
+
+- `llms.txt` im Root-Verzeichnis angelegt für verbesserte KI-Agenten-Sichtbarkeit und strukturierte Auffindbarkeit.
+- PyPI/GitHub Discoverability-Metadaten in `pyproject.toml` ergänzt (`keywords`, `classifiers`, `project.urls`).
+- Shields.io Badges (Python, License, Privacy, Legal Status) und Feature-Übersichtstabelle in `README.md` hinzugefügt.
+
 ## [0.2.0] — 2026-07-23
 
 ### Geändert

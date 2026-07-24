@@ -1,0 +1,59 @@
+# steuer-assistent
+
+> Offline-first local receipt worksheet module for employee income-related expenses (Werbungskosten) — not tax advice.
+
+## Overview
+
+`steuer-assistent` is a small, offline-first Python module for recording self-categorized receipts for employee income-related expenses (*Werbungskosten*), calculating exact cent sums, and exporting private, non-official ZIP worksheets.
+
+- **License**: MIT
+- **Runtime**: Python >= 3.10 (Standard library + sqlite3 only)
+- **Repository**: https://github.com/ellmos-ai/steuer-assistent
+
+## Key Features
+
+- **Offline-First & Local Storage**: Stores receipt records in `%USERPROFILE%\.steuer-assistent\steuer.db`. Zero network calls, zero cloud dependencies.
+- **Cent-Exact Math**: Stores amounts internally as integer cents to avoid floating-point rounding errors.
+- **Privacy-Preserving CLI**: Redacts notes and full file paths by default unless `--mit-notiz` is explicitly specified.
+- **Private ZIP Export**: Generates `STEUER_UNTERLAGEN_<jahr>.zip` containing CSV, markdown summary, and formula protection. Never overwrites existing export files.
+- **Non-Official Worksheet**: Pure self-application tool; does not assess deductibility and does not submit tax returns (official submission requires ELSTER / approved software).
+
+## CLI Quick Reference
+
+```bash
+# Add a receipt
+python -m steuer_assistent.cli add --kategorie Arbeitsmittel --betrag 49.90 --datum 2026-03-15 --notiz "USB-Hub"
+
+# List receipts (notes redacted by default)
+python -m steuer_assistent.cli list
+
+# List receipts with notes
+python -m steuer_assistent.cli list --mit-notiz
+
+# Calculate advertising costs for a given year
+python -m steuer_assistent.cli werbungskosten --jahr 2026
+
+# Export private worksheet package
+python -m steuer_assistent.cli export --jahr 2026
+
+# Check status and store location
+python -m steuer_assistent.cli status
+```
+
+## Python API Usage
+
+```python
+from steuer_assistent.core import SteuerAssistent
+
+sa = SteuerAssistent()
+sa.add_beleg(kategorie="Arbeitsmittel", betrag=49.90, datum="2026-03-15", notiz="USB-Hub")
+summe = sa.get_werbungskosten(jahr=2026)
+export_zip = sa.export_finanzamt(jahr=2026)
+```
+
+## Documentation & References
+
+- [README.md](README.md): Usage guide, store settings, and legal framework.
+- [CHANGELOG.md](CHANGELOG.md): Version history and release notes.
+- [SECURITY.md](SECURITY.md): Security and vulnerability reporting policies.
+- [LICENSE](LICENSE): MIT License.

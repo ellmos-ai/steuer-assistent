@@ -2,6 +2,11 @@
 
 # steuer-assistent
 
+[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Privacy: Offline--First](https://img.shields.io/badge/Privacy-Offline--First-green.svg)](#store-und-datenschutz)
+[![Legal: Non--Official](https://img.shields.io/badge/Status-Private--Worksheet-orange.svg)](#rechtlicher-rahmen-und-betriebsform)
+
 *Lokale Beleg-Arbeitsunterlage für Arbeitnehmer-Werbungskosten — keine Steuerberatung.*
 
 **Local receipt worksheet for employee tax records — not tax advice.**
@@ -19,6 +24,16 @@ dafür zugelassene Software. ELSTER weist außerdem darauf hin, dass bloß in
 „Meine Belege“ erfasste Dokumente noch nicht an das Finanzamt übermittelt sind:
 [ELSTER-Belegverwaltung](https://portal.elster.de/eportal/helpGlobal?themaGlobal=help_meine_belege),
 [ELSTER-Belegnachreichung](https://www.elster.de/eportal/formulare-leistungen/alleformulare/belegnachreichung).
+
+## Überblicks-Features
+
+| Feature | Beschreibung |
+|---|---|
+| **Offline-First & Lokal** | Datenbank ausschließlich im Benutzerverzeichnis (`%USERPROFILE%\.steuer-assistent\steuer.db`). Keine Netzverbindung. |
+| **Cent-genaue Arithmetik** | Beträge werden intern als Integer-Cents gespeichert, um Fließkomma-Rundungsfehler auszuschließen. |
+| **Datenschutz-CLI** | Notizen und absolute Pfade werden in der Konsole standardmäßig ausgeblendet und erfordern ein Opt-in (`--mit-notiz`). |
+| **Arbeitsunterlagen-Export** | Erstellt `STEUER_UNTERLAGEN_<jahr>.zip` mit CSV, Zusammenfassung & CSV-Formelschutz. Überschreibt niemals bestehende Exporte. |
+| **Standardkonform** | Benötigt nur Python 3.10+ und die Standardbibliothek (`sqlite3`). Keine externen Pip-Abhängigkeiten. |
 
 ## Verwendung
 
