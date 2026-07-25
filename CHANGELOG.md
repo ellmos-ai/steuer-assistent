@@ -3,6 +3,13 @@
 Alle nennenswerten Änderungen an `steuer-assistent`. Format angelehnt an
 [Keep a Changelog](https://keepachangelog.com/).
 
+## [Unreleased]
+
+### Geändert
+
+- `steuer_assistent/__init__.py`: Docstring-Hinweis an den öffentlichen Veröffentlichungsstatus angepasst.
+- Technische Hygiene und Maintenance-Routine (Path A) durchgeführt.
+
 ## [0.2.1] — 2026-07-24
 
 ### Hinzugefügt

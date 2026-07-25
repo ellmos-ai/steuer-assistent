@@ -1,6 +1,6 @@
 """
 steuer_assistent — Privates Steuer-Hilfsmodul
-PRIVAT — nicht veröffentlichen (rechtliche Prüfung ausstehend).
+Beleg-Arbeitsunterlage für vom Nutzer erfasste Werbungskosten.
 """
 
 from .core import SteuerAssistent
