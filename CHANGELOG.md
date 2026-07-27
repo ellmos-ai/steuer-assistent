@@ -5,10 +5,19 @@ Alle nennenswerten Änderungen an `steuer-assistent`. Format angelehnt an
 
 ## [Unreleased]
 
+## [0.2.2] — 2026-07-27
+
+### Hinzugefügt
+
+- GFM LLM Note Callout (`> [!NOTE]`) für maschinenlesbaren Offline- & Datenschutz-Kontext in `README.md`.
+- Mermaid Systemarchitektur-Diagramm in `README.md` zur Visualisierung der lokalen Verarbeitungs- und Export-Pipeline.
+
 ### Geändert
 
+- `llms.txt` Last-checked Datum auf `2026-07-27` und Version auf `0.2.2` aktualisiert.
+- `pyproject.toml` Version auf `0.2.2` angehoben.
 - `steuer_assistent/__init__.py`: Docstring-Hinweis an den öffentlichen Veröffentlichungsstatus angepasst.
-- Technische Hygiene und Maintenance-Routine (Path A) durchgeführt.
+- Technische Hygiene und Maintenance-Routine (Path A) & Discoverability Audit (Path B) durchgeführt.
 
 ## [0.2.1] — 2026-07-24
 

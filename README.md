@@ -25,6 +25,40 @@ dafür zugelassene Software. ELSTER weist außerdem darauf hin, dass bloß in
 [ELSTER-Belegverwaltung](https://portal.elster.de/eportal/helpGlobal?themaGlobal=help_meine_belege),
 [ELSTER-Belegnachreichung](https://www.elster.de/eportal/formulare-leistungen/alleformulare/belegnachreichung).
 
+> [!NOTE]
+> **Offline-First & Local-Only Architecture**: `steuer-assistent` is a purely offline receipt worksheet module (`.steuer-assistent/steuer.db`). Zero network calls, zero cloud dependencies, cent-exact math (integer cents), and privacy-preserving CLI defaults.
+
+## Architecture
+
+```mermaid
+flowchart TD
+    subgraph Input["User Interaction"]
+        CLI["CLI (steuer_assistent.cli)"]
+        API["Python API (SteuerAssistent)"]
+    end
+
+    subgraph CoreEngine["Core Engine & Security"]
+        Cents["Cent-Exact Math (Integer Cents)"]
+        Redact["CLI Privacy Redactor (--mit-notiz opt-in)"]
+        HomeCheck["Home Directory Bounds Enforcer"]
+    end
+
+    subgraph Storage["Local Storage"]
+        DB[("SQLite Database<br/>~/.steuer-assistent/steuer.db")]
+    end
+
+    subgraph Output["Worksheet Export"]
+        ZIP["Private ZIP Package<br/>STEUER_UNTERLAGEN_<jahr>.zip<br/>(CSV + Summary + Formula Shield)"]
+    end
+
+    CLI --> HomeCheck
+    API --> HomeCheck
+    HomeCheck --> Cents
+    Cents --> DB
+    DB --> Redact
+    DB --> ZIP
+```
+
 ## Überblicks-Features
 
 | Feature | Beschreibung |
