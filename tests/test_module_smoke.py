@@ -22,7 +22,10 @@ from steuer_assistent.core import SteuerAssistent, _store_path
 class TestStorePath(unittest.TestCase):
     def test_env_override(self):
         with tempfile.TemporaryDirectory() as td:
-            db = str(Path(td) / "test.db")
+            # Aufgeloest: _store_path() loest den Pfad auf, tempfile liefert
+            # auf Windows teilweise die 8.3-Kurzform. Ohne resolve() vergleicht
+            # der Test Kurz- gegen Langform desselben Verzeichnisses.
+            db = str(Path(td).resolve() / "test.db")
             os.environ["STEUER_ASSISTENT_DB"] = db
             try:
                 self.assertEqual(_store_path(), Path(db))

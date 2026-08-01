@@ -35,7 +35,12 @@ def _declared_version() -> str:
 class HardeningCase(unittest.TestCase):
     def setUp(self) -> None:
         self.tmp = tempfile.TemporaryDirectory()
-        self.root = Path(self.tmp.name)
+        # Aufgeloest, weil das Modul jeden Pfad aufloest (siehe _store_path).
+        # Auf Windows liefert tempfile teilweise die 8.3-Kurzform
+        # (C:\Users\RUNNER~1\...), das Modul die Langform — ein Vergleich
+        # unaufgeloester Pfade schlaegt dann fehl, obwohl beide dasselbe
+        # Verzeichnis meinen. Genau so auf den GitHub-Windows-Runnern passiert.
+        self.root = Path(self.tmp.name).resolve()
         self.db_path = self.root / "steuer.db"
         self.sa = SteuerAssistent(self.db_path)
         self.sa.connect()
