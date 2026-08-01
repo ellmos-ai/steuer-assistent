@@ -1,0 +1,49 @@
+name: Tests
+
+# Bewusst nur Tests, kein Linter: Ein ungepinnter Linter ohne festgeschriebenen
+# Regelsatz folgt dem Default der jeweils frisch installierten Version und macht
+# unveraenderten Code beim naechsten Tool-Release rot. Kommt ein Linter dazu,
+# gehoert er mit fester Version und expliziter Regelauswahl hierher.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: ["3.10", "3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Python ${{ matrix.python-version }} einrichten
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Modul und Testwerkzeug installieren
+        # Das Modul selbst hat keine Laufzeit-Abhaengigkeiten (stdlib + sqlite3).
+        # pytest wird nur zum Testen gebraucht und daher hier separat geholt.
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .
+          python -m pip install pytest
+
+      - name: Kompilierbarkeit pruefen
+        run: python -m compileall steuer_assistent
+
+      - name: Tests
+        env:
+          PYTHONIOENCODING: utf-8
+        run: python -B -m pytest tests -q -p no:cacheprovider
