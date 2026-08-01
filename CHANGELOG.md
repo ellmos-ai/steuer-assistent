@@ -7,6 +7,14 @@ Alle nennenswerten Änderungen an `steuer-assistent`. Format angelehnt an
 
 ### Behoben
 
+- **Installation war auf aktuellen setuptools-Versionen unmöglich.**
+  `pyproject.toml` führte neben `license = "MIT"` zusätzlich den Classifier
+  `License :: OSI Approved :: MIT License`. Seit PEP 639 schließen sich beide
+  aus; setuptools bricht mit `InvalidConfigError` ab, sodass auch der im README
+  dokumentierte Weg `pip install -e .` fehlschlug. Classifier entfernt.
+- Zwei Tests verglichen Pfade unaufgelöst und schlugen auf Windows fehl, wo
+  `tempfile` die 8.3-Kurzform (`C:\Users\RUNNER~1\…`) liefert, das Modul aber
+  die aufgelöste Langform. Beide Seiten werden jetzt aufgelöst verglichen.
 - Versions-Drift zwischen den Versionsträgern beseitigt: `ellmos-module.json`,
   `ellmos-module.v2.json`, `steuer_assistent/__init__.py` und `SKILL.md` standen
   noch auf `0.2.0`, während `pyproject.toml` und `llms.txt` bereits `0.2.2`
