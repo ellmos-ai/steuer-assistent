@@ -1,12 +1,12 @@
 ---
 name: steuer-assistent
-version: 0.2.0
+version: 0.2.2
 type: service
 standalone: true
-visibility: private
+visibility: public
 author: ellmos / BACH Team
 created: 2026-06-22
-updated: 2026-07-17
+updated: 2026-07-27
 anthropic_compatible: true
 status: active
 provenance:
@@ -18,16 +18,19 @@ dependencies:
   tools: [python, sqlite3]
   optional: []
   services: []
-tags: [steuer, werbungskosten, belege, arbeitsunterlage, privat]
+tags: [steuer, werbungskosten, belege, arbeitsunterlage, offline-first]
 description: >
-  PRIVAT. Erfasst vom Nutzer eingeordnete Belege, summiert Beträge centgenau
-  und erzeugt eine lokale Steuer-Arbeitsunterlage. Kein ELSTER-Format, keine
-  Steuerberatung und kein Zugriff auf bach.db.
+  Erfasst vom Nutzer eingeordnete Belege, summiert Beträge centgenau und
+  erzeugt eine lokale, nicht-amtliche Steuer-Arbeitsunterlage. Kein
+  ELSTER-Format, keine Steuerberatung und kein Zugriff auf bach.db.
 ---
 
 # steuer-assistent
 
-> **PRIVAT — nicht veröffentlichen.** Rechtliche Prüfung ausstehend.
+> **Öffentliches Modul (MIT).** Reine lokale Selbstanwendung — keine
+> Steuerberatung, keine Bewertung der Abziehbarkeit, keine amtliche
+> Übermittlung. Die geltende Betriebsform und ihre Grenzen stehen in
+> [`README.md`](README.md), Abschnitt „Rechtlicher Rahmen und Betriebsform".
 
 Verwende dieses Modul, wenn:
 
@@ -100,5 +103,7 @@ Das ZIP enthält keine Belegdateien und ist kein ELSTER-/Finanzamt-Format.
 
 | Version | Datum | Änderung |
 |---|---|---|
+| 0.2.2 | 2026-07-27 | Doku-Pflege: Mermaid-Architekturbild, LLM-Hinweis, Statusangaben dieser Datei auf den öffentlichen Stand gezogen |
+| 0.2.1 | 2026-07-24 | `llms.txt`, Discoverability-Metadaten, Badges |
 | 0.2.0 | 2026-07-17 | Validierung, Cent-Migration, transaktionale Nummern, privater atomarer Export, CLI-Redaktion |
 | 0.1.0 | 2026-06-22 | Initiale Version; aus BACH `agents/_experts/steuer/` extrahiert |

@@ -17,9 +17,19 @@ from unittest import mock
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
+import steuer_assistent
 from steuer_assistent.core import SteuerAssistent, main
 
 ROOT = Path(__file__).parent.parent
+
+
+def _declared_version() -> str:
+    """Die eine Quelle der Wahrheit fuer die Version: pyproject.toml."""
+    for line in (ROOT / "pyproject.toml").read_text(encoding="utf-8").splitlines():
+        stripped = line.strip()
+        if stripped.startswith("version"):
+            return stripped.split("=", 1)[1].strip().strip('"').strip("'")
+    raise AssertionError("Keine version in pyproject.toml gefunden")
 
 
 class HardeningCase(unittest.TestCase):
@@ -187,13 +197,20 @@ class HardeningCase(unittest.TestCase):
 
 class MetadataContractCase(unittest.TestCase):
     def test_versions_and_visibility_are_synchronized(self) -> None:
-        # Seit Nutzerentscheidung D-20260723-020 (Veroeffentlichung) ist
-        # "public" der verbindliche Soll-Zustand fuer beide Metadatendateien;
-        # sensible Datenklassifikation und Netzwerk-Abstinenz bleiben unveraendert.
+        # Seit der Veroeffentlichung 2026-07-23 ist "public" der verbindliche
+        # Soll-Zustand fuer beide Metadatendateien; sensible Datenklassifikation
+        # und Netzwerk-Abstinenz bleiben unveraendert.
+        #
+        # Die Versionen werden gegen pyproject.toml geprueft, nicht gegen ein
+        # Literal: Ein fest eingetragener Wert bestaetigt jede spaetere Drift,
+        # statt sie zu melden (real passiert zwischen 0.2.0 und 0.2.2 —
+        # pyproject und llms.txt wanderten, Manifeste und __version__ nicht).
+        expected = _declared_version()
         legacy = json.loads((ROOT / "ellmos-module.json").read_text(encoding="utf-8"))
         current = json.loads((ROOT / "ellmos-module.v2.json").read_text(encoding="utf-8"))
-        self.assertEqual(legacy["version"], "0.2.0")
-        self.assertEqual(current["version"], "0.2.0")
+        self.assertEqual(legacy["version"], expected)
+        self.assertEqual(current["version"], expected)
+        self.assertEqual(steuer_assistent.__version__, expected)
         self.assertEqual(legacy["visibility"], "public")
         self.assertEqual(current["visibility"], "public")
         self.assertEqual(current["boundaries"]["network"], "none")

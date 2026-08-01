@@ -1,11 +1,11 @@
 {
   "$schema": "ellmos-module-v1",
   "name": "steuer-assistent",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "kind": "public-module",
   "visibility": "public",
   "publish_status": "github-public",
-  "publish_note": "Nutzerentscheidung D-20260723-020: Veröffentlichung. Rechtsgutachten 2026-07-23 (RECHTSPRUEFUNG_OEFFENTLICHKEIT_2026-07-23.md, Ampel GRÜN unter Auflagen StBerG/RDG/UWG/BGB/DSGVO + Rechtsprechungsschicht + Fremdmodell-Review) umgesetzt; Auflagen (Status-Konsistenz, Haftungstext, Betriebsform-Trigger, Secret-Sweep) erfüllt vor Public-Schaltung.",
+  "publish_note": "Seit 2026-07-23 öffentlich (MIT). Grundlage ist eine rechtliche Ersteinschätzung zu StBerG, RDG, UWG, BGB und DSGVO für die beschriebene Betriebsform; sie ist nicht Teil dieses Repositories. Die daraus abgeleiteten Auflagen sind umgesetzt. Geltungsbereich und Grenzen der Einschätzung: README.md, Abschnitt 'Rechtlicher Rahmen und Betriebsform'.",
   "license": "MIT",
   "origin": {
     "type": "bach-extract",
