@@ -5,6 +5,30 @@ Alle nennenswerten Änderungen an `steuer-assistent`. Format angelehnt an
 
 ## [Unreleased]
 
+### Behoben
+
+- Versions-Drift zwischen den Versionsträgern beseitigt: `ellmos-module.json`,
+  `ellmos-module.v2.json`, `steuer_assistent/__init__.py` und `SKILL.md` standen
+  noch auf `0.2.0`, während `pyproject.toml` und `llms.txt` bereits `0.2.2`
+  auswiesen.
+- `tests/test_hardening.py` prüft die Versionsgleichheit jetzt gegen
+  `pyproject.toml` statt gegen ein fest eingetragenes Literal. Ein Literal
+  bestätigt jede spätere Drift, statt sie zu melden — genau das war passiert.
+
+### Hinzugefügt
+
+- GitHub-Actions-Workflow `Tests`: pytest auf Linux und Windows unter
+  Python 3.10, 3.11 und 3.12. Bewusst ohne Linter.
+- `.gitattributes` mit LF-Pin gegen Phantomdiffs auf Windows-Klonen.
+
+### Geändert
+
+- `SKILL.md` auf den öffentlichen Stand gezogen (Sichtbarkeit, Statushinweis,
+  Beschreibung); der Kopf wies das Modul noch als privat aus.
+- Interne Prozessverweise aus diesem Changelog entfernt (Verweis auf eine
+  nicht im Repository liegende Datei, interne Vorgangsnummern und
+  Prüfer-Bezeichnungen). Der sachliche Gehalt bleibt erhalten.
+
 ## [0.2.2] — 2026-07-27
 
 ### Hinzugefügt
@@ -39,10 +63,10 @@ Alle nennenswerten Änderungen an `steuer-assistent`. Format angelehnt an
 
 ### Release-Vorbereitung
 
-- Rechtliche Ersteinschätzung (StBerG, UWG) via Modul `law-checker`
-  durchgeführt — Ampel GRÜN unter vier Bedingungen (siehe
-  `_gutachten/2026-07-23_gutachten_veroeffentlichung.md`, lokal, nicht Teil
-  des Repositories).
+- Rechtliche Ersteinschätzung zu StBerG und UWG durchgeführt; Freigabe unter
+  Auflagen. Die Einschätzung selbst ist nicht Teil dieses Repositories;
+  Geltungsbereich und Grenzen stehen in `README.md`, Abschnitt „Rechtlicher
+  Rahmen und Betriebsform".
 - README auf öffentliche Erstveröffentlichung vorbereitet: PRIVAT-Platzhalter
   entfernt, Abschnitt „Rechtlicher Rahmen und Betriebsform" ergänzt,
   englische Kurzzusammenfassung vorangestellt.
@@ -50,12 +74,9 @@ Alle nennenswerten Änderungen an `steuer-assistent`. Format angelehnt an
 
 ### Veröffentlicht (2026-07-23)
 
-- Nutzerentscheidung D-20260723-020: Veröffentlichung des Moduls; ein
-  Codex-Zweitreview wurde vom User als nicht erforderlich entschieden
-  (vertieftes Gutachten inkl. Rechtsprechungsschicht und Fremdmodell-Review
-  agy/Gemini lag bereits vor).
-- Auflagen aus dem vertieften Rechtsgutachten (StBerG, RDG, UWG, BGB, DSGVO)
-  vor Public-Schaltung umgesetzt: Status-Konsistenz zwischen Code-Kommentar
+- Modul unter MIT veröffentlicht.
+- Auflagen aus der vertieften rechtlichen Ersteinschätzung (StBerG, RDG, UWG,
+  BGB, DSGVO) vor der Veröffentlichung umgesetzt: Status-Konsistenz zwischen Code-Kommentar
   und Modul-Metadaten hergestellt, realistischer Haftungstext in README
   ergänzt, zwei zusätzliche Betriebsform-Trigger dokumentiert (Cloud-Sync/
   Veröffentlichung eigener Nutzerdaten, Installation auf Firmen-/BYOD-
