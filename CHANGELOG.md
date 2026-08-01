@@ -19,6 +19,11 @@ Alle nennenswerten Änderungen an `steuer-assistent`. Format angelehnt an
 - Zwei Tests verglichen Pfade unaufgelöst und schlugen auf Windows fehl, wo
   `tempfile` die 8.3-Kurzform (`C:\Users\RUNNER~1\…`) liefert, das Modul aber
   die aufgelöste Langform. Beide Seiten werden jetzt aufgelöst verglichen.
+- Die Tests legten ihre temporären Verzeichnisse über `tempfile` an und setzten
+  damit stillschweigend voraus, dass das Temp-Verzeichnis im Benutzerverzeichnis
+  liegt — unter Windows zutreffend, unter Linux (`/tmp`) nicht. Dort scheiterten
+  sie an der Schutzregel des Moduls selbst. Die Regel bleibt; die Tests legen
+  ihre Verzeichnisse jetzt mit `dir=Path.home()` an.
 - Versions-Drift zwischen den Versionsträgern beseitigt: `ellmos-module.json`,
   `ellmos-module.v2.json`, `steuer_assistent/__init__.py` und `SKILL.md` standen
   noch auf `0.2.0`, während `pyproject.toml` und `llms.txt` bereits `0.2.2`

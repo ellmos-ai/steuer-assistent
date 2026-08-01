@@ -21,7 +21,10 @@ from steuer_assistent.core import SteuerAssistent, _store_path
 
 class TestStorePath(unittest.TestCase):
     def test_env_override(self):
-        with tempfile.TemporaryDirectory() as td:
+        # dir=Path.home(): Das Modul laesst den Store nur innerhalb des
+        # Benutzerverzeichnisses zu (_require_user_path). Unter Windows liegt
+        # das Temp-Verzeichnis dort, unter Linux in /tmp -- also ausserhalb.
+        with tempfile.TemporaryDirectory(dir=Path.home()) as td:
             # Aufgeloest: _store_path() loest den Pfad auf, tempfile liefert
             # auf Windows teilweise die 8.3-Kurzform. Ohne resolve() vergleicht
             # der Test Kurz- gegen Langform desselben Verzeichnisses.
@@ -57,8 +60,10 @@ class TestCliEntrypoint(unittest.TestCase):
 
 class TestSteuerAssistentCRUD(unittest.TestCase):
     def setUp(self):
-        self.td = tempfile.mkdtemp()
-        self.db_path = Path(self.td) / "steuer_test.db"
+        # dir=Path.home(): siehe Kommentar in test_env_override -- das Modul
+        # laesst den Store nur im Benutzerverzeichnis zu, /tmp liegt dort nicht.
+        self.td = tempfile.mkdtemp(dir=Path.home())
+        self.db_path = Path(self.td).resolve() / "steuer_test.db"
         self.sa = SteuerAssistent(db_path=self.db_path)
         self.sa.connect()
 

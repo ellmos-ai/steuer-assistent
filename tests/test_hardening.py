@@ -34,7 +34,13 @@ def _declared_version() -> str:
 
 class HardeningCase(unittest.TestCase):
     def setUp(self) -> None:
-        self.tmp = tempfile.TemporaryDirectory()
+        # dir=Path.home(): Das Modul laesst Store und Export nur innerhalb des
+        # Benutzerverzeichnisses zu (_require_user_path) -- eine gewollte
+        # Schutzregel. Unter Windows liegt das Temp-Verzeichnis ohnehin dort
+        # (%LOCALAPPDATA%\Temp), unter Linux dagegen in /tmp, also ausserhalb.
+        # Ohne diese Angabe scheitern die Tests auf Linux an der eigenen
+        # Schutzregel des Moduls statt an einem echten Fehler.
+        self.tmp = tempfile.TemporaryDirectory(dir=Path.home())
         # Aufgeloest, weil das Modul jeden Pfad aufloest (siehe _store_path).
         # Auf Windows liefert tempfile teilweise die 8.3-Kurzform
         # (C:\Users\RUNNER~1\...), das Modul die Langform — ein Vergleich
