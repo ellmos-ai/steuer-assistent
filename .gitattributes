@@ -1,0 +1,11 @@
+# Zeilenenden im Repository einheitlich als LF speichern.
+# Ohne diesen Pin melden Windows-Klone mit core.autocrlf=true ganze Dateien
+# als geaendert, obwohl sich inhaltlich nichts unterscheidet
+# (Phantomdiff; `git diff --ignore-cr-at-eol` ist dann leer).
+* text=auto eol=lf
+
+# Binaerdateien nie anfassen.
+*.png binary
+*.jpg binary
+*.zip binary
+*.db binary

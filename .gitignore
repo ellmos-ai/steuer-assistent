@@ -17,10 +17,26 @@ __pycache__/
 *.py[cod]
 .eggs/
 *.egg-info/
+.pytest_cache/
 dist/
 build/
 .venv/
 .env
+
+# Konfliktkopien der Cloud-Synchronisation.
+# Sie entstehen, wenn zwei Rechner dieselbe Datei aendern, und sind exakte
+# Kopien eines aelteren Standes. Unter tests/ werden sie von pytest als
+# echte Testdateien eingesammelt und schlagen gegen den aktuellen Stand fehl
+# (real passiert: eine Kopie von tests/test_hardening.py pruefte weiter
+# gegen Version 0.2.0 und liess die Suite rot werden).
+*-WORKSTATION-LG.*
+*-ASUS-GEI.*
+*-SURFACE-LAPTOP.*
+*-MacBook*.*
+
+# Interne Arbeits- und Statusdatei — Planung, nicht Repo-Inhalt.
+# Der oeffentliche Stand steht in README.md und CHANGELOG.md.
+TODO.md
 
 # Lokale Overrides
 local_settings.py
