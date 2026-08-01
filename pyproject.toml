@@ -34,6 +34,14 @@ classifiers = [
     "Topic :: Office/Business :: Financial :: Accounting",
 ]
 
+[tool.setuptools]
+# Ohne diese Angabe sucht setuptools die Pakete selbst und findet im
+# Wurzelverzeichnis zwei Kandidaten (assets/ neben steuer_assistent/).
+# Bei mehreren Top-Level-Verzeichnissen bricht die Flat-Layout-Erkennung
+# ab: "Multiple top-level packages discovered in a flat-layout".
+# assets/ enthaelt nur das README-Banner und gehoert nicht ins Paket.
+packages = ["steuer_assistent"]
+
 [project.urls]
 Homepage = "https://github.com/ellmos-ai/steuer-assistent"
 Repository = "https://github.com/ellmos-ai/steuer-assistent.git"

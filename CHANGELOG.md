@@ -12,6 +12,10 @@ Alle nennenswerten Änderungen an `steuer-assistent`. Format angelehnt an
   `License :: OSI Approved :: MIT License`. Seit PEP 639 schließen sich beide
   aus; setuptools bricht mit `InvalidConfigError` ab, sodass auch der im README
   dokumentierte Weg `pip install -e .` fehlschlug. Classifier entfernt.
+  Dahinter lag ein zweiter Baufehler: Ohne `[tool.setuptools] packages` sucht
+  setuptools die Pakete selbst und findet im Wurzelverzeichnis zwei Kandidaten
+  (`assets/` neben `steuer_assistent/`) — „Multiple top-level packages
+  discovered in a flat-layout". Paket jetzt explizit benannt.
 - Zwei Tests verglichen Pfade unaufgelöst und schlugen auf Windows fehl, wo
   `tempfile` die 8.3-Kurzform (`C:\Users\RUNNER~1\…`) liefert, das Modul aber
   die aufgelöste Langform. Beide Seiten werden jetzt aufgelöst verglichen.
