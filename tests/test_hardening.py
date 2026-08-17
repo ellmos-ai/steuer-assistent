@@ -206,6 +206,28 @@ class HardeningCase(unittest.TestCase):
         self.assertNotIn(str(self.db_path), status_stdout.getvalue())
 
 
+    def test_api_ergonomics_and_aliases(self) -> None:
+        # Test betrag kwarg
+        beleg = self.sa.add_beleg("Arbeitsmittel", betrag=42.50, datum="2026-05-10", notiz="Tastatur")
+        self.assertEqual(beleg["betrag_eur"], 42.50)
+        self.assertEqual(beleg["kategorie"], "Arbeitsmittel")
+
+        # Test get_werbungskosten alias
+        agg = self.sa.get_werbungskosten(2026)
+        self.assertEqual(agg["gesamt_eur"], 42.50)
+        self.assertEqual(len(agg["kategorien"]), 1)
+
+        # Test export_arbeitsunterlage alias
+        out = self.root / "STEUER_UNTERLAGEN_2026.zip"
+        res = self.sa.export_arbeitsunterlage(2026, out)
+        self.assertEqual(res, out)
+        self.assertTrue(out.is_file())
+
+    def test_add_beleg_rejects_missing_amount(self) -> None:
+        with self.assertRaisesRegex(ValueError, "Betrag in Euro"):
+            self.sa.add_beleg("Arbeitsmittel", datum="2026-05-10")
+
+
 class MetadataContractCase(unittest.TestCase):
     def test_versions_and_visibility_are_synchronized(self) -> None:
         # Seit der Veroeffentlichung 2026-07-23 ist "public" der verbindliche
@@ -229,11 +251,23 @@ class MetadataContractCase(unittest.TestCase):
         self.assertIn("domain.tax.workpaper_export", current["provides"])
 
     def test_documentation_does_not_claim_official_export_or_deductibility(self) -> None:
-        for name in ("AGENTS.md", "README.md", "SKILL.md", "pyproject.toml"):
+        for name in ("AGENTS.md", "README.md", "README_de.md", "SKILL.md", "SKILL.en.md", "pyproject.toml"):
             with self.subTest(name=name):
                 text = (ROOT / name).read_text(encoding="utf-8")
                 self.assertNotIn("FINANZAMT.zip", text)
                 self.assertNotIn("1=absetzbar", text)
+
+    def test_multilingual_docs_exist_and_consistent(self) -> None:
+        readme_en = (ROOT / "README.md").read_text(encoding="utf-8")
+        readme_de = (ROOT / "README_de.md").read_text(encoding="utf-8")
+        skill_de = (ROOT / "SKILL.md").read_text(encoding="utf-8")
+        skill_en = (ROOT / "SKILL.en.md").read_text(encoding="utf-8")
+
+        self.assertIn("README_de.md", readme_en)
+        self.assertIn("README.md", readme_de)
+        expected = _declared_version()
+        self.assertIn(f"version: {expected}", skill_de)
+        self.assertIn(f"version: {expected}", skill_en)
 
 
 if __name__ == "__main__":

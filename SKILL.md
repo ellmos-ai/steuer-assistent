@@ -1,12 +1,12 @@
 ---
 name: steuer-assistent
-version: 0.2.2
+version: 0.2.3
 type: service
 standalone: true
 visibility: public
 author: ellmos / BACH Team
 created: 2026-06-22
-updated: 2026-07-27
+updated: 2026-08-17
 anthropic_compatible: true
 status: active
 provenance:
@@ -103,6 +103,7 @@ Das ZIP enthält keine Belegdateien und ist kein ELSTER-/Finanzamt-Format.
 
 | Version | Datum | Änderung |
 |---|---|---|
+| 0.2.3 | 2026-08-17 | Ergonomie-Erweiterung (API-Aliase, `betrag`-Kwarg), zweisprachige Dokumentation (`README.md` EN / `README_de.md` DE), PEP-639/setuptools-Reparatur |
 | 0.2.2 | 2026-07-27 | Doku-Pflege: Mermaid-Architekturbild, LLM-Hinweis, Statusangaben dieser Datei auf den öffentlichen Stand gezogen |
 | 0.2.1 | 2026-07-24 | `llms.txt`, Discoverability-Metadaten, Badges |
 | 0.2.0 | 2026-07-17 | Validierung, Cent-Migration, transaktionale Nummern, privater atomarer Export, CLI-Redaktion |

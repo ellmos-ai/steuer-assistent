@@ -3,7 +3,7 @@
 Alle nennenswerten Änderungen an `steuer-assistent`. Format angelehnt an
 [Keep a Changelog](https://keepachangelog.com/).
 
-## [Unreleased]
+## [0.2.3] — 2026-08-17
 
 ### Behoben
 
@@ -34,8 +34,10 @@ Alle nennenswerten Änderungen an `steuer-assistent`. Format angelehnt an
 
 ### Hinzugefügt
 
-- GitHub-Actions-Workflow `Tests`: pytest auf Linux und Windows unter
-  Python 3.10, 3.11 und 3.12. Bewusst ohne Linter.
+- Zweisprachige Dokumentation nach Stufe-1-Standard: Primäres englisches `README.md` und vollständiges deutsches `README_de.md` mit echten Umlauten, Mermaid-Architekturdiagramm und Verlinkung.
+- Englische Skill-Definition `SKILL.en.md` als Partner zu `SKILL.md`.
+- Python-API-Ergonomie: `SteuerAssistent.add_beleg()` unterstützt nun `betrag` als Keyword-Argument neben `betrag_eur`; `get_werbungskosten()` und `export_arbeitsunterlage()` als intuitive Aliase hinzugefügt.
+- GitHub-Actions-Workflow `Tests`: pytest auf Linux und Windows unter Python 3.10, 3.11 und 3.12. Bewusst ohne Linter.
 - `.gitattributes` mit LF-Pin gegen Phantomdiffs auf Windows-Klonen.
 
 ### Geändert

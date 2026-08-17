@@ -1,7 +1,7 @@
 {
   "$schema": "ellmos-module-v1",
   "name": "steuer-assistent",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "kind": "public-module",
   "visibility": "public",
   "publish_status": "github-public",

@@ -309,16 +309,21 @@ class SteuerAssistent:
     def add_beleg(
         self,
         kategorie: str,
-        betrag_eur: object,
+        betrag_eur: object = None,
         datum: Optional[str] = None,
         notiz: Optional[str] = None,
         beleg_datei: Optional[str] = None,
+        *,
+        betrag: object = None,
     ) -> dict:
         """Erfasst eine vom Nutzer eingeordnete private Belegposition."""
+        raw_amount = betrag if betrag_eur is None and betrag is not None else betrag_eur
+        if raw_amount is None:
+            raise ValueError("Ein Betrag in Euro muss angegeben werden.")
         if datum is None:
             datum = date.today().isoformat()
         datum = _validate_iso_date(datum)
-        cents, normalized_eur = _money_to_cents(betrag_eur)
+        cents, normalized_eur = _money_to_cents(raw_amount)
         kategorie = str(kategorie).strip()
         notiz = _optional_text(notiz, max_length=4000)
 
@@ -451,6 +456,10 @@ class SteuerAssistent:
             "kategorien": categories,
         }
 
+    def get_werbungskosten(self, jahr: int) -> dict:
+        """Ergonomischer Alias für werbungskosten()."""
+        return self.werbungskosten(jahr)
+
     # ------------------------------------------------------------------
     # Export-Bundle (private Arbeitsunterlage, kein amtliches Format)
     # ------------------------------------------------------------------
@@ -567,7 +576,11 @@ class SteuerAssistent:
         return out_path
 
     def export_finanzamt(self, jahr: int, out_path: str | Path | None = None) -> Path:
-        """Rueckwaertskompatibler Alias; erzeugt ebenfalls nur eine Arbeitsunterlage."""
+        """Rückwärtskompatibler Alias; erzeugt ebenfalls nur eine Arbeitsunterlage."""
+        return self.export_steuerunterlagen(jahr, out_path)
+
+    def export_arbeitsunterlage(self, jahr: int, out_path: str | Path | None = None) -> Path:
+        """Ergonomischer Alias für export_steuerunterlagen()."""
         return self.export_steuerunterlagen(jahr, out_path)
 
     # ------------------------------------------------------------------
