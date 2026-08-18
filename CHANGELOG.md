@@ -3,6 +3,15 @@
 Alle nennenswerten Änderungen an `steuer-assistent`. Format angelehnt an
 [Keep a Changelog](https://keepachangelog.com/).
 
+## Unreleased
+
+### Behoben
+
+- Das API-Beispiel in `llms.txt` verwendet jetzt den neutralen,
+  aktuellen Alias `export_arbeitsunterlage()` statt des ausschließlich
+  rückwärtskompatiblen Namens `export_finanzamt()`. Ein Metadatentest sichert
+  den Beispielvertrag gegen erneute Drift ab.
+
 ## [0.2.3] — 2026-08-17
 
 ### Behoben

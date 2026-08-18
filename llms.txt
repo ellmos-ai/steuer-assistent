@@ -49,7 +49,7 @@ from steuer_assistent.core import SteuerAssistent
 sa = SteuerAssistent()
 sa.add_beleg(kategorie="Arbeitsmittel", betrag=49.90, datum="2026-03-15", notiz="USB-Hub")
 summe = sa.get_werbungskosten(jahr=2026)
-export_zip = sa.export_finanzamt(jahr=2026)
+export_zip = sa.export_arbeitsunterlage(jahr=2026)
 ```
 
 ## Documentation & References

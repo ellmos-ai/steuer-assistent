@@ -257,6 +257,11 @@ class MetadataContractCase(unittest.TestCase):
                 self.assertNotIn("FINANZAMT.zip", text)
                 self.assertNotIn("1=absetzbar", text)
 
+    def test_llms_api_example_uses_neutral_export_alias(self) -> None:
+        text = (ROOT / "llms.txt").read_text(encoding="utf-8")
+        self.assertIn("sa.export_arbeitsunterlage(jahr=2026)", text)
+        self.assertNotIn("sa.export_finanzamt(", text)
+
     def test_multilingual_docs_exist_and_consistent(self) -> None:
         readme_en = (ROOT / "README.md").read_text(encoding="utf-8")
         readme_de = (ROOT / "README_de.md").read_text(encoding="utf-8")
