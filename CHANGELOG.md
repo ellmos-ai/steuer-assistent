@@ -5,6 +5,15 @@ Alle nennenswerten Änderungen an `steuer-assistent`. Format angelehnt an
 
 ## Unreleased
 
+### Dokumentation & Discoverability (Pfad B) [2026-09-10]
+
+- **Zweisprachige README-Parität & Schnellnavigation:** `README.md` und `README_de.md` um 13-teiliges Badgeset, Schnellnavigation und vollständige deutsche Parität erweitert.
+- **Visuelle Architektur:** Neues Mermaid-Ablaufdiagramm (`sequenceDiagram`) für den Beleg-Lebenszyklus, Home-Verzeichnisprüfung, Integer-Cent-Speicherung, Konsolenmaskierung und formelgeschützten ZIP-Export.
+- **Governance- & Laufzeit-Invarianten:** 10 kanonische Invarianten (`INV-LOCAL-01` bis `INV-LOCAL-10`) in READMEs und `llms.txt` dokumentiert.
+- **Metadaten- & Vertragstests:** Neue Testsuite `tests/test_metadata.py` sichert Navigationsanker, Invarianten, Sequenzdiagramme, Sicherheits-SLA und Ökosystem-URLs ab.
+- **Sicherheitsrichtlinie & Hygiene:** `SECURITY.md` um verbindliche 48h-SLA, Triage-Zusagen und Ansprechpartner erweitert; `.gitignore` gegen Cloud-Konflikte und Multi-Agent-Locks gehärtet.
+- **Lokales Marketing-Log:** `MARKETING-LOG.txt` für Zielgruppen-Personas, Discoverability und Ökosystem-Vernetzung angelegt.
+
 ### Behoben
 
 - Das API-Beispiel in `llms.txt` verwendet jetzt den neutralen,

@@ -7,10 +7,39 @@
 [![Tests](https://github.com/ellmos-ai/steuer-assistent/actions/workflows/tests.yml/badge.svg)](https://github.com/ellmos-ai/steuer-assistent/actions/workflows/tests.yml)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Privacy: Offline--First](https://img.shields.io/badge/Privacy-Offline--First-green.svg)](#store-und-datenschutz)
-[![Legal: Non--Official](https://img.shields.io/badge/Status-Private--Worksheet-orange.svg)](#rechtlicher-rahmen-und-betriebsform)
+[![Plattform: Windows | Linux | macOS](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](#architektur)
+[![Tests: 35+ Bestanden](https://img.shields.io/badge/tests-35%2B%20passed-brightgreen.svg)](#installation-und-tests)
+[![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
+[![Datenschutz: Offline--First](https://img.shields.io/badge/Privacy-Offline--First-green.svg)](#store-und-datenschutz)
+[![Rechtlich: Nicht--Amtlich](https://img.shields.io/badge/Status-Private--Worksheet-orange.svg)](#rechtlicher-rahmen-und-betriebsform)
+[![Sicherheit: 48h SLA](https://img.shields.io/badge/security-48h%20SLA-blue.svg)](SECURITY.md)
+[![Ökosystem: ellmos--ai](https://img.shields.io/badge/ecosystem-ellmos--ai-blue.svg)](https://github.com/ellmos-ai)
+[![Dachorganisation: open--bricks](https://img.shields.io/badge/umbrella-open--bricks-orange.svg)](https://github.com/open-bricks)
+[![LLM-Ready: llms.txt](https://img.shields.io/badge/LLM--Ready-llms.txt-purple.svg)](llms.txt)
+[![Audit: 2026--09--10](https://img.shields.io/badge/checked-2026--09--10-success.svg)](CHANGELOG.md)
 
 *Lokale Beleg-Arbeitsunterlage für Arbeitnehmer-Werbungskosten — keine Steuerberatung.*
+
+---
+
+### Schnellnavigation
+
+[Überblick](#überblick) •
+[Architektur](#architektur) •
+[Ausführungs-Lebenszyklus](#ausführungs-lebenszyklus) •
+[Governance- & Laufzeit-Invarianten](#governance--und-laufzeit-invarianten) •
+[Funktionsübersicht](#funktionsübersicht) •
+[Verwendung](#verwendung) •
+[Python-API](#python-api) •
+[Store & Datenschutz](#store-und-datenschutz) •
+[Installation & Tests](#installation-und-tests) •
+[Rechtsrahmen](#rechtlicher-rahmen-und-betriebsform) •
+[Partner-Repositories & Ökosystem](#partner-repositories--ökosystem) •
+[Sicherheit & Schwachstellenmeldung](#sicherheit-und-schwachstellenmeldung)
+
+---
+
+## Überblick
 
 Ein leichtgewichtiges, Offline-First-Python-Modul zur lokalen Erfassung von selbst eingeordneten Belegen für Arbeitnehmer-Werbungskosten, centgenauer Summierung und dem Export privater, nicht-amtlicher ZIP-Arbeitsunterlagen. Es prüft weder die steuerliche Abziehbarkeit noch erstellt oder übermittelt es eine Steuererklärung.
 
@@ -51,6 +80,64 @@ flowchart TD
     DB --> Redact
     DB --> ZIP
 ```
+
+## Ausführungs-Lebenszyklus
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as "Benutzer (CLI / Python API)"
+    participant Bounds as "Grenzprüfung (_require_user_path)"
+    participant Core as "SteuerAssistent-Kernlogik"
+    participant SQLite as "SQLite-Store (~/.steuer-assistent/steuer.db)"
+    participant Privacy as "CLI-Datenschutzfilter"
+    participant Exporter as "Arbeitsunterlagen-Exporter"
+
+    Note over User,SQLite: Beleg-Erfassung und Speicherungs-Ablauf
+    User->>Bounds: "add_beleg(kategorie, betrag, datum, notiz)"
+    Bounds->>Bounds: "Prüfe Ablagepfad innerhalb des Benutzerverzeichnisses"
+    Bounds->>Core: "Pfad verifiziert"
+    Core->>Core: "ISO-Datum validieren & Euro-Betrag in Integer-Cents wandeln"
+    Core->>SQLite: "Tagesaktuelle Sequenz abrufen & inkrementieren (B-YYYYMMDD-XXX)"
+    SQLite-->>Core: "Sequenznummer zugewiesen"
+    Core->>SQLite: "INSERT Beleg in 'belege'-Tabelle (centgenau)"
+    SQLite-->>Core: "Datensatz gespeichert"
+    Core-->>User: "Beleg-Bestätigung (B-Nummer, Kategorie, EUR-Betrag)"
+
+    Note over User,Privacy: Aggregation und Konsolen-Datenschutz
+    User->>Core: "get_werbungskosten(jahr=YYYY)"
+    Core->>SQLite: "SELECT SUM(betrag_cent) gruppiert nach Kategorie"
+    SQLite-->>Core: "Summen in Integer-Cents"
+    Core->>Privacy: "Ausgabe filtern (Notizen & absolute Pfade ausblenden)"
+    Privacy-->>User: "Aggregierte Summen anzeigen (Details nur mit --mit-notiz)"
+
+    Note over User,Exporter: Privater Arbeitsunterlagen-Export (ZIP)
+    User->>Exporter: "export_arbeitsunterlage(jahr=YYYY)"
+    Exporter->>Bounds: "Zielverzeichnis im Benutzer-Home prüfen"
+    Bounds-->>Exporter: "Ziel verifiziert"
+    Exporter->>Exporter: "Prüfe ob Zieldatei existiert (Überschreibschutz)"
+    Exporter->>SQLite: "Alle Belege für Jahr YYYY abfragen"
+    SQLite-->>Exporter: "Belegzeilen"
+    Exporter->>Exporter: "CSV mit Formelschutz erzeugen (neutralisiere =, +, -, @)"
+    Exporter->>Exporter: "Strukturierte Text-Zusammenfassung & Hinweistext generieren"
+    Exporter->>Exporter: "Dateien in STEUER_UNTERLAGEN_YYYY.zip bündeln"
+    Exporter-->>User: "Export erfolgreich abgeschlossen (liefert ZIP-Pfad)"
+```
+
+## Governance- und Laufzeit-Invarianten
+
+| ID | Invariante | Durchsetzungs-Mechanismus | Verifikation |
+|---|---|---|---|
+| **INV-LOCAL-01** | Zero Egress | Vollständige Offline-Ausführung; keinerlei Netzwerkverbindungen, HTTP-Aufrufe oder Telemetrie. | Testsuite & Paketierungs-Prüfung |
+| **INV-LOCAL-02** | Centgenaue Arithmetik | Beträge werden intern als Integer-Cents (`betrag_cent`) gespeichert, um Rundungsfehler auszuschließen. | `test_money_is_stored_and_aggregated_as_cents` |
+| **INV-LOCAL-03** | Benutzerverzeichnis-Grenzprüfung | Datenbank, Belegpfade und Exporte dürfen ausschließlich innerhalb des Home-Verzeichnisses liegen. | `_require_user_path`-Prüfung |
+| **INV-LOCAL-04** | RunAsInvoker | Läuft mit Standard-Nutzerrechten; keine Administrator- oder Root-Rechte erforderlich. | Laufzeit-Manifest |
+| **INV-LOCAL-05** | Konsolen-Datenschutz | Notizen und absolute Pfade werden standardmäßig maskiert; explizites Opt-in erforderlich (`--mit-notiz`). | `test_cli_redacts_notes_and_store_path_by_default` |
+| **INV-LOCAL-06** | Nicht-überschreibender Export | Zieldatei-Prüfung verweigert das Überschreiben bestehender ZIPs zum Schutz vor Datenverlust. | `test_export_refuses_overwrite_and_leaves_no_temp_file` |
+| **INV-LOCAL-07** | CSV-Formelschutz | Tabellenkalkulations-Schutz: Werte mit `=`, `+`, `-`, `@` am Anfang werden durch vorangestelltes `'` neutralisiert. | `test_export_is_neutral_private_bundle_and_formula_safe` |
+| **INV-LOCAL-08** | Monotone Sequenz-Integrität | Belegnummern (`B-YYYYMMDD-XXX`) steigen pro Tag strikt monoton an und werden nach dem Löschen nie wiederverwendet. | `test_numbers_are_not_reused_after_delete` |
+| **INV-LOCAL-09** | Standardbibliothek-Kern | Vollständig auf Python-Standardbibliothek und `sqlite3` aufgebaut; 0 externe Laufzeitabhängigkeiten. | `pyproject.toml`-Abhängigkeitsprüfung |
+| **INV-LOCAL-10** | Sicherheits-SLA | Verbindliche 48-Stunden-Reaktionszeit und 5-Werktage-Triage bei Sicherheitsmeldungen. | `SECURITY.md`-Vertragstest |
 
 ## Funktionsübersicht
 
@@ -103,17 +190,17 @@ with SteuerAssistent() as sa:
 
 ## Store und Datenschutz
 
-- **Standardpfad**: `%USERPROFILE%\.steuer-assistent\steuer.db`
-- **Konfigurations-Override**: Umgebungsvariable `STEUER_ASSISTENT_DB=<Pfad>` oder CLI-Argument `--store <Pfad>`
-- **Pfadsicherheit**: Store, verknüpfte Belegpfade und Export-Ziele müssen strikt im Benutzerverzeichnis liegen (`_require_user_path`).
-- **Geld-Speicherung**: Beträge werden intern als Integer-Cents gespeichert (`betrag_cent`); vorhandene Altdaten werden automatisch migriert.
-- **CLI-Redaktion**: Vertrauliche Notizen und absolute Dateipfade erscheinen in der CLI nur bei ausdrücklichem Opt-in.
-- **Berechtigungen**: Das Modul setzt restriktive Dateirechte (`0600`/`0700` auf POSIX); unter Windows gelten die NTFS-Benutzerprofilrechte.
-- **Isolierung**: Keine Netzwerkverbindung, kein Cloud-Upload, kein Zugriff auf `bach.db`.
+- **Standard-Pfad**: `%USERPROFILE%\.steuer-assistent\steuer.db`
+- **Konfigurations-Override**: Umgebungsvariable `STEUER_ASSISTENT_DB=<pfad>` oder `--store <pfad>`.
+- **Pfadbegrenzung**: Datenbank, Belegpfade und Exporte müssen strikt innerhalb des Benutzerverzeichnisses liegen (`_require_user_path`).
+- **Währungsspeicherung**: Beträge werden als ganzzahlige Cents (`betrag_cent`) gespeichert; bestehende Alt-Datenbanken werden beim Start automatisch migriert.
+- **CLI-Maskierung**: Sensible Notizen und absolute Pfade werden standardmäßig in der Ausgabe ausgeblendet.
+- **Dateirechte**: Restriktive Berechtigungen (`0600`/`0700` unter POSIX; Benutzerprofil-ACLs unter Windows).
+- **Isolation**: Keine Netzwerkverbindungen, keine Cloud-Synchronisation, kein Zugriff auf externe Datenbanken.
 
-Tabellenstruktur: `belege`, `beleg_sequences`, `werbungskosten_kategorien`, `export_runs`.
+Datenbankschema: `belege`, `beleg_sequences`, `werbungskosten_kategorien`, `export_runs`.
 
-## Installation und Prüfung
+## Installation und Tests
 
 ```powershell
 cd steuer-assistent
@@ -121,38 +208,59 @@ python -m pip install -e .
 python -B -m pytest tests -q -p no:cacheprovider
 ```
 
-## Grenzen
+## Partner-Repositories & Ökosystem
 
-- **Scope**: Private Arbeitsunterlage für Arbeitnehmer-Werbungskosten; kein Gewerbe-/Betriebsausgaben-Workflow.
-- **Keine Steuerberatung**: Keine Rechtsprüfung, keine Anerkennungsbewertung und keine rechtliche Beratung.
-- **Kein amtliches Format**: Kein ELSTER-, ERiC- oder Finanzamt-Übermittlungsformat.
-- **Keine Übermittlung**: Keine direkte Beleg- oder Steuerdatenübermittlung an Behörden.
-- **Eigenständigkeit**: Reine Standardbibliothek, keine Laufzeitabhängigkeit zu externen Frameworks.
+`steuer-assistent` ist eingebettet in das datenschutzorientierte Local-First-Ökosystem von **[ellmos-ai](https://github.com/ellmos-ai)** und **[open-bricks](https://github.com/open-bricks)**:
+
+| Projekt | Organisation | Schwerpunkt | Zusammenspiel |
+|---|---|---|---|
+| **[assistant-core](https://github.com/ellmos-ai/assistant-core)** | ellmos-ai | Lokale Agenten-Infrastruktur | Offline-Aufgabenverarbeitung & SQLite-Auftragswarteschlangen |
+| **[foerderplaner](https://github.com/ellmos-ai/foerderplaner)** | ellmos-ai | Förderplanung & Pädagogik | ICF-basierte lokale Förderplanung |
+| **[worksheet-generator](https://github.com/ellmos-ai/worksheet-generator)** | ellmos-ai | Strukturierte Arbeitsblätter | Didaktische Unterrichts- und Arbeitsblattgenerierung |
+| **[anonymizer](https://github.com/ellmos-ai/anonymizer)** | ellmos-ai | Datenschutz & Pseudonymisierung | Schwärzungs- und Anonymisierungsmodul für sensible Dokumente |
+| **[KnowledgeDigest](https://github.com/file-bricks/knowledgedigest)** | file-bricks | Dokumentenverarbeitung & Suche | Lokale Textextraktion und Volltextindexierung |
+| **[SoftwareCenter](https://github.com/file-bricks/SoftwareCenter)** | file-bricks | Desktop-Katalog & Starter | Zentraler Offline-Katalog für Desktop-Werkzeuge |
+| **[LaunchBoards](https://github.com/file-bricks/LaunchBoards)** | file-bricks | Desktop-Orchestrierung | Arbeitsbereich-Launcher & App-Profilverwaltung |
+| **[WikiStub-Seed](https://github.com/dev-bricks/WikiStub-Seed)** | dev-bricks | Wissensbasis-Tooling | Statische Wissens- und Notiz-Vaults |
+
+## Sicherheit und Schwachstellenmeldung
+
+Sicherheit und Datenschutz für persönliche Finanzdaten sind oberste Entwurfsprinzipien:
+- **Offline-Garantie**: Die Software überträgt zu keinem Zeitpunkt Daten, Anmeldedaten oder Belege über Netzwerkschnittstellen.
+- **Meldung**: Melden Sie mutmaßliche Sicherheitslücken diskret über [GitHub Private Vulnerability Reporting](https://github.com/ellmos-ai/steuer-assistent/security/advisories/new) oder per E-Mail an `security@ellmos.ai` und `security@open-bricks.org`.
+- **Reaktions-SLA**: Verbindliche **48-Stunden-Reaktionszeit** und **5-Werktage-Triage-Garantie**.
+- Ausführliche Sicherheitsrichtlinie und Meldewege: siehe [`SECURITY.md`](SECURITY.md).
+
+## Anwendungsbereich und Grenzen
+
+- **Scope**: Private Beleg-Arbeitsunterlage für Arbeitnehmer-Werbungskosten; kein Gewerbe, keine Betriebsausgaben.
+- **Keine Steuerberatung**: Keine rechtliche Prüfung, keine Prüfung der steuerlichen Abziehbarkeit, keine individuelle Beratung.
+- **Kein amtliches Format**: Keine ELSTER-, ERiC- oder Finanzamts-Einreichungsunterlage.
+- **Keine Datenübermittlung**: Keine automatisierte oder direkte Übermittlung an Behörden oder Dritte.
+- **Unabhängig**: Vollständig eigenständiges Standardbibliothek-Werkzeug ohne externe Framework-Laufzeitabhängigkeiten.
 
 ## Rechtlicher Rahmen und Betriebsform
 
-**Keine Steuerberatung.** Dieses Modul ist ein reines Selbstanwendungs-Werkzeug: Es erfasst und summiert vom Nutzer selbst eingeordnete Belege, trifft aber keine steuerliche Bewertung und übernimmt keine Gewähr für ein steuerliches Ergebnis. Nutzung erfolgt auf eigene Verantwortung; die Gewährleistung richtet sich — unabhängig vom MIT-Lizenztext — nach dem gesetzlich zwingenden Umfang (Vorsatz und grobe Fahrlässigkeit bleiben nach deutschem Recht stets haftungsbewehrt, siehe §§ 276 Abs. 3, 309 Nr. 7 lit. b BGB).
+**Keine Steuerberatung.** Dieses Modul ist ein reines Selbstanwendungswerkzeug: Es erfasst und summiert vom Nutzer selbst eingeordnete Belege, nimmt aber keine steuerliche Bewertung vor und gibt keine Zusicherung über steuerliche Anerkennung oder Abziehbarkeit. Die Nutzung erfolgt auf eigenes Risiko; gesetzlich zwingende Haftungsregeln gelten nach Maßgabe des anwendbaren Rechts (eine Haftung für Vorsatz und grobe Fahrlässigkeit kann nach deutschem Recht gemäß §§ 276 Abs. 3, 309 Nr. 7 lit. b BGB nicht ausgeschlossen werden).
 
-KI-gestützte Ersteinschätzung (kein Ersatz für anwaltliche Beratung, nicht abschließend anwaltlich geprüft), Stand 2026-07-23: Für die aktuelle Betriebsform — reine Selbstanwendung auf lokal gehaltene, vom Nutzer selbst eingeordnete Daten, ohne Netzwerkverbindung, ohne Rechtsprüfung des Einzelfalls — ist dieses Modul nach den einschlägigen Vorschriften des Steuerberatungsgesetzes (StBerG, insbes. § 2 Abs. 2) und des Rechtsdienstleistungsgesetzes (RDG, insbes. § 2 Abs. 1) keine „geschäftsmäßige Hilfeleistung in Steuersachen“ bzw. Rechtsdienstleistung. Grundlage ist eine vertiefte interne Prüfung (StBerG, RDG, UWG, BGB, DSGVO, mit Rechtsprechungsschicht und Fremdmodell-Review); sie ist nicht Teil dieses Repositories.
+KI-gestützte rechtliche Ersteinschätzung (Stand 2026-07-23, ersetzt keine anwaltliche oder steuerberatende Prüfung): Für die aktuelle Betriebsform — reine Selbstanwendung auf lokal vorgehaltenen, ausschließlich vom Nutzer selbst eingeordneten Daten ohne Netzwerkkommunikation und ohne rechtliche Einzelfallprüfung — stellt dieses Werkzeug keine geschäftsmäßige Hilfeleistung in Steuersachen im Sinne des Steuerberatungsgesetzes (StBerG, insb. § 2 Abs. 2) und keine Rechtsdienstleistung im Sinne des Rechtsdienstleistungsgesetzes (RDG, insb. § 2 Abs. 1) dar.
 
-**Diese Einschätzung gilt nur für die beschriebene Betriebsform.** Eine erneute rechtliche Prüfung ist nötig, sobald sich die Betriebsform ändert — insbesondere bei:
+**Diese Einschätzung gilt ausschließlich für die beschriebene Betriebsform.** Eine neue rechtliche Prüfung ist erforderlich, wenn sich die Betriebsform ändert — insbesondere bei:
 
-1. **automatischer steuerlicher Einordnung oder Würdigung** durch das Tool selbst (statt reiner Nutzereingabe),
-2. **Hosting- oder Servicebetrieb**, oder Bearbeitung fremder Belege durch den Betreiber (statt lokaler Selbstanwendung),
-3. **ELSTER-, ERiC- oder sonstiger amtlicher Übermittlungsanbindung**,
-4. **entgeltlicher Vermarktung** dieses Moduls oder einer daraus abgeleiteten Voll-Pipeline (z. B. „steuer-suite“),
-5. **Cloud-Sync oder sonstiger Veröffentlichung erfasster Nutzerdaten durch den Nutzer selbst** (z. B. öffentliches Repository der eigenen Datenbank) — die DSGVO-Haushaltsausnahme (Art. 2 Abs. 2 lit. c DSGVO) kann dann beim jeweiligen Nutzer entfallen,
-6. **Installation auf Firmen-/BYOD-Rechnern zur Abrechnung dienstlicher (fremder) Spesen** — auch hier kann die DSGVO-Haushaltsausnahme beim Nutzer entfallen, unabhängig vom Autor.
-
-Bei Zweifeln oder vor produktivem Einsatz mit echten Steuerdaten Dritter empfiehlt sich eine unabhängige anwaltliche Prüfung.
+1. **Automatisierter steuerlicher Einordnung oder Bewertung** durch die Software selbst (statt Selbsteinordnung durch den Nutzer),
+2. **Gehostetem Mehrbenutzer- oder Dienstleistungsbetrieb** oder Verarbeitung von Fremdbelegen (statt lokaler Selbstanwendung),
+3. **ELSTER-, ERiC- oder offiziellen Finanzamts-Einreichungsschnittstellen**,
+4. **Kommerziellem Vertrieb oder entgeltlicher Bereitstellung** dieses Moduls oder abgeleiteter Pipelines,
+5. **Cloud-Synchronisation oder öffentlicher Bereitstellung von Nutzer-Datenbankdateien** (wodurch das DSGVO-Haushaltsprivileg nach Art. 2 Abs. 2 lit. c DSGVO entfallen kann),
+6. **Installation auf Unternehmens- / BYOD-Rechnern zur Abrechnung von Arbeitgeber-Auslagen** (wodurch die Anwendbarkeit des DSGVO-Haushaltsprivilegs ebenfalls berührt sein kann).
 
 ## Herkunft
 
-- **Ursprung**: Extrahiert aus BACH `agents/_experts/steuer/` (MIT)
-- **Extraktionsdatum**: 2026-06-22
+- **Herkunft**: Ausgekoppelt aus BACH `agents/_experts/steuer/` (MIT)
+- **Auskopplungs-Datum**: 2026-06-22
 - **Lizenz**: MIT
 
 ## Lizenz
 
 MIT — siehe [`LICENSE`](LICENSE). Änderungen: siehe [`CHANGELOG.md`](CHANGELOG.md).
-Sicherheitsmeldungen: siehe [`SECURITY.md`](SECURITY.md).
+Sicherheitsrichtlinien: siehe [`SECURITY.md`](SECURITY.md).

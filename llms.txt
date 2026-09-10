@@ -1,23 +1,29 @@
 # steuer-assistent
 
 > Offline-first local receipt worksheet module for employee income-related expenses (Werbungskosten) — not tax advice.
-> Last-checked: 2026-08-17 | Version: 0.2.3
+> Last-checked: 2026-09-10 | Version: 0.2.3
 
 ## Overview
 
 `steuer-assistent` is a small, offline-first Python module for recording self-categorized receipts for employee income-related expenses (*Werbungskosten*), calculating exact cent sums, and exporting private, non-official ZIP worksheets.
 
 - **License**: MIT
-- **Runtime**: Python >= 3.10 (Standard library + sqlite3 only)
+- **Runtime**: Python >= 3.10 (Standard library + sqlite3 only, zero third-party dependencies)
 - **Repository**: https://github.com/ellmos-ai/steuer-assistent
+- **Umbrella**: https://github.com/open-bricks
 
-## Key Features
+## Key Features & Invariants
 
-- **Offline-First & Local Storage**: Stores receipt records in `%USERPROFILE%\.steuer-assistent\steuer.db`. Zero network calls, zero cloud dependencies.
-- **Cent-Exact Math**: Stores amounts internally as integer cents to avoid floating-point rounding errors.
-- **Privacy-Preserving CLI**: Redacts notes and full file paths by default unless `--mit-notiz` is explicitly specified.
-- **Private ZIP Export**: Generates `STEUER_UNTERLAGEN_<jahr>.zip` containing CSV, markdown summary, and formula protection. Never overwrites existing export files.
-- **Non-Official Worksheet**: Pure self-application tool; does not assess deductibility and does not submit tax returns (official submission requires ELSTER / approved software).
+- **INV-LOCAL-01 (Zero Egress)**: Pure offline execution. Stores receipts in `%USERPROFILE%\.steuer-assistent\steuer.db`. Zero network calls, zero analytics, zero cloud sync.
+- **INV-LOCAL-02 (Cent-Exact Math)**: Stores amounts as integer cents (`betrag_cent`) to eliminate floating-point rounding errors.
+- **INV-LOCAL-03 (Path Confinement)**: Database store, linked receipts, and exports are strictly bounded within the user home directory (`_require_user_path`).
+- **INV-LOCAL-04 (Unprivileged RunAsInvoker)**: Requires no root or administrator elevation.
+- **INV-LOCAL-05 (Privacy-Preserving CLI)**: Redacts notes and absolute file paths by default unless `--mit-notiz` or `--mit-pfad` is specified.
+- **INV-LOCAL-06 (Non-Overwriting Export)**: Generates `STEUER_UNTERLAGEN_<jahr>.zip` and strictly refuses to overwrite existing archives.
+- **INV-LOCAL-07 (CSV Formula Shield)**: Neutralizes spreadsheet formula injection by prepending a single quote (`'`) to values starting with `=`, `+`, `-`, or `@`.
+- **INV-LOCAL-08 (Monotonic Sequence Integrity)**: Assigns monotonic daily receipt numbers (`B-YYYYMMDD-XXX`) that are never reused.
+- **INV-LOCAL-09 (Standard Library Core)**: Zero third-party runtime dependencies; standard library Python 3.10+ only.
+- **INV-LOCAL-10 (Security SLA)**: Binding 48-hour response SLA and 5-business-day triage commitment for security disclosures.
 
 ## CLI Quick Reference
 
@@ -54,9 +60,10 @@ export_zip = sa.export_arbeitsunterlage(jahr=2026)
 
 ## Documentation & References
 
-- [README.md](README.md): English usage guide, store settings, and legal framework.
-- [README_de.md](README_de.md): Deutsche Dokumentation mit vollständiger Funktionsübersicht und Rechtsrahmen.
+- [README.md](README.md): English usage guide, architecture sequence diagram, store settings, and legal framework.
+- [README_de.md](README_de.md): Deutsche Dokumentation mit vollständiger Funktionsübersicht, Ablaufdiagramm und Rechtsrahmen.
 - [SKILL.md](SKILL.md) / [SKILL.en.md](SKILL.en.md): Agent skill definitions (DE / EN).
 - [CHANGELOG.md](CHANGELOG.md): Version history and release notes.
-- [SECURITY.md](SECURITY.md): Security and vulnerability reporting policies.
+- [SECURITY.md](SECURITY.md): Security and vulnerability reporting policies with 48h SLA.
+- [MARKETING-LOG.txt](MARKETING-LOG.txt): Local discoverability log, persona definitions, and SEO positioning.
 - [LICENSE](LICENSE): MIT License.

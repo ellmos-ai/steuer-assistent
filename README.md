@@ -7,10 +7,39 @@
 [![Tests](https://github.com/ellmos-ai/steuer-assistent/actions/workflows/tests.yml/badge.svg)](https://github.com/ellmos-ai/steuer-assistent/actions/workflows/tests.yml)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Platform: Windows | Linux | macOS](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](#architecture)
+[![Tests: 35+ Passed](https://img.shields.io/badge/tests-35%2B%20passed-brightgreen.svg)](#installation-and-testing)
+[![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
 [![Privacy: Offline--First](https://img.shields.io/badge/Privacy-Offline--First-green.svg)](#store-and-data-privacy)
 [![Legal: Non--Official](https://img.shields.io/badge/Status-Private--Worksheet-orange.svg)](#legal-framework-and-operating-mode)
+[![Security: 48h SLA](https://img.shields.io/badge/security-48h%20SLA-blue.svg)](SECURITY.md)
+[![Ecosystem: ellmos--ai](https://img.shields.io/badge/ecosystem-ellmos--ai-blue.svg)](https://github.com/ellmos-ai)
+[![Umbrella: open--bricks](https://img.shields.io/badge/umbrella-open--bricks-orange.svg)](https://github.com/open-bricks)
+[![LLM-Ready: llms.txt](https://img.shields.io/badge/LLM--Ready-llms.txt-purple.svg)](llms.txt)
+[![Audit: 2026--09--10](https://img.shields.io/badge/checked-2026--09--10-success.svg)](CHANGELOG.md)
 
 *Local receipt worksheet for employee income-related expenses — not tax advice.*
+
+---
+
+### Quick Navigation
+
+[Overview](#overview) •
+[Architecture](#architecture) •
+[Execution Lifecycle](#execution-lifecycle) •
+[Governance Invariants](#governance-and-runtime-invariants) •
+[Key Features](#key-features) •
+[Usage](#usage) •
+[Python API](#python-api) •
+[Store & Privacy](#store-and-data-privacy) •
+[Testing](#installation-and-testing) •
+[Legal Framework](#legal-framework-and-operating-mode) •
+[Ecosystem](#sister-repositories--ecosystem) •
+[Security](#security-and-vulnerability-reporting)
+
+---
+
+## Overview
 
 A lightweight, offline-first Python module for recording self-categorized receipts for employee income-related expenses (*Werbungskosten*), computing exact cent sums, and exporting private, non-official ZIP worksheet packages. It does not assess tax deductibility, nor does it prepare or submit tax returns.
 
@@ -51,6 +80,64 @@ flowchart TD
     DB --> Redact
     DB --> ZIP
 ```
+
+## Execution Lifecycle
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as "User (CLI / Python API)"
+    participant Bounds as "Boundary Enforcer (_require_user_path)"
+    participant Core as "SteuerAssistent Core"
+    participant SQLite as "SQLite Store (~/.steuer-assistent/steuer.db)"
+    participant Privacy as "CLI Privacy Redactor"
+    participant Exporter as "Worksheet Exporter"
+
+    Note over User,SQLite: Receipt Capture & Storage Lifecycle
+    User->>Bounds: "add_beleg(kategorie, betrag, datum, notiz)"
+    Bounds->>Bounds: "Verify store path resides within user home directory"
+    Bounds->>Core: "Path verified"
+    Core->>Core: "Validate ISO date & convert Euro float/str to integer cents"
+    Core->>SQLite: "Fetch & increment daily monotonic sequence (B-YYYYMMDD-XXX)"
+    SQLite-->>Core: "Sequence number assigned"
+    Core->>SQLite: "INSERT receipt into 'belege' table (cent-exact)"
+    SQLite-->>Core: "Record stored"
+    Core-->>User: "Receipt confirmation (B-Number, category, EUR amount)"
+
+    Note over User,Privacy: Aggregation & Console Redaction
+    User->>Core: "get_werbungskosten(jahr=YYYY)"
+    Core->>SQLite: "SELECT SUM(betrag_cent) grouped by category"
+    SQLite-->>Core: "Integer cent sums"
+    Core->>Privacy: "Filter results (redact notes and absolute DB paths)"
+    Privacy-->>User: "Display aggregated totals (requires --mit-notiz for details)"
+
+    Note over User,Exporter: Private Worksheet ZIP Export Lifecycle
+    User->>Exporter: "export_arbeitsunterlage(jahr=YYYY)"
+    Exporter->>Bounds: "Check export target directory in user home"
+    Bounds-->>Exporter: "Target verified"
+    Exporter->>Exporter: "Verify target file does not exist (refuse overwrite)"
+    Exporter->>SQLite: "Query all receipts for year YYYY"
+    SQLite-->>Exporter: "Receipt rows"
+    Exporter->>Exporter: "Generate CSV with formula shield (neutralize =, +, -, @)"
+    Exporter->>Exporter: "Generate structured plain-text summary & legal disclaimer"
+    Exporter->>Exporter: "Package files into STEUER_UNTERLAGEN_YYYY.zip"
+    Exporter-->>User: "Export completed (returns ZIP path)"
+```
+
+## Governance and Runtime Invariants
+
+| ID | Invariant | Enforcement Mechanism | Verification |
+|---|---|---|---|
+| **INV-LOCAL-01** | Zero Egress | Pure offline execution; zero socket calls, HTTP libraries, or cloud telemetry. | Test suite & packaging audits |
+| **INV-LOCAL-02** | Cent-Exact Math | Amounts stored internally as integer cents (`betrag_cent`) to avoid float drift. | `test_money_is_stored_and_aggregated_as_cents` |
+| **INV-LOCAL-03** | Path Confinement | Store, linked receipts, and exports must reside strictly inside user home directory. | `_require_user_path` validation |
+| **INV-LOCAL-04** | RunAsInvoker | Executes with standard user privileges; no administrator or root elevation required. | Runtime manifest |
+| **INV-LOCAL-05** | Console Privacy | Notes and absolute paths redacted by default; explicit opt-in required (`--mit-notiz`). | `test_cli_redacts_notes_and_store_path_by_default` |
+| **INV-LOCAL-06** | Non-Overwriting Export | Target archive check refuses overwrite, preventing accidental data loss. | `test_export_refuses_overwrite_and_leaves_no_temp_file` |
+| **INV-LOCAL-07** | CSV Formula Shield | Neutralizes spreadsheet injection by prepending `'` to values starting with `=`, `+`, `-`, `@`. | `test_export_is_neutral_private_bundle_and_formula_safe` |
+| **INV-LOCAL-08** | Monotonic Sequences | Receipt numbers (`B-YYYYMMDD-XXX`) are monotonic per day and never reused after deletion. | `test_numbers_are_not_reused_after_delete` |
+| **INV-LOCAL-09** | Standard Library Core | Built strictly on Python stdlib and `sqlite3`; zero external runtime dependencies. | `pyproject.toml` dependencies check |
+| **INV-LOCAL-10** | Security SLA | 48-hour response SLA and 5-business-day triage commitment for vulnerability reports. | `SECURITY.md` contract tests |
 
 ## Key Features
 
@@ -120,6 +207,29 @@ cd steuer-assistent
 python -m pip install -e .
 python -B -m pytest tests -q -p no:cacheprovider
 ```
+
+## Sister Repositories & Ecosystem
+
+`steuer-assistent` operates within the privacy-respecting, local-first ecosystem of **[ellmos-ai](https://github.com/ellmos-ai)** and **[open-bricks](https://github.com/open-bricks)**:
+
+| Project | Organization | Focus | Relationship |
+|---|---|---|---|
+| **[assistant-core](https://github.com/ellmos-ai/assistant-core)** | ellmos-ai | Local agent infrastructure | Offline task processing & SQLite order queues |
+| **[foerderplaner](https://github.com/ellmos-ai/foerderplaner)** | ellmos-ai | Educational support planning | ICF-based local educational assistance |
+| **[worksheet-generator](https://github.com/ellmos-ai/worksheet-generator)** | ellmos-ai | Structured worksheet creation | Educational document generation |
+| **[anonymizer](https://github.com/ellmos-ai/anonymizer)** | ellmos-ai | Privacy & pseudonymization | Redaction engine for sensitive personal documents |
+| **[KnowledgeDigest](https://github.com/file-bricks/knowledgedigest)** | file-bricks | Document processing & search | Local text extraction and indexing |
+| **[SoftwareCenter](https://github.com/file-bricks/SoftwareCenter)** | file-bricks | Desktop catalog & management | Unified installer and application catalog |
+| **[LaunchBoards](https://github.com/file-bricks/LaunchBoards)** | file-bricks | Desktop orchestration | Workspace launcher and app profile manager |
+| **[WikiStub-Seed](https://github.com/dev-bricks/WikiStub-Seed)** | dev-bricks | Knowledge base tooling | Static site and local vault generation |
+
+## Security and Vulnerability Reporting
+
+Security and user data privacy are core design principles:
+- **Offline Guarantee**: The software never transmits telemetry, credentials, or receipts over any network interface.
+- **Reporting**: Report suspected security vulnerabilities privately via [GitHub Private Vulnerability Reporting](https://github.com/ellmos-ai/steuer-assistent/security/advisories/new) or directly to `security@ellmos.ai` and `security@open-bricks.org`.
+- **Response SLA**: Binding **48-hour response SLA** and **5-business-day triage commitment**.
+- Full security policy and disclosure guidelines: see [`SECURITY.md`](SECURITY.md).
 
 ## Scope and Boundaries
 

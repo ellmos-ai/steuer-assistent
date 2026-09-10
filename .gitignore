@@ -33,6 +33,11 @@ build/
 *-ASUS-GEI.*
 *-SURFACE-LAPTOP.*
 *-MacBook*.*
+*-conflict-*
+*.sync-conflict-*
+*.sync-temp-*
+*.conflict
+*-CONFLIT-*
 
 # Interne Arbeits- und Statusdatei — Planung, nicht Repo-Inhalt.
 # Der oeffentliche Stand steht in README.md und CHANGELOG.md.
@@ -47,4 +52,21 @@ _gutachten/
 _codex/
 _after-care/
 RECHTSPRUEFUNG*.md
+LOCK
+LOCK.*
+*.lock
 LOCK*.txt
+
+# Caches und temporäre Testartefakte
+.ruff_cache/
+.coverage
+coverage/
+htmlcov/
+wheelhouse/
+.wheel-smoke/
+
+# Temporäre Editor- und Arbeitsdateien
+*.tmp
+*.bak
+*.swp
+*~

@@ -15,6 +15,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test:
     runs-on: ${{ matrix.os }}
@@ -41,7 +45,7 @@ jobs:
           python -m pip install pytest
 
       - name: Kompilierbarkeit pruefen
-        run: python -m compileall steuer_assistent
+        run: python -m compileall steuer_assistent tests
 
       - name: Tests
         env:
