@@ -1,12 +1,12 @@
 ---
 name: steuer-assistent
-version: 0.2.3
+version: 0.2.4
 type: service
 standalone: true
 visibility: public
 author: ellmos / BACH Team
 created: 2026-06-22
-updated: 2026-08-17
+updated: 2026-09-18
 anthropic_compatible: true
 status: active
 provenance:

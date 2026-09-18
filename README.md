@@ -16,7 +16,7 @@
 [![Ecosystem: ellmos--ai](https://img.shields.io/badge/ecosystem-ellmos--ai-blue.svg)](https://github.com/ellmos-ai)
 [![Umbrella: open--bricks](https://img.shields.io/badge/umbrella-open--bricks-orange.svg)](https://github.com/open-bricks)
 [![LLM-Ready: llms.txt](https://img.shields.io/badge/LLM--Ready-llms.txt-purple.svg)](llms.txt)
-[![Audit: 2026--09--10](https://img.shields.io/badge/checked-2026--09--10-success.svg)](CHANGELOG.md)
+[![Audit: 2026--09--18](https://img.shields.io/badge/checked-2026--09--18-success.svg)](CHANGELOG.md)
 
 *Local receipt worksheet for employee income-related expenses — not tax advice.*
 
@@ -264,3 +264,4 @@ AI-assisted initial legal assessment (as of 2026-07-23, not a substitute for for
 
 MIT — see [`LICENSE`](LICENSE). Changes: see [`CHANGELOG.md`](CHANGELOG.md).
 Security policies: see [`SECURITY.md`](SECURITY.md).
+Third-Party Licenses & Invariants: see [`THIRD_PARTY_LICENSES.md`](THIRD_PARTY_LICENSES.md).

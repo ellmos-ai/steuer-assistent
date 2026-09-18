@@ -2,7 +2,7 @@
 # Strategie, Discoverability, Zielgruppen & Registrierungen
 
 ## 1. Positionierung & Kernnutzen
-- **Produkt:** \steuer-assistent\ (ellmos-ai / open-bricks)
+- **Produkt:** `steuer-assistent` (ellmos-ai / open-bricks)
 - **Tagline:** Local-first receipt worksheet for German employee income-related expenses (Werbungskosten) — not tax advice.
 - **Kernposition:** Leichtgewichtiges, offline-zentriertes Python-Modul und CLI für Arbeitnehmer, die ihre beruflich veranlassten Belege (Arbeitsmittel, Fachliteratur, Homeoffice, Fortbildung, Bewerbungen) kontinuierlich privat vorsortieren, centgenau aggregieren und als neutrale Arbeitsunterlage bündeln möchten.
 - **Abgrenzung:** Keine Steuerberatung, keine ELSTER-Direktübermittlung, keine automatische steuerliche Anerkennungsprüfung, keine Cloud-Synchronisation, kein Zugriff auf behördliche Server.
@@ -20,16 +20,17 @@
 - [ ] **Awesome-Python / Awesome-German:** Eintrag in thematischen Sammlungen für Desktop- und Offline-First-Werkzeuge.
 - [ ] **AlternativeTo.net:** Eintrag als Open-Source-, lokale Alternative zu proprietären Cloud-Beleg-Scannern.
 - [ ] **PrivacyGuides / Prism-Break:** Listung in Foren für lokale Personal-Finance- und Belegorganisation.
-- [ ] **GitHub Topics:** Bereits gepflegt (\werbungskosten\, \german-tax\, \local-first\, \offline-first\, \privacy-first\, \	ax-preparation\, \cli\, \python\, \sqlite\, \claude-code\).
+- [ ] **GitHub Topics:** Bereits gepflegt (`werbungskosten`, `german-tax`, `local-first`, `offline-first`, `privacy-first`, `tax-preparation`, `cli`, `python`, `sqlite`, `claude-code`).
 
 ## 5. Externe Ökosystem-Vernetzung
-- **Dachorganisation:** \https://github.com/open-bricks\ (Open Bricks Desktop Suite)
+- **Dachorganisation:** `https://github.com/open-bricks` (Open Bricks Desktop Suite)
 - **Partner-Module:**
-  - \llmos-ai/assistant-core\ — Offline Agentenkern mit SQLite Auftragsverwaltung
-  - \llmos-ai/anonymizer\ — Lokale Entitäten-Anonymisierung für vertrauliche Dokumente
-  - \llmos-ai/worksheet-generator\ — Didaktische Arbeitsblatt-Generierung
-  - \ile-bricks/KnowledgeDigest\ — Lokale Volltext- und Belege-Verarbeitung
-  - \ile-bricks/SoftwareCenter\ — Lokaler App-Katalog und Starter
+  - `ellmos-ai/assistant-core` — Offline Agentenkern mit SQLite Auftragsverwaltung
+  - `ellmos-ai/anonymizer` — Lokale Entitäten-Anonymisierung für vertrauliche Dokumente
+  - `ellmos-ai/worksheet-generator` — Didaktische Arbeitsblatt-Generierung
+  - `file-bricks/KnowledgeDigest` — Lokale Volltext- und Belege-Verarbeitung
+  - `file-bricks/SoftwareCenter` — Lokaler App-Katalog und Starter
 
 ## 6. Audit-Historie
-- **2026-09-10 (GitHubBot Pfad B):** Vollständiges Discoverability-, Sequenzdiagramm- und Metadaten-Audit. 13-teiliges Badgeset, zweisprachige README-Parität (DE/EN), 10 Governance-Invarianten (INV-LOCAL-01..10) und automatisierte Vertragstestsuite.
+- **2026-09-18 (GitHubBot Pfad A - v0.2.4):** Technisches Hygiene-, CI-Matrix- und Governance-Audit. CI-Matrix auf Python 3.13 erweitert (`timeout-minutes: 15`), `stale.yml` und `welcome.yml` ausgerollt, PEP 621 Metadaten gehärtet (`license-files`, tool-Abschnitte für ruff und pytest), `THIRD_PARTY_LICENSES.md` angelegt, `.gitignore` für Multi-Host-Locks gehärtet und Vertragstest-Erweiterung in `tests/test_metadata.py`.
+- **2026-09-10 (GitHubBot Pfad B - v0.2.3):** Vollständiges Discoverability-, Sequenzdiagramm- und Metadaten-Audit. 13-teiliges Badgeset, zweisprachige README-Parität (DE/EN), 10 Governance-Invarianten (INV-LOCAL-01..10) und automatisierte Vertragstestsuite.

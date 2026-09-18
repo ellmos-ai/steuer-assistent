@@ -16,7 +16,7 @@
 [![Ökosystem: ellmos--ai](https://img.shields.io/badge/ecosystem-ellmos--ai-blue.svg)](https://github.com/ellmos-ai)
 [![Dachorganisation: open--bricks](https://img.shields.io/badge/umbrella-open--bricks-orange.svg)](https://github.com/open-bricks)
 [![LLM-Ready: llms.txt](https://img.shields.io/badge/LLM--Ready-llms.txt-purple.svg)](llms.txt)
-[![Audit: 2026--09--10](https://img.shields.io/badge/checked-2026--09--10-success.svg)](CHANGELOG.md)
+[![Audit: 2026--09--18](https://img.shields.io/badge/checked-2026--09--18-success.svg)](CHANGELOG.md)
 
 *Lokale Beleg-Arbeitsunterlage für Arbeitnehmer-Werbungskosten — keine Steuerberatung.*
 
@@ -264,3 +264,4 @@ KI-gestützte rechtliche Ersteinschätzung (Stand 2026-07-23, ersetzt keine anwa
 
 MIT — siehe [`LICENSE`](LICENSE). Änderungen: siehe [`CHANGELOG.md`](CHANGELOG.md).
 Sicherheitsrichtlinien: siehe [`SECURITY.md`](SECURITY.md).
+Drittanbieter-Lizenzen & Invarianten: siehe [`THIRD_PARTY_LICENSES.md`](THIRD_PARTY_LICENSES.md).

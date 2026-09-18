@@ -1,7 +1,7 @@
 # steuer-assistent
 
 > Offline-first local receipt worksheet module for employee income-related expenses (Werbungskosten) — not tax advice.
-> Last-checked: 2026-09-10 | Version: 0.2.3
+> Last-checked: 2026-09-18 | Version: 0.2.4
 
 ## Overview
 

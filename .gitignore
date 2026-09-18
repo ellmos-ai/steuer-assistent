@@ -29,10 +29,17 @@ build/
 # echte Testdateien eingesammelt und schlagen gegen den aktuellen Stand fehl
 # (real passiert: eine Kopie von tests/test_hardening.py pruefte weiter
 # gegen Version 0.2.0 und liess die Suite rot werden).
-*-WORKSTATION-LG.*
-*-ASUS-GEI.*
-*-SURFACE-LAPTOP.*
-*-MacBook*.*
+*conflicted copy*
+* (Kopie)*
+* (Copy)*
+*-ASUS*
+*-ASUS-GEI*
+*-LAPTOP*
+*-SURFACE-LAPTOP*
+*-WORKSTATION*
+*-WORKSTATION-LG*
+*-Mac Studio*
+*-MacBook*
 *-conflict-*
 *.sync-conflict-*
 *.sync-temp-*
@@ -56,6 +63,17 @@ LOCK
 LOCK.*
 *.lock
 LOCK*.txt
+LOCK.permissions.json
+LOCK.user.*
+LOCK.until.*
+LOCK.condition.*
+uv.lock
+!package-lock.json
+.hypothesis/
+.turbo/
+.nyc_output/
+*.orig
+*.rej
 
 # Caches und temporäre Testartefakte
 .ruff_cache/

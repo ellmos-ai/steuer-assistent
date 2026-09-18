@@ -3,7 +3,16 @@
 Alle nennenswerten Änderungen an `steuer-assistent`. Format angelehnt an
 [Keep a Changelog](https://keepachangelog.com/).
 
-## Unreleased
+## [0.2.4] — 2026-09-18
+
+### Hinzugefügt (Pfad A — Hygiene & CI-Matrix-Härtung)
+
+- **CI-Matrix-Härtung & Timeout-Limits:** `.github/workflows/tests.yml` auf Python 3.13 erweitert (`python-version: ["3.10", "3.11", "3.12", "3.13"]`) und mit verbindlichem `timeout-minutes: 15` sowie `concurrency: cancel-in-progress: true` abgesichert.
+- **Automatisierte Hygiene-Workflows:** `stale.yml` (automatisches Lifecycle-Management für inaktive Issues/PRs) und `welcome.yml` (Begrüßung neuer Contributors) im Repo ausgerollt.
+- **Drittanbieter-Lizenzinventar & SBOM:** `THIRD_PARTY_LICENSES.md` angelegt mit Zertifizierung von 0 externen Laufzeit-Abhängigkeiten (100% Python Standard Library PSF-2.0 und `sqlite3`), Zero-Copyleft-Garantie, `RunAsInvoker`-Privilegien und `INV-LOCAL-01` bis `INV-LOCAL-10`.
+- **PEP 621 Metadaten & Tooling:** `pyproject.toml` um `license-files = ["LICENSE", "THIRD_PARTY_LICENSES.md"]`, `[tool.ruff]` Konfiguration, `[tool.pytest.ini_options]` mit `norecursedirs`, und standardisierte Ecosystem-URLs (`Third-Party Licenses`, `LLM Ready`) erweitert.
+- **Multi-Host Cloud-Sync- & Lock-Schutz:** `.gitignore` gegen OneDrive/Cloud-Konfliktkopien (`*conflicted copy*`, `*-ASUS*`, `*-WORKSTATION*`, `*-LAPTOP*`, `*-Mac Studio*`), Multi-Agent-Locks (`LOCK.user.*`, `LOCK.until.*`, `LOCK.condition.*`, `LOCK.permissions.json`) und moderne Cache-Ordner (`uv.lock`, `.hypothesis/`, `.turbo/`, `*.orig`, `*.rej`) gehärtet.
+- **Vertragstest-Erweiterung:** `tests/test_metadata.py` um Prüfungen für CI-Workflows, Lock-Schutzmuster, PEP-621-URLs, Lizenz-SBOM und anwendungsübergreifende Versionsparität ausgebaut. F541-Regex-Warnungen in Tests behoben.
 
 ### Dokumentation & Discoverability (Pfad B) [2026-09-10]
 
