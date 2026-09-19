@@ -1,693 +1,789 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 680" width="2400" height="680">
   <defs>
-    <!-- Background Gradients -->
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#03120c"/>
-      <stop offset="25%" stop-color="#061c14"/>
-      <stop offset="65%" stop-color="#0b2c20"/>
-      <stop offset="100%" stop-color="#04140e"/>
+    <!-- Background Gradients (Atmospheric Forest / Outside Night) -->
+    <linearGradient id="bgSkyOutside" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0a0402"/>
+      <stop offset="45%" stop-color="#1f0a05"/>
+      <stop offset="80%" stop-color="#3a1208"/>
+      <stop offset="100%" stop-color="#170603"/>
     </linearGradient>
-    
-    <radialGradient id="radialGlow" cx="74%" cy="46%" r="55%">
-      <stop offset="0%" stop-color="#17543d" stop-opacity="0.55"/>
-      <stop offset="50%" stop-color="#0a2e22" stop-opacity="0.25"/>
-      <stop offset="100%" stop-color="#03120c" stop-opacity="0"/>
-    </radialGradient>
 
-    <radialGradient id="brandGlow" cx="18%" cy="35%" r="42%">
-      <stop offset="0%" stop-color="#144633" stop-opacity="0.35"/>
-      <stop offset="100%" stop-color="#03120c" stop-opacity="0"/>
-    </radialGradient>
+    <!-- Windshield Tint & Reflection Gradients -->
+    <linearGradient id="windshieldTint" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3a1006" stop-opacity="0.35"/>
+      <stop offset="50%" stop-color="#200a05" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#120502" stop-opacity="0.45"/>
+    </linearGradient>
 
-    <!-- Metal & Material Gradients -->
+    <linearGradient id="windshieldReflection" x1="25%" y1="0%" x2="75%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.07"/>
+      <stop offset="30%" stop-color="#ffffff" stop-opacity="0.02"/>
+      <stop offset="60%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Mist Bands in Background -->
+    <linearGradient id="mistGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f97316" stop-opacity="0"/>
+      <stop offset="25%" stop-color="#f97316" stop-opacity="0.14"/>
+      <stop offset="50%" stop-color="#fb923c" stop-opacity="0.18"/>
+      <stop offset="75%" stop-color="#f97316" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#f97316" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Cockpit Dashboard & Interior Gradients -->
+    <linearGradient id="dashTopGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="12%" stop-color="#1e293b"/>
+      <stop offset="55%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+
+    <linearGradient id="ambientLedGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="25%" stop-color="#10b981"/>
+      <stop offset="50%" stop-color="#34d399"/>
+      <stop offset="75%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+
+    <!-- Steering Wheel Gradients -->
+    <linearGradient id="steeringWheelRim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#475569"/>
+      <stop offset="20%" stop-color="#1e293b"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="80%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#090d16"/>
+    </linearGradient>
+
+    <linearGradient id="steeringSpokeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#475569"/>
+      <stop offset="40%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <!-- Pedestal / Mounting Bracket Gradients -->
+    <linearGradient id="pedestalMountGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="20%" stop-color="#475569"/>
+      <stop offset="50%" stop-color="#64748b"/>
+      <stop offset="80%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+
+    <linearGradient id="pedestalArmGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#475569"/>
+      <stop offset="35%" stop-color="#334155"/>
+      <stop offset="75%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="hingeCylinderGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#64748b"/>
+      <stop offset="30%" stop-color="#94a3b8"/>
+      <stop offset="70%" stop-color="#475569"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+
+    <!-- Navigation Bezel & Screen Gradients -->
+    <linearGradient id="naviBezelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="25%" stop-color="#1e40af"/>
+      <stop offset="75%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+
+    <linearGradient id="screenMapGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020c1f"/>
+      <stop offset="40%" stop-color="#08234a"/>
+      <stop offset="80%" stop-color="#0e3566"/>
+      <stop offset="100%" stop-color="#02091c"/>
+    </linearGradient>
+
+    <!-- Accent Gradients -->
     <linearGradient id="goldAccent" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#f59e0b"/>
-      <stop offset="40%" stop-color="#fbbf24"/>
-      <stop offset="80%" stop-color="#34d399"/>
+      <stop offset="35%" stop-color="#fbbf24"/>
+      <stop offset="70%" stop-color="#34d399"/>
       <stop offset="100%" stop-color="#10b981"/>
     </linearGradient>
 
-    <linearGradient id="goldDial" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fef3c7"/>
-      <stop offset="30%" stop-color="#f59e0b"/>
-      <stop offset="70%" stop-color="#b45309"/>
-      <stop offset="100%" stop-color="#78350f"/>
-    </linearGradient>
-
-    <linearGradient id="vaultSteel" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1a4738"/>
-      <stop offset="35%" stop-color="#103327"/>
-      <stop offset="75%" stop-color="#09221a"/>
-      <stop offset="100%" stop-color="#051510"/>
-    </linearGradient>
-
-    <linearGradient id="vaultDoorRim" x1="0%" y1="0%" x2="0%" y2="100%">
+    <linearGradient id="routeGrad" x1="0%" y1="100%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#34d399"/>
-      <stop offset="50%" stop-color="#1d664c"/>
-      <stop offset="100%" stop-color="#0a291f"/>
+      <stop offset="40%" stop-color="#10b981"/>
+      <stop offset="80%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
     </linearGradient>
 
-    <linearGradient id="chromeBolt" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="25%" stop-color="#cbd5e1"/>
-      <stop offset="55%" stop-color="#64748b"/>
-      <stop offset="80%" stop-color="#e2e8f0"/>
-      <stop offset="100%" stop-color="#475569"/>
+    <linearGradient id="coinGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef3c7"/>
+      <stop offset="30%" stop-color="#fbbf24"/>
+      <stop offset="70%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#92400e"/>
     </linearGradient>
 
-    <linearGradient id="scanBeamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#10b981" stop-opacity="0"/>
-      <stop offset="50%" stop-color="#34d399" stop-opacity="0.45"/>
-      <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
-    </linearGradient>
-
-    <!-- 4 Dedicated Stream Flow Gradients -->
-    <linearGradient id="streamCyan" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#94a3b8" stop-opacity="0.2"/>
-      <stop offset="30%" stop-color="#38bdf8" stop-opacity="0.5"/>
-      <stop offset="100%" stop-color="#0284c7" stop-opacity="0.95"/>
-    </linearGradient>
-
-    <linearGradient id="streamGreen" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#94a3b8" stop-opacity="0.2"/>
-      <stop offset="30%" stop-color="#34d399" stop-opacity="0.5"/>
-      <stop offset="100%" stop-color="#059669" stop-opacity="0.95"/>
-    </linearGradient>
-
-    <linearGradient id="streamAmber" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#94a3b8" stop-opacity="0.2"/>
-      <stop offset="30%" stop-color="#fbbf24" stop-opacity="0.5"/>
-      <stop offset="100%" stop-color="#d97706" stop-opacity="0.95"/>
-    </linearGradient>
-
-    <linearGradient id="streamPurple" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#94a3b8" stop-opacity="0.2"/>
-      <stop offset="30%" stop-color="#a78bfa" stop-opacity="0.5"/>
-      <stop offset="100%" stop-color="#7c3aed" stop-opacity="0.95"/>
+    <linearGradient id="glassReflection" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.12"/>
+      <stop offset="35%" stop-color="#ffffff" stop-opacity="0.04"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
 
     <!-- Filters -->
-    <filter id="softShadow" x="-10%" y="-10%" width="130%" height="130%">
-      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.6"/>
+    <filter id="softShadow" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#000000" flood-opacity="0.8"/>
     </filter>
 
-    <filter id="doorShadow" x="-20%" y="-10%" width="140%" height="130%">
-      <feDropShadow dx="14" dy="18" stdDeviation="18" flood-color="#000000" flood-opacity="0.75"/>
-    </filter>
-
-    <filter id="paperShadow" x="-15%" y="-15%" width="135%" height="135%">
-      <feDropShadow dx="4" dy="10" stdDeviation="10" flood-color="#000000" flood-opacity="0.45"/>
-    </filter>
-
-    <filter id="cardShadow" x="-10%" y="-10%" width="125%" height="125%">
-      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.4"/>
+    <filter id="pedestalShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#000000" flood-opacity="0.9"/>
     </filter>
 
     <filter id="glowGreen" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="6" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-
-    <filter id="laserGlow" x="-30%" y="-10%" width="160%" height="120%">
       <feGaussianBlur stdDeviation="8" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
+
+    <filter id="laserGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="14" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="cardShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+
+    <filter id="paperShadow" x="-15%" y="-15%" width="135%" height="135%">
+      <feDropShadow dx="3" dy="8" stdDeviation="6" flood-color="#000000" flood-opacity="0.55"/>
+    </filter>
+
+    <filter id="blurFarMist" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+
+    <filter id="blurMist" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+
+    <!-- Reusable Paragraph (§) Symbol (Authentic German Section Mark) -->
+    <g id="par-symbol">
+      <path d="M 15.0 29.4 Q 11.4 26.2 9.9 23.4 Q 8.3 20.6 8.3 17.5 Q 8.3 12.2 12.8 8.1 Q 17.3 4.0 24.4 4.0 Q 31.0 4.0 35.0 7.3 Q 39.1 10.7 39.1 14.6 Q 39.1 16.9 37.7 18.4 Q 36.2 19.9 34.1 19.9 Q 31.9 19.9 30.6 18.6 Q 29.2 17.2 29.2 15.3 Q 29.2 14.5 29.5 13.2 Q 29.7 11.9 29.7 11.1 Q 29.7 9.3 28.4 8.1 Q 27.0 6.9 24.3 6.9 Q 21.0 6.9 18.8 9.0 Q 16.6 11.0 16.6 13.4 Q 16.6 16.2 18.4 18.6 Q 20.1 20.9 26.6 25.0 Q 42.4 34.8 42.4 44.6 Q 42.4 48.5 40.3 51.7 Q 38.2 55.0 33.0 58.6 Q 36.8 62.3 38.2 65.0 Q 39.6 67.7 39.6 70.9 Q 39.6 74.5 37.7 77.5 Q 35.8 80.5 32.1 82.3 Q 28.4 84.0 23.5 84.0 Q 16.6 84.0 12.9 80.8 Q 9.2 77.6 9.2 73.5 Q 9.2 71.2 10.7 69.7 Q 12.1 68.1 14.3 68.1 Q 16.4 68.1 17.9 69.5 Q 19.3 70.9 19.3 72.6 Q 19.3 73.6 18.7 75.2 Q 18.2 76.7 18.2 77.7 Q 18.2 78.9 19.5 79.9 Q 20.8 80.9 23.6 80.9 Q 27.4 80.9 29.5 79.1 Q 31.7 77.2 31.7 74.6 Q 31.7 71.7 30.2 69.8 Q 28.2 67.2 21.9 63.4 Q 14.0 58.5 9.3 53.0 Q 5.6 48.5 5.6 44.4 Q 5.6 40.6 7.7 37.0 Q 9.8 33.5 15.0 29.4 Z M 17.4 31.3 Q 13.2 34.9 13.2 38.9 Q 13.2 41.0 14.5 43.2 Q 15.7 45.4 18.8 47.9 L 30.7 56.8 Q 33.1 54.7 34.0 52.8 Q 35.0 51.0 35.0 49.2 Q 35.0 47.1 34.0 45.3 Q 32.4 42.5 29.2 40.0 Q 27.6 38.8 17.4 31.3 Z" 
+            fill-rule="evenodd"/>
+    </g>
+
+    <!-- Reusable Tax Document Sheet -->
+    <g id="tax-form-sheet">
+      <path d="M 0 0 L 65 0 L 85 20 L 85 110 L 0 110 Z" fill="#f8fafc"/>
+      <path d="M 65 0 L 65 20 L 85 20 Z" fill="#cbd5e1"/>
+      <line x1="12" y1="20" x2="52" y2="20" stroke="#94a3b8" stroke-width="3" stroke-linecap="round"/>
+      <line x1="12" y1="36" x2="72" y2="36" stroke="#cbd5e1" stroke-width="2"/>
+      <line x1="12" y1="48" x2="72" y2="48" stroke="#cbd5e1" stroke-width="2"/>
+      <line x1="12" y1="60" x2="72" y2="60" stroke="#cbd5e1" stroke-width="2"/>
+      <line x1="12" y1="72" x2="55" y2="72" stroke="#cbd5e1" stroke-width="2"/>
+      <line x1="12" y1="88" x2="40" y2="88" stroke="#10b981" stroke-width="4" stroke-linecap="round"/>
+      <rect x="52" y="82" width="22" height="12" rx="3" fill="#047857"/>
+    </g>
+
+    <!-- Reusable Receipt Strip with Zig-Zag Tear Edges -->
+    <g id="receipt-tear">
+      <path d="M 0 5 L 6 0 L 12 5 L 18 0 L 24 5 L 30 0 L 36 5 L 42 0 L 48 5 L 54 0 L 60 5 L 66 0 L 72 5 L 78 0 L 84 5 L 90 0 L 90 125 L 84 120 L 78 125 L 72 120 L 66 125 L 60 120 L 54 125 L 48 120 L 42 125 L 36 120 L 30 125 L 24 120 L 18 125 L 12 120 L 6 125 L 0 120 Z" 
+            fill="#ffffff"/>
+      <line x1="12" y1="20" x2="78" y2="20" stroke="#94a3b8" stroke-width="2.5" stroke-dasharray="3 3"/>
+      <rect x="12" y="32" width="40" height="4" rx="2" fill="#cbd5e1"/>
+      <rect x="62" y="32" width="16" height="4" rx="2" fill="#94a3b8"/>
+      <rect x="12" y="44" width="48" height="4" rx="2" fill="#cbd5e1"/>
+      <rect x="66" y="44" width="12" height="4" rx="2" fill="#94a3b8"/>
+      <rect x="12" y="56" width="36" height="4" rx="2" fill="#cbd5e1"/>
+      <rect x="60" y="56" width="18" height="4" rx="2" fill="#94a3b8"/>
+      <line x1="12" y1="72" x2="78" y2="72" stroke="#64748b" stroke-width="1.5"/>
+      <!-- Barcode simulation -->
+      <g transform="translate(14, 82)" fill="#475569">
+        <rect x="0" y="0" width="2" height="24"/>
+        <rect x="5" y="0" width="3.5" height="24"/>
+        <rect x="11" y="0" width="1.5" height="24"/>
+        <rect x="15" y="0" width="3" height="24"/>
+        <rect x="21" y="0" width="1" height="24"/>
+        <rect x="25" y="0" width="4" height="24"/>
+        <rect x="32" y="0" width="2" height="24"/>
+        <rect x="36" y="0" width="1" height="24"/>
+        <rect x="40" y="0" width="3" height="24"/>
+        <rect x="46" y="0" width="2.5" height="24"/>
+        <rect x="52" y="0" width="1.5" height="24"/>
+        <rect x="56" y="0" width="4" height="24"/>
+      </g>
+    </g>
+
+    <!-- Reusable Tropical Jungle Foliage Leaf -->
+    <g id="jungle-frond">
+      <path d="M 0 80 C 15 60 25 35 30 0 C 35 35 45 60 60 80 C 50 78 40 70 30 50 C 20 70 10 78 0 80 Z" fill="#059669"/>
+      <path d="M 30 0 L 30 80" stroke="#34d399" stroke-width="2"/>
+    </g>
+
+    <!-- Reusable Golden Euro Coin (€) Waypoint -->
+    <g id="waypoint-coin">
+      <circle cx="0" cy="0" r="14" fill="url(#coinGold)" stroke="#78350f" stroke-width="1.5" filter="url(#cardShadow)"/>
+      <circle cx="0" cy="0" r="11" fill="none" stroke="#fef3c7" stroke-width="1" stroke-dasharray="2 1.5"/>
+      <!-- Embossed Euro sign (€) as vector path -->
+      <path d="M 4 -6 C 1 -7 -2 -6 -4 -4 C -6 -1 -6 2 -4 5 C -2 7 1 7 4 6 M -6 -1 L 1 -1 M -6 2 L 0 2" 
+            fill="none" stroke="#78350f" stroke-width="2" stroke-linecap="round"/>
+    </g>
   </defs>
 
-  <!-- Base Canvas Background -->
-  <rect width="2400" height="680" fill="url(#bgGrad)"/>
-  <rect width="2400" height="680" fill="url(#radialGlow)"/>
-  <rect width="2400" height="680" fill="url(#brandGlow)"/>
+  <!-- ======================================================= -->
+  <!-- 1. OUTSIDE WORLD (VIEW THROUGH THE WINDSHIELD)          -->
+  <!-- ======================================================= -->
+  <rect width="2400" height="680" fill="url(#bgSkyOutside)"/>
 
-  <!-- Architectural Precision Grid (Accounting & Ledger Theme) -->
-  <g opacity="0.04" stroke="#34d399" stroke-width="1">
-    <!-- Vertical grid lines -->
-    <line x1="120" y1="0" x2="120" y2="680"/>
-    <line x1="240" y1="0" x2="240" y2="680"/>
-    <line x1="360" y1="0" x2="360" y2="680"/>
-    <line x1="480" y1="0" x2="480" y2="680"/>
-    <line x1="600" y1="0" x2="600" y2="680"/>
-    <line x1="720" y1="0" x2="720" y2="680"/>
-    <line x1="840" y1="0" x2="840" y2="680"/>
-    <line x1="960" y1="0" x2="960" y2="680"/>
-    <line x1="1080" y1="0" x2="1080" y2="680"/>
-    <line x1="1200" y1="0" x2="1200" y2="680"/>
-    <line x1="1320" y1="0" x2="1320" y2="680"/>
-    <line x1="1440" y1="0" x2="1440" y2="680"/>
-    <line x1="1560" y1="0" x2="1560" y2="680"/>
-    <line x1="1680" y1="0" x2="1680" y2="680"/>
-    <line x1="1800" y1="0" x2="1800" y2="680"/>
-    <line x1="1920" y1="0" x2="1920" y2="680"/>
-    <line x1="2040" y1="0" x2="2040" y2="680"/>
-    <line x1="2160" y1="0" x2="2160" y2="680"/>
-    <line x1="2280" y1="0" x2="2280" y2="680"/>
-    <!-- Horizontal grid lines -->
-    <line x1="0" y1="85" x2="2400" y2="85"/>
-    <line x1="0" y1="170" x2="2400" y2="170"/>
-    <line x1="0" y1="255" x2="2400" y2="255"/>
-    <line x1="0" y1="340" x2="2400" y2="340"/>
-    <line x1="0" y1="425" x2="2400" y2="425"/>
-    <line x1="0" y1="510" x2="2400" y2="510"/>
-    <line x1="0" y1="595" x2="2400" y2="595"/>
+  <!-- Atmospheric Glow at Horizon -->
+  <ellipse cx="1200" cy="380" rx="1300" ry="240" fill="#063e2a" opacity="0.35" filter="url(#blurFarMist)"/>
+
+  <!-- Distant Foggy Silhouettes of the Tax Jungle (§ & Documents) -->
+  <g id="outside-jungle-far" fill="#200a05" opacity="0.28" filter="url(#blurFarMist)">
+    <!-- Giant § silhouettes rising like trees in the distance -->
+    <use href="#par-symbol" x="120" y="50" transform="scale(2.2)"/>
+    <use href="#par-symbol" x="380" y="80" transform="scale(1.8)"/>
+    <use href="#par-symbol" x="720" y="40" transform="scale(2.5)"/>
+    <use href="#par-symbol" x="1060" y="90" transform="scale(1.9)"/>
+    <use href="#par-symbol" x="1420" y="50" transform="scale(2.4)"/>
+    <use href="#par-symbol" x="1780" y="70" transform="scale(2.1)"/>
+    <use href="#par-symbol" x="2120" y="40" transform="scale(2.3)"/>
+
+    <!-- Distant document mountains / tax folder monoliths -->
+    <polygon points="200,280 320,220 350,420 220,440"/>
+    <polygon points="620,260 760,190 790,410 650,430"/>
+    <polygon points="1280,240 1420,180 1460,400 1310,430"/>
+    <polygon points="1900,270 2040,210 2080,410 1930,430"/>
   </g>
 
-  <!-- Framing Registration Calipers -->
-  <g stroke="#fbbf24" stroke-width="2" fill="none" opacity="0.35">
-    <path d="M 40 70 L 40 40 L 70 40"/>
-    <path d="M 2330 40 L 2360 40 L 2360 70"/>
-    <path d="M 40 610 L 40 640 L 70 640"/>
-    <path d="M 2330 640 L 2360 640 L 2360 610"/>
+  <!-- Drifting Low Mist Bands -->
+  <rect x="0" y="240" width="2400" height="90" fill="url(#mistGrad)" filter="url(#blurFarMist)"/>
+  <rect x="0" y="340" width="2400" height="80" fill="url(#mistGrad)" filter="url(#blurMist)"/>
+
+  <!-- Mid-Ground Silhouettes (Sharper dark § & receipt forms) -->
+  <g id="outside-jungle-mid" fill="#2a0f08" opacity="0.38" filter="url(#blurMist)">
+    <use href="#par-symbol" x="160" y="160" transform="scale(1.5)"/>
+    <use href="#par-symbol" x="510" y="200" transform="scale(1.4)"/>
+    <use href="#par-symbol" x="890" y="180" transform="scale(1.6)"/>
+    <use href="#par-symbol" x="1260" y="190" transform="scale(1.5)"/>
+    <use href="#par-symbol" x="1680" y="170" transform="scale(1.7)"/>
+    <use href="#par-symbol" x="2040" y="190" transform="scale(1.4)"/>
+
+    <!-- Stacked Form Silhouettes with serrated receipt tops -->
+    <path d="M 320 280 L 345 270 L 370 280 L 395 270 L 405 440 L 330 450 Z"/>
+    <path d="M 980 270 L 1005 260 L 1030 270 L 1055 260 L 1065 430 L 990 440 Z"/>
+    <path d="M 1580 260 L 1605 250 L 1630 260 L 1655 250 L 1665 430 L 1590 440 Z"/>
+  </g>
+
+  <!-- Distant Illuminated Outside Road Trajectory vanishing into the mist -->
+  <g id="outside-road" opacity="0.4">
+    <polygon points="750,480 1160,350 1240,350 1650,480" fill="#170802"/>
+    <line x1="1200" y1="480" x2="1200" y2="350" stroke="#f97316" stroke-width="4" stroke-dasharray="24 20" filter="url(#glowGreen)"/>
   </g>
 
   <!-- ======================================================= -->
-  <!-- LEFT PANEL: BRAND WORDMARK & VALUE PROPOSITION          -->
+  <!-- 2. WINDSHIELD GLASS LAYER & CABIN PILLARS               -->
   <!-- ======================================================= -->
+  <!-- Subtle glass tint across the windshield area -->
+  <rect width="2400" height="490" fill="url(#windshieldTint)"/>
+
+  <!-- Angled Cockpit Windshield Reflection Glare -->
+  <path d="M 220 0 L 860 0 L 600 460 L 0 460 Z" fill="url(#windshieldReflection)"/>
+  <path d="M 1300 0 L 1800 0 L 1500 480 L 1050 480 Z" fill="url(#windshieldReflection)"/>
+
+  <!-- Wiper sweep arc hint -->
+  <path d="M 60 450 C 350 180, 800 110, 1380 130" fill="none" stroke="#ffffff" stroke-width="1.2" opacity="0.07"/>
+
+  <!-- Left A-Pillar (A-Säule): Sleek structural automotive cabin frame -->
+  <path d="M 0 0 L 85 0 L 25 455 L 0 465 Z" fill="#0a101d" stroke="#1e293b" stroke-width="2"/>
+  <path d="M 85 0 L 25 455" stroke="#334155" stroke-width="2" opacity="0.8"/>
+
+  <!-- Right Windshield Border Frame -->
+  <path d="M 2340 0 L 2400 0 L 2400 490 L 2385 490 Z" fill="#0a101d" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Top Roofliner / Sun-Visor Header (Dachhimmel) -->
+  <path d="M 0 0 L 2400 0 L 2400 24 Q 1200 34 0 24 Z" fill="#090e17" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Compact Rearview Mirror Base at top center -->
+  <g transform="translate(1150, 15)">
+    <rect x="-6" y="0" width="12" height="36" rx="3" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <rect x="-70" y="32" width="140" height="42" rx="10" fill="#0f172a" stroke="#334155" stroke-width="2" filter="url(#cardShadow)"/>
+    <rect x="-65" y="36" width="130" height="34" rx="8" fill="#02140d" stroke="#10b981" stroke-width="1" opacity="0.8"/>
+  </g>
+
+  <!-- Small dezent disclaimer note, top-right corner of driver's windshield -->
+  <text id="windshield-disclaimer-note" x="2320" y="45" text-anchor="end"
+        font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+        font-size="26" font-weight="400" fill="#f1f5f9" stroke="#150502" stroke-width="3"
+        stroke-linejoin="round" paint-order="stroke fill" letter-spacing="-0.2" opacity="0.85">keine Steuerberatung</text>
+
+  <!-- ======================================================= -->
+  <!-- 2b. WINDSHIELD SILHOUETTE: OUTSIDE PARAGRAPH JUNGLE     -->
+  <!-- Subtle distant § symbols & form stack silhouettes in    -->
+  <!-- upper windshield (x=0..1300, y=0..220, behind wordmark) -->
+  <!-- ======================================================= -->
+  <g id="windshield-tax-jungle-silhouette">
+    <!-- Formular- & Dokumentkanten-Silhouetten (Distant tax paper / stack edges) -->
+    <g id="windshield-form-silhouettes">
+      <!-- Angled document sheet silhouette with dog-ear corner -->
+      <g transform="translate(385, 60) rotate(14)" opacity="0.25">
+        <polygon points="0,0 46,0 60,14 60,78 0,78" fill="#3a1208"/>
+        <polygon points="46,0 46,14 60,14" fill="#230a05"/>
+        <line x1="8" y1="20" x2="40" y2="20" stroke="#4a1a0d" stroke-width="2"/>
+        <line x1="8" y1="30" x2="50" y2="30" stroke="#4a1a0d" stroke-width="1.5"/>
+        <line x1="8" y1="40" x2="50" y2="40" stroke="#4a1a0d" stroke-width="1.5"/>
+        <line x1="8" y1="50" x2="34" y2="50" stroke="#4a1a0d" stroke-width="1.5"/>
+      </g>
+      <!-- Folded receipt strip silhouette with serrated tear bottom -->
+      <g transform="translate(860, 68) rotate(-16)" opacity="0.28">
+        <path d="M 0 0 L 38 0 L 38 68 L 32 64 L 26 68 L 20 64 L 14 68 L 8 64 L 0 68 Z" fill="#3d1509"/>
+        <line x1="6" y1="12" x2="32" y2="12" stroke="#55200f" stroke-width="1.5" stroke-dasharray="2 2"/>
+        <line x1="6" y1="22" x2="28" y2="22" stroke="#55200f" stroke-width="1.5"/>
+        <line x1="6" y1="32" x2="24" y2="32" stroke="#55200f" stroke-width="1.5"/>
+        <line x1="6" y1="42" x2="30" y2="42" stroke="#55200f" stroke-width="1.5"/>
+      </g>
+      <!-- Soft distant stacked folder outline in background mist -->
+      <g transform="translate(710, 40) rotate(-8)" opacity="0.20" filter="url(#blurMist)">
+        <polygon points="0,6 16,0 46,0 52,6 72,6 72,56 0,56" fill="#331207"/>
+        <polygon points="6,12 66,12 66,60 6,60" fill="#3d1509"/>
+      </g>
+    </g>
+
+    <!-- Paragraphenzeichen-Silhouetten (§ Shapes in muted forest greens) -->
+    <g id="windshield-par-silhouettes">
+      <!-- 1. Upper far-left silhouette above decorative pill -->
+      <use href="#par-symbol" transform="translate(165, 32) scale(0.65) rotate(-6)" fill="#45190c" opacity="0.32" filter="url(#blurMist)"/>
+      <!-- 2. Upper-left between pill and wordmark -->
+      <use href="#par-symbol" transform="translate(315, 48) scale(0.85) rotate(8)" fill="#4a1a0d" opacity="0.38"/>
+      <!-- 3. Upper center-left above 'steu' -->
+      <use href="#par-symbol" transform="translate(475, 30) scale(0.70) rotate(-10)" fill="#3d150a" opacity="0.28" filter="url(#blurMist)"/>
+      <!-- 4. Upper center above wordmark hyphen -->
+      <use href="#par-symbol" transform="translate(635, 50) scale(0.95) rotate(12)" fill="#582311" opacity="0.36"/>
+      <!-- 5. Upper center-right above 'sist' -->
+      <use href="#par-symbol" transform="translate(795, 36) scale(0.75) rotate(-8)" fill="#481a0d" opacity="0.30" filter="url(#blurMist)"/>
+      <!-- 6. Right of wordmark towards navi unit -->
+      <use href="#par-symbol" transform="translate(945, 58) scale(1.05) rotate(14)" fill="#532012" opacity="0.40"/>
+      <!-- 7. Far-right windshield edge near mounting area -->
+      <use href="#par-symbol" transform="translate(1075, 92) scale(0.75) rotate(-12)" fill="#3a1409" opacity="0.32" filter="url(#blurMist)"/>
+      <!-- 8. Subtle misty background § behind upper wordmark baseline -->
+      <use href="#par-symbol" transform="translate(540, 130) scale(0.60) rotate(5)" fill="#381207" opacity="0.22" filter="url(#blurFarMist)"/>
+    </g>
+  </g>
+
+  <!-- ======================================================= -->
+  <!-- 3. LEFT PANEL: BRAND WORDMARK & MANDATORY TAGLINE       -->
+  <!-- ======================================================= -->
+  <!-- Prominently displayed in driver view over the dark windshield backdrop -->
   <g id="brand-panel">
-    <!-- Top Pill: Offline-first Security Enclave -->
-    <g transform="translate(90, 80)">
-      <rect width="365" height="36" rx="18" fill="#08251b" stroke="#10b981" stroke-width="1.5" stroke-opacity="0.6"/>
-      <circle cx="22" cy="18" r="4.5" fill="#34d399" filter="url(#glowGreen)"/>
-      <circle cx="22" cy="18" r="3" fill="#ffffff"/>
-      <!-- Padlock Icon -->
-      <path d="M 40 18 L 40 16 C 40 13 42 11 45 11 C 48 11 50 13 50 16 L 50 18 M 38 18 L 52 18 C 53 18 54 19 54 20 L 54 26 C 54 27 53 28 52 28 L 38 28 C 37 28 36 27 36 26 L 36 20 C 36 19 37 18 38 18 Z" 
-            fill="none" stroke="#6ee7b7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-      <text x="64" y="23" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-            font-size="12" font-weight="700" letter-spacing="1.8" fill="#a7f3d0">OFFLINE-FIRST RECEIPT WORKSHEET</text>
+    <!-- Modern Tech Enclave Decorative Pill (Icons only, no extra text) -->
+    <g transform="translate(90, 85)">
+      <rect width="180" height="34" rx="17" fill="#062419" stroke="#10b981" stroke-width="1.5" stroke-opacity="0.6"/>
+      <circle cx="20" cy="17" r="5" fill="#34d399" filter="url(#glowGreen)"/>
+      <circle cx="20" cy="17" r="2.5" fill="#ffffff"/>
+      <!-- Compass needle icon -->
+      <g transform="translate(50, 17)">
+        <polygon points="0,-9 4,0 0,2 -4,0" fill="#38bdf8"/>
+        <polygon points="0,9 4,0 0,-2 -4,0" fill="#94a3b8"/>
+        <circle cx="0" cy="0" r="1.5" fill="#ffffff"/>
+      </g>
+      <!-- Shield lock icon -->
+      <path d="M 90 11 L 100 14 L 100 21 C 100 25 90 28 90 28 C 90 28 80 25 80 21 L 80 14 Z" 
+            fill="none" stroke="#34d399" stroke-width="1.8" stroke-linejoin="round"/>
+      <!-- Route line icon -->
+      <path d="M 125 21 C 135 11, 145 23, 155 13" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="155" cy="13" r="3" fill="#fbbf24"/>
     </g>
 
-    <!-- Main Project Wordmark -->
-    <g transform="translate(90, 205)">
+    <!-- Main Project Wordmark (PROMINENT, CLEAN, MAX CONTRAST) -->
+    <g transform="translate(90, 225)">
       <text font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-            font-size="96" font-weight="800" letter-spacing="-1.5" fill="#ffffff">steuer-assistent</text>
+            font-size="94" font-weight="800" letter-spacing="-1.5" fill="#ffffff">steuer-assistent</text>
       <!-- Gradient underline accent bar -->
-      <rect y="22" width="710" height="6" rx="3" fill="url(#goldAccent)"/>
+      <rect y="22" width="700" height="6" rx="3" fill="url(#goldAccent)"/>
     </g>
 
-    <!-- Tagline (from README) -->
-    <text x="90" y="295" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-          font-size="34" font-weight="400" fill="#f1f5f9" letter-spacing="-0.3">
-      Local receipt worksheet for employee income-related expenses
+    <!-- Mandatory Tagline (with genuine 'ü', EXACT string from brief) -->
+    <text x="90" y="310" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+          font-size="26" font-weight="400" fill="#f1f5f9" letter-spacing="-0.2">
+      Lokale Beleg-Arbeitsunterlage für Arbeitnehmer-Werbungskosten.
     </text>
+  </g>
 
-    <!-- Secondary Invariant Proposition -->
-    <text x="90" y="348" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-          font-size="22" font-weight="500" fill="#94a3b8" letter-spacing="0.2">
-      Cent-precise SQLite store <tspan fill="#34d399">•</tspan> Zero cloud dependencies <tspan fill="#34d399">•</tspan> Your receipts never leave your machine
-    </text>
+  <!-- ======================================================= -->
+  <!-- 4. DASHBOARD (ARMATURENBRETT) SPANNING ACROSS CANVAS    -->
+  <!-- ======================================================= -->
+  <!-- Main Dashboard Body with driver instrument binnacle arch -->
+  <g id="dashboard-assembly">
+    <!-- Dashboard Top Deck & Body -->
+    <path d="M 0 450 C 180 432, 290 412, 440 412 C 590 412, 700 442, 820 472 C 1000 474, 1200 476, 1450 478 C 1800 482, 2100 488, 2400 494 L 2400 680 L 0 680 Z" 
+          fill="url(#dashTopGrad)"/>
 
-    <!-- 3 Value Proposition Cards -->
-    <g transform="translate(90, 420)">
-      <!-- Card 1: 100% Offline -->
-      <g transform="translate(0, 0)">
-        <rect width="270" height="135" rx="16" fill="#061d15" stroke="#164d38" stroke-width="1.5" filter="url(#cardShadow)"/>
-        <g transform="translate(22, 22)">
-          <rect width="44" height="44" rx="11" fill="#0d3527"/>
-          <path d="M 22 11 L 33 15 L 33 24 C 33 31 22 35 22 35 C 22 35 11 31 11 24 L 11 15 Z" 
-                fill="none" stroke="#34d399" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M 18 23 L 21 26 L 27 20" 
-                fill="none" stroke="#34d399" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-        </g>
-        <text x="78" y="44" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-              font-size="19" font-weight="700" fill="#ffffff">100% Offline</text>
-        <text x="78" y="66" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-              font-size="13" font-weight="600" fill="#34d399">Air-Gapped Privacy</text>
-        <text x="22" y="102" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-              font-size="13" font-weight="400" fill="#94a3b8">Zero network calls, zero tracking</text>
-        <text x="22" y="120" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-              font-size="12" font-weight="500" fill="#6ee7b7">No cloud dependencies</text>
-      </g>
+    <!-- Dashboard Top Bevel Highlight Edge -->
+    <path d="M 0 450 C 180 432, 290 412, 440 412 C 590 412, 700 442, 820 472 C 1000 474, 1200 476, 1450 478 C 1800 482, 2100 488, 2400 494" 
+          fill="none" stroke="#475569" stroke-width="2"/>
 
-      <!-- Card 2: Local SQLite Store -->
-      <g transform="translate(295, 0)">
-        <rect width="270" height="135" rx="16" fill="#061d15" stroke="#164d38" stroke-width="1.5" filter="url(#cardShadow)"/>
-        <g transform="translate(22, 22)">
-          <rect width="44" height="44" rx="11" fill="#2d1f08"/>
-          <ellipse cx="22" cy="17" rx="12" ry="4.5" fill="none" stroke="#fbbf24" stroke-width="2.2"/>
-          <path d="M 10 17 L 10 25 C 10 27.5 15.4 29.5 22 29.5 C 28.6 29.5 34 27.5 34 25 L 34 17" 
-                fill="none" stroke="#fbbf24" stroke-width="2.2"/>
-          <path d="M 10 25 L 10 33 C 10 35.5 15.4 37.5 22 37.5 C 28.6 37.5 34 35.5 34 33 L 34 25" 
-                fill="none" stroke="#fbbf24" stroke-width="2.2"/>
-        </g>
-        <text x="78" y="44" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-              font-size="19" font-weight="700" fill="#ffffff">Local SQLite</text>
-        <text x="78" y="66" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-              font-size="13" font-weight="600" fill="#fbbf24">Deterministic Math</text>
-        <text x="22" y="102" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-              font-size="13" font-weight="400" fill="#94a3b8">%USERPROFILE% store path</text>
-        <text x="22" y="120" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-              font-size="12" font-weight="500" fill="#fde68a">Cent-precise integer arithmetic</text>
-      </g>
+    <!-- Ambient Luxury Cockpit LED Strip (Glowing Emerald Light Pipe) -->
+    <path d="M 20 454 C 180 436, 290 416, 440 416 C 590 416, 700 446, 820 476 C 1000 478, 1200 480, 1450 482 C 1800 486, 2100 492, 2380 498" 
+          fill="none" stroke="url(#ambientLedGrad)" stroke-width="3" filter="url(#glowGreen)" opacity="0.85"/>
 
-      <!-- Card 3: Private ZIP Export -->
-      <g transform="translate(590, 0)">
-        <rect width="270" height="135" rx="16" fill="#061d15" stroke="#164d38" stroke-width="1.5" filter="url(#cardShadow)"/>
-        <g transform="translate(22, 22)">
-          <rect width="44" height="44" rx="11" fill="#082535"/>
-          <path d="M 11 18 L 33 18 L 33 35 L 11 35 Z" fill="none" stroke="#38bdf8" stroke-width="2.2" stroke-linejoin="round"/>
-          <path d="M 8 13 L 36 13 L 33 18 L 11 18 Z" fill="none" stroke="#38bdf8" stroke-width="2.2" stroke-linejoin="round"/>
-          <path d="M 19 23 L 25 23 M 22 18 L 22 23" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/>
-        </g>
-        <text x="78" y="44" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-              font-size="19" font-weight="700" fill="#ffffff">Private Export</text>
-        <text x="78" y="66" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-              font-size="13" font-weight="600" fill="#38bdf8">ZIP Worksheet</text>
-        <text x="22" y="102" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-              font-size="13" font-weight="400" fill="#94a3b8">CSV + Zusammenfassung</text>
-        <text x="22" y="120" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-              font-size="12" font-weight="500" fill="#7dd3fc">Private tax preparation file</text>
-      </g>
+    <!-- Digital Instrument Cluster Binnacle Alcove (Behind Steering Wheel) -->
+    <g id="instrument-cluster" transform="translate(440, 445)">
+      <!-- Recessed Display Cavity -->
+      <path d="M -180 0 C -90 -22, 90 -22, 180 0 L 190 60 L -190 60 Z" fill="#030712"/>
+      <!-- Digital Horizon Arc & Gauges (Abstract Graphics, No Text) -->
+      <path d="M -150 16 C -80 0, 80 0, 150 16" fill="none" stroke="#10b981" stroke-width="2" opacity="0.5" filter="url(#glowGreen)"/>
+      <ellipse cx="-80" cy="24" rx="36" ry="18" fill="none" stroke="#34d399" stroke-width="1.5" stroke-dasharray="3 4" opacity="0.4"/>
+      <ellipse cx="80" cy="24" rx="36" ry="18" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3 4" opacity="0.4"/>
+      <circle cx="0" cy="18" r="4" fill="#fbbf24" opacity="0.6"/>
+    </g>
+
+    <!-- Lower Dashboard Decorative Leather Stitch & Tier Seam -->
+    <path d="M 0 540 C 400 535, 800 545, 1200 548 C 1600 550, 2000 554, 2400 558" 
+          fill="none" stroke="#1e293b" stroke-width="2"/>
+
+    <!-- Horizontal Air Vent Louvers under Passenger / Center Deck -->
+    <!-- Left Vent Set -->
+    <g transform="translate(1240, 560)">
+      <rect width="130" height="30" rx="6" fill="#0a0f1d" stroke="#334155" stroke-width="1.5"/>
+      <line x1="8" y1="8" x2="122" y2="8" stroke="#475569" stroke-width="2"/>
+      <line x1="8" y1="15" x2="122" y2="15" stroke="#64748b" stroke-width="2"/>
+      <line x1="8" y1="22" x2="122" y2="22" stroke="#475569" stroke-width="2"/>
+    </g>
+    <!-- Right Vent Set -->
+    <g transform="translate(1990, 560)">
+      <rect width="130" height="30" rx="6" fill="#0a0f1d" stroke="#334155" stroke-width="1.5"/>
+      <line x1="8" y1="8" x2="122" y2="8" stroke="#475569" stroke-width="2"/>
+      <line x1="8" y1="15" x2="122" y2="15" stroke="#64748b" stroke-width="2"/>
+      <line x1="8" y1="22" x2="122" y2="22" stroke="#475569" stroke-width="2"/>
     </g>
   </g>
 
   <!-- ======================================================= -->
-  <!-- NARRATIVE SCENE: CHAOS TO CATEGORIZED LOCAL VAULT       -->
+  <!-- 5. STEERING WHEEL (LENKRAD) - CUT OFF AT BOTTOM         -->
   <!-- ======================================================= -->
+  <g id="steering-wheel-assembly">
+    <!-- Drop Shadow behind top half of steering wheel rim -->
+    <path d="M 190 680 A 250 250 0 0 1 690 680" fill="none" stroke="#000000" stroke-width="48" opacity="0.75" filter="url(#softShadow)"/>
 
-  <!-- STAGE 1: THE CHAOS OF RAW RECEIPTS (4 Distinct Receipts) -->
-  <g id="receipt-chaos">
-    <!-- Receipt A: Hardware/Laptop Slip (feeds Arbeitsmittel) -->
-    <g transform="translate(1030, 85) rotate(-16)" filter="url(#paperShadow)">
-      <path d="M 0 8 L 7 0 L 14 8 L 21 0 L 28 8 L 35 0 L 42 8 L 49 0 L 56 8 L 63 0 L 70 8 L 77 0 L 84 8 L 91 0 L 98 8 L 105 0 L 112 8 L 119 0 L 126 8 L 133 0 L 138 6
-               L 138 195 
-               L 133 201 L 126 193 L 119 201 L 112 193 L 105 201 L 98 193 L 91 201 L 84 193 L 77 201 L 70 193 L 63 201 L 56 193 L 49 201 L 42 193 L 35 201 L 28 193 L 21 201 L 14 193 L 7 201 L 0 193 Z" 
-            fill="#f8fafc"/>
-      <circle cx="26" cy="26" r="8" fill="#e2e8f0"/>
-      <rect x="42" y="21" width="60" height="5" rx="2.5" fill="#cbd5e1"/>
-      <rect x="42" y="29" width="40" height="4" rx="2" fill="#94a3b8"/>
-      <line x1="14" y1="42" x2="124" y2="42" stroke="#e2e8f0" stroke-width="1.5" stroke-dasharray="3 3"/>
-      <rect x="16" y="52" width="50" height="5" rx="2.5" fill="#cbd5e1"/>
-      <rect x="94" y="52" width="28" height="5" rx="2.5" fill="#94a3b8"/>
-      <rect x="16" y="66" width="60" height="5" rx="2.5" fill="#cbd5e1"/>
-      <rect x="98" y="66" width="24" height="5" rx="2.5" fill="#94a3b8"/>
-      <line x1="14" y1="84" x2="124" y2="84" stroke="#cbd5e1" stroke-width="1.5"/>
-      <rect x="16" y="95" width="34" height="6" rx="3" fill="#64748b"/>
-      <rect x="80" y="93" width="42" height="9" rx="3" fill="#0f382a"/>
-      <!-- Barcode simulation -->
-      <g transform="translate(18, 120)" fill="#64748b">
-        <rect x="0" y="0" width="3" height="28"/>
-        <rect x="6" y="0" width="1.5" height="28"/>
-        <rect x="10" y="0" width="4" height="28"/>
-        <rect x="17" y="0" width="2" height="28"/>
-        <rect x="22" y="0" width="1" height="28"/>
-        <rect x="26" y="0" width="3.5" height="28"/>
-        <rect x="33" y="0" width="2" height="28"/>
-        <rect x="38" y="0" width="4" height="28"/>
-        <rect x="45" y="0" width="1.5" height="28"/>
-        <rect x="50" y="0" width="3" height="28"/>
-        <rect x="56" y="0" width="2" height="28"/>
-        <rect x="61" y="0" width="4" height="28"/>
-        <rect x="68" y="0" width="1.5" height="28"/>
-        <rect x="73" y="0" width="3.5" height="28"/>
-        <rect x="80" y="0" width="2" height="28"/>
-        <rect x="85" y="0" width="4" height="28"/>
-        <rect x="92" y="0" width="2" height="28"/>
-      </g>
+    <!-- Outer Steering Wheel Rim (Sweeping smoothly into view) -->
+    <path d="M 195 680 A 245 245 0 0 1 685 680" fill="none" stroke="url(#steeringWheelRim)" stroke-width="40" stroke-linecap="butt"/>
+
+    <!-- Outer & Inner Rim Contour Highlights -->
+    <path d="M 190 680 A 248 248 0 0 1 690 680" fill="none" stroke="#475569" stroke-width="2" opacity="0.8"/>
+    <path d="M 235 680 A 205 205 0 0 1 645 680" fill="none" stroke="#1e293b" stroke-width="2.5"/>
+
+    <!-- Ergonomic Thumb Grips (10-and-2 o'clock positions) -->
+    <!-- 10 o'clock grip contour -->
+    <path d="M 270 548 C 265 530, 275 515, 292 510 C 305 528, 295 545, 270 548 Z" fill="#334155" opacity="0.5"/>
+    <!-- 2 o'clock grip contour -->
+    <path d="M 610 548 C 615 530, 605 515, 588 510 C 575 528, 585 545, 610 548 Z" fill="#334155" opacity="0.5"/>
+
+    <!-- Sporty 12 o'clock Centering Marker (Emerald Green Racing Stripe) -->
+    <g transform="translate(440, 475)">
+      <rect x="-8" y="-18" width="16" height="38" rx="4" fill="#10b981" filter="url(#glowGreen)"/>
+      <rect x="-6" y="-16" width="12" height="34" rx="3" fill="#34d399"/>
     </g>
 
-    <!-- Receipt B: Commute / Transit Ticket (feeds Fahrtkosten) -->
-    <g transform="translate(1125, 185) rotate(14)" filter="url(#paperShadow)">
-      <path d="M 0 0 L 110 0 L 140 30 L 140 205 
-               L 133 211 L 125 203 L 117 211 L 109 203 L 101 211 L 93 203 L 85 211 L 77 203 L 69 211 L 61 203 L 53 211 L 45 203 L 37 211 L 29 203 L 21 211 L 13 203 L 0 211 Z" 
-            fill="#f1f5f9"/>
-      <path d="M 110 0 L 110 30 L 140 30 Z" fill="#cbd5e1"/>
-      <path d="M 110 30 L 140 30" stroke="#94a3b8" stroke-width="1"/>
-      <line x1="0" y1="95" x2="140" y2="95" stroke="#e2e8f0" stroke-width="2"/>
-      <rect x="16" y="20" width="65" height="6" rx="3" fill="#94a3b8"/>
-      <rect x="16" y="38" width="48" height="5" rx="2.5" fill="#cbd5e1"/>
-      <rect x="92" y="38" width="26" height="5" rx="2.5" fill="#94a3b8"/>
-      <rect x="16" y="52" width="55" height="5" rx="2.5" fill="#cbd5e1"/>
-      <rect x="96" y="52" width="22" height="5" rx="2.5" fill="#94a3b8"/>
-      <rect x="16" y="66" width="38" height="5" rx="2.5" fill="#cbd5e1"/>
-      <rect x="88" y="66" width="30" height="5" rx="2.5" fill="#94a3b8"/>
-      <line x1="14" y1="108" x2="126" y2="108" stroke="#cbd5e1" stroke-width="1.5"/>
-      <rect x="16" y="122" width="36" height="7" rx="3.5" fill="#64748b"/>
-      <rect x="80" y="120" width="42" height="10" rx="3" fill="#0f382a"/>
-      <rect x="16" y="150" width="50" height="16" rx="4" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="2 2"/>
-      <rect x="22" y="156" width="36" height="4" rx="2" fill="#94a3b8"/>
-    </g>
+    <!-- Steering Wheel Spokes extending towards center hub -->
+    <!-- Left Spoke -->
+    <path d="M 275 620 L 390 680 L 415 680 L 305 605 Z" fill="url(#steeringSpokeGrad)" stroke="#334155" stroke-width="1.5"/>
+    <!-- Right Spoke -->
+    <path d="M 605 620 L 490 680 L 465 680 L 575 605 Z" fill="url(#steeringSpokeGrad)" stroke="#334155" stroke-width="1.5"/>
 
-    <!-- Receipt C: Specialist Book & Seminar Slip (feeds Fortbildung) -->
-    <g transform="translate(1045, 335) rotate(-9)" filter="url(#paperShadow)">
-      <path d="M 0 0 L 130 0 L 130 180 
-               L 123 186 L 115 178 L 107 186 L 99 178 L 91 186 L 83 178 L 75 186 L 67 178 L 59 186 L 51 178 L 43 186 L 35 178 L 27 186 L 19 178 L 11 186 L 0 176 Z" 
-            fill="#ffffff"/>
-      <rect x="16" y="18" width="50" height="6" rx="3" fill="#94a3b8"/>
-      <rect x="16" y="34" width="55" height="5" rx="2.5" fill="#cbd5e1"/>
-      <rect x="88" y="34" width="24" height="5" rx="2.5" fill="#94a3b8"/>
-      <rect x="16" y="48" width="45" height="5" rx="2.5" fill="#cbd5e1"/>
-      <rect x="84" y="48" width="28" height="5" rx="2.5" fill="#94a3b8"/>
-      <rect x="16" y="62" width="60" height="5" rx="2.5" fill="#cbd5e1"/>
-      <rect x="90" y="62" width="22" height="5" rx="2.5" fill="#94a3b8"/>
-      <line x1="14" y1="82" x2="116" y2="82" stroke="#cbd5e1" stroke-width="1.5"/>
-      <rect x="16" y="94" width="32" height="7" rx="3.5" fill="#64748b"/>
-      <rect x="72" y="92" width="40" height="10" rx="3" fill="#0f382a"/>
-    </g>
-
-    <!-- Receipt D: Desk & Peripherals Invoice (feeds Homeoffice) -->
-    <g transform="translate(1115, 465) rotate(11)" filter="url(#paperShadow)">
-      <path d="M 0 0 L 125 0 L 125 155 
-               L 119 161 L 111 153 L 103 161 L 95 153 L 87 161 L 79 153 L 71 161 L 63 153 L 55 161 L 47 153 L 39 161 L 31 153 L 23 161 L 15 153 L 0 160 Z" 
-            fill="#f8fafc"/>
-      <rect x="14" y="16" width="44" height="5" rx="2.5" fill="#94a3b8"/>
-      <rect x="14" y="30" width="52" height="4.5" rx="2" fill="#cbd5e1"/>
-      <rect x="82" y="30" width="26" height="4.5" rx="2" fill="#94a3b8"/>
-      <rect x="14" y="44" width="40" height="4.5" rx="2" fill="#cbd5e1"/>
-      <rect x="78" y="44" width="30" height="4.5" rx="2" fill="#94a3b8"/>
-      <line x1="12" y1="62" x2="112" y2="62" stroke="#cbd5e1" stroke-width="1.5"/>
-      <rect x="14" y="74" width="30" height="6" rx="3" fill="#64748b"/>
-      <rect x="70" y="72" width="38" height="9" rx="3" fill="#0f382a"/>
-    </g>
+    <!-- Steering Wheel Hub Apex (Center Cap Trim) -->
+    <ellipse cx="440" cy="670" rx="65" ry="32" fill="#0f172a" stroke="#475569" stroke-width="2"/>
+    <ellipse cx="440" cy="670" rx="52" ry="24" fill="#1e293b" stroke="#334155" stroke-width="1"/>
   </g>
 
-  <!-- STAGE 2: CATEGORIZATION PIPELINE & PRECISION SCAN BEAM -->
-  <g id="categorization-pipeline">
-    <!-- 4 Structured Category Ribbon Conduits flowing directly to the ledger rows at (1740, y) -->
-    <!-- Ribbon 1: Arbeitsmittel (Cyan) -> y: 250 (Row 1) -->
-    <path d="M 1180 135 C 1270 135, 1330 250, 1740 250" fill="none" stroke="url(#streamCyan)" stroke-width="3" stroke-dasharray="6 6"/>
-    <!-- Ribbon 2: Fahrtkosten (Emerald) -> y: 298 (Row 2) -->
-    <path d="M 1235 245 C 1320 245, 1350 298, 1740 298" fill="none" stroke="url(#streamGreen)" stroke-width="3" stroke-dasharray="6 6"/>
-    <!-- Ribbon 3: Fortbildung (Amber) -> y: 346 (Row 3) -->
-    <path d="M 1205 385 C 1300 385, 1350 346, 1740 346" fill="none" stroke="url(#streamAmber)" stroke-width="3" stroke-dasharray="6 6"/>
-    <!-- Ribbon 4: Homeoffice (Purple) -> y: 394 (Row 4) -->
-    <path d="M 1190 495 C 1300 495, 1360 394, 1740 394" fill="none" stroke="url(#streamPurple)" stroke-width="3" stroke-dasharray="6 6"/>
+  <!-- ======================================================= -->
+  <!-- 6. NAVIGATION DEVICE MOUNTING STAND (STANDFUSS)         -->
+  <!-- ======================================================= -->
+  <!-- Visible chassis mount firmly attaching the device to the dashboard -->
+  <g id="navi-unit-scaled" transform="translate(1480,605) scale(0.55) translate(-1730,-605)">
+  <g id="navi-mount-assembly">
+    <!-- Contact Cast Shadow on Dashboard Top Surface -->
+    <ellipse cx="1730" cy="590" rx="150" ry="22" fill="#000000" opacity="0.85" filter="url(#pedestalShadow)"/>
+    <rect x="1200" y="525" width="1060" height="26" rx="13" fill="#000000" opacity="0.65" filter="url(#softShadow)"/>
 
-    <!-- Dynamic Flow Particles along trajectories -->
-    <circle cx="1250" cy="155" r="4" fill="#38bdf8" filter="url(#glowGreen)"/>
-    <circle cx="1340" cy="210" r="3.5" fill="#38bdf8" filter="url(#glowGreen)"/>
-    <circle cx="1295" cy="265" r="4" fill="#34d399" filter="url(#glowGreen)"/>
-    <circle cx="1265" cy="385" r="3.5" fill="#fbbf24" filter="url(#glowGreen)"/>
-    <circle cx="1340" cy="355" r="4" fill="#fbbf24" filter="url(#glowGreen)"/>
-    <circle cx="1255" cy="475" r="3.5" fill="#a78bfa" filter="url(#glowGreen)"/>
-    <circle cx="1345" cy="415" r="4" fill="#a78bfa" filter="url(#glowGreen)"/>
+    <!-- Baseplate (Fußplatte / Sockel) resting on the dashboard -->
+    <rect x="1610" y="575" width="240" height="30" rx="8" fill="url(#pedestalMountGrad)" stroke="#475569" stroke-width="2"/>
+    <rect x="1620" y="580" width="220" height="20" rx="5" fill="#0f172a" stroke="#334155" stroke-width="1"/>
 
-    <!-- Vertical Optical Scan Beam (x: 1410) -->
-    <rect x="1395" y="75" width="30" height="530" fill="url(#scanBeamGrad)"/>
-    <line x1="1410" y1="70" x2="1410" y2="610" stroke="#34d399" stroke-width="2.5" filter="url(#laserGlow)"/>
-
-    <!-- Sensor Emitter Caliper Heads -->
-    <g transform="translate(1385, 55)">
-      <rect width="50" height="24" rx="6" fill="#061d15" stroke="#2d7a5e" stroke-width="1.5"/>
-      <circle cx="25" cy="12" r="5" fill="#10b981" filter="url(#glowGreen)"/>
-      <circle cx="25" cy="12" r="2.5" fill="#ffffff"/>
-    </g>
-    <g transform="translate(1385, 605)">
-      <rect width="50" height="24" rx="6" fill="#061d15" stroke="#2d7a5e" stroke-width="1.5"/>
-      <circle cx="25" cy="12" r="5" fill="#10b981" filter="url(#glowGreen)"/>
-      <circle cx="25" cy="12" r="2.5" fill="#ffffff"/>
+    <!-- Baseplate Heavy Mounting Hex Bolts -->
+    <g fill="#475569" stroke="#1e293b" stroke-width="1">
+      <!-- Left Bolts -->
+      <circle cx="1635" cy="590" r="4.5"/>
+      <circle cx="1635" cy="590" r="2" fill="#94a3b8"/>
+      <circle cx="1660" cy="590" r="4.5"/>
+      <circle cx="1660" cy="590" r="2" fill="#94a3b8"/>
+      <!-- Right Bolts -->
+      <circle cx="1800" cy="590" r="4.5"/>
+      <circle cx="1800" cy="590" r="2" fill="#94a3b8"/>
+      <circle cx="1825" cy="590" r="4.5"/>
+      <circle cx="1825" cy="590" r="2" fill="#94a3b8"/>
     </g>
 
-    <!-- 4 Clean Categorization Badges / Chips -->
-    <!-- Chip 1: Arbeitsmittel (Cyan) -->
-    <g transform="translate(1450, 110)" filter="url(#cardShadow)">
-      <rect width="180" height="40" rx="20" fill="#061f2d" stroke="#38bdf8" stroke-width="1.8"/>
-      <g transform="translate(16, 11)">
-        <rect width="20" height="14" rx="2" fill="none" stroke="#38bdf8" stroke-width="1.8"/>
-        <line x1="0" y1="18" x2="20" y2="18" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/>
-      </g>
-      <text x="48" y="25" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-            font-size="13.5" font-weight="700" fill="#e0f2fe" letter-spacing="0.5">Arbeitsmittel</text>
-    </g>
+    <!-- Structural Pylon / Pedestal Arm (Standsäule) -->
+    <path d="M 1655 580 L 1680 525 L 1780 525 L 1805 580 Z" fill="url(#pedestalArmGrad)" stroke="#475569" stroke-width="2"/>
+    <!-- Recessed Center Rib -->
+    <path d="M 1685 580 L 1700 525 L 1760 525 L 1775 580 Z" fill="#090e17" stroke="#1e293b" stroke-width="1"/>
 
-    <!-- Chip 2: Fahrtkosten (Emerald) -->
-    <g transform="translate(1450, 215)" filter="url(#cardShadow)">
-      <rect width="180" height="40" rx="20" fill="#06271c" stroke="#34d399" stroke-width="1.8"/>
-      <g transform="translate(18, 11)">
-        <rect width="16" height="18" rx="3" fill="none" stroke="#34d399" stroke-width="1.8"/>
-        <circle cx="4.5" cy="13" r="1.5" fill="#34d399"/>
-        <circle cx="11.5" cy="13" r="1.5" fill="#34d399"/>
-        <line x1="3" y1="7" x2="13" y2="7" stroke="#34d399" stroke-width="1.5"/>
-      </g>
-      <text x="48" y="25" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-            font-size="13.5" font-weight="700" fill="#d1fae5" letter-spacing="0.5">Fahrtkosten</text>
-    </g>
+    <!-- Swivel Knuckle / Hinge Joint (Gelenk-Scharnier) connecting to bezel -->
+    <rect x="1685" y="516" width="90" height="20" rx="7" fill="url(#hingeCylinderGrad)" stroke="#334155" stroke-width="1.5"/>
+    <circle cx="1692" cy="526" r="7.5" fill="#64748b" stroke="#1e293b" stroke-width="1.5"/>
+    <circle cx="1692" cy="526" r="3" fill="#94a3b8"/>
+    <circle cx="1768" cy="526" r="7.5" fill="#64748b" stroke="#1e293b" stroke-width="1.5"/>
+    <circle cx="1768" cy="526" r="3" fill="#94a3b8"/>
 
-    <!-- Chip 3: Fortbildung (Amber) -->
-    <g transform="translate(1450, 320)" filter="url(#cardShadow)">
-      <rect width="180" height="40" rx="20" fill="#2d1c06" stroke="#fbbf24" stroke-width="1.8"/>
-      <g transform="translate(17, 12)">
-        <path d="M 1 3 C 5 2 10 3 10 14 C 10 14 5 13 1 14 Z" fill="none" stroke="#fbbf24" stroke-width="1.8"/>
-        <path d="M 19 3 C 15 2 10 3 10 14 C 10 14 15 13 19 14 Z" fill="none" stroke="#fbbf24" stroke-width="1.8"/>
-      </g>
-      <text x="48" y="25" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-            font-size="13.5" font-weight="700" fill="#fef3c7" letter-spacing="0.5">Fortbildung</text>
-    </g>
-
-    <!-- Chip 4: Homeoffice (Purple) -->
-    <g transform="translate(1450, 425)" filter="url(#cardShadow)">
-      <rect width="180" height="40" rx="20" fill="#201235" stroke="#a78bfa" stroke-width="1.8"/>
-      <g transform="translate(17, 11)">
-        <path d="M 1 10 L 9 3 L 17 10 L 17 18 L 1 18 Z" fill="none" stroke="#a78bfa" stroke-width="1.8" stroke-linejoin="round"/>
-        <line x1="7" y1="18" x2="7" y2="13" stroke="#a78bfa" stroke-width="1.5"/>
-        <line x1="11" y1="18" x2="11" y2="13" stroke="#a78bfa" stroke-width="1.5"/>
-      </g>
-      <text x="48" y="25" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-            font-size="13.5" font-weight="700" fill="#ede9fe" letter-spacing="0.5">Homeoffice</text>
-    </g>
+    <!-- Bezel Clamping Brackets -->
+    <path d="M 1675 510 L 1692 530 L 1768 530 L 1785 510 Z" fill="#334155" stroke="#475569" stroke-width="1.5"/>
   </g>
 
-  <!-- STAGE 3: THE SEALED LOCAL VAULT & MASTER WORKSHEET -->
-  <g id="local-vault-archive">
-    <!-- Heavy Outer Vault Enclosure Chassis (x: 1740 to 2200) -->
-    <g transform="translate(1740, 65)">
-      <rect width="455" height="545" rx="24" fill="url(#vaultSteel)" stroke="#23604b" stroke-width="3" filter="url(#softShadow)"/>
-      <rect x="4" y="4" width="447" height="537" rx="21" fill="none" stroke="#082017" stroke-width="2"/>
+  <!-- ======================================================= -->
+  <!-- 7. NAVIGATION UNIT DISPLAY & TAX JUNGLE ROUTE            -->
+  <!-- ======================================================= -->
+  <g id="navi-display-unit" transform="translate(1140, 50)">
+    <!-- Navigation Outer Bezel Chassis (1180 x 480 px) -->
+    <rect width="1180" height="480" rx="32" fill="url(#naviBezelGrad)" stroke="#475569" stroke-width="3" filter="url(#softShadow)"/>
+    <rect x="5" y="5" width="1170" height="470" rx="28" fill="none" stroke="#09121a" stroke-width="2"/>
 
-      <!-- Vault Status Bar at Top -->
-      <g transform="translate(22, 18)">
-        <circle cx="10" cy="12" r="4.5" fill="#10b981" filter="url(#glowGreen)"/>
-        <circle cx="10" cy="12" r="2.5" fill="#ffffff"/>
-        <text x="24" y="16" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-              font-size="10.5" font-weight="800" letter-spacing="1.5" fill="#6ee7b7">
-          LOCAL VAULT ENCLAVE • ZERO OUTBOUND BYTES
-        </text>
-      </g>
+    <!-- Corner Metallic Bezel Screws -->
+    <circle cx="22" cy="22" r="4.5" fill="#94a3b8" stroke="#334155" stroke-width="1"/>
+    <circle cx="1158" cy="22" r="4.5" fill="#94a3b8" stroke="#334155" stroke-width="1"/>
+    <circle cx="22" cy="458" r="4.5" fill="#94a3b8" stroke="#334155" stroke-width="1"/>
+    <circle cx="1158" cy="458" r="4.5" fill="#94a3b8" stroke="#334155" stroke-width="1"/>
 
-      <!-- Corner Security Rivets -->
-      <circle cx="20" cy="46" r="4.5" fill="url(#chromeBolt)"/>
-      <circle cx="435" cy="46" r="4.5" fill="url(#chromeBolt)"/>
-      <circle cx="20" cy="525" r="4.5" fill="url(#chromeBolt)"/>
-      <circle cx="435" cy="525" r="4.5" fill="url(#chromeBolt)"/>
+    <!-- Inner Screen Display Bezel -->
+    <rect x="18" y="18" width="1144" height="444" rx="22" fill="#020907" stroke="#1e293b" stroke-width="2"/>
 
-      <!-- Interior Recessed Chamber -->
-      <rect x="18" y="44" width="419" height="480" rx="16" fill="#04120d" stroke="#0a2a1f" stroke-width="2"/>
+    <!-- THE ACTIVE SCREEN GLASS (Map Canvas) -->
+    <g transform="translate(24, 24)">
+      <clipPath id="screenClipA2">
+        <rect width="1132" height="432" rx="18"/>
+      </clipPath>
 
-      <!-- Archival Folder Tabs (Standing in background) -->
-      <!-- Tab 1: Cyan -->
-      <path d="M 32 60 L 105 60 L 115 74 L 380 74 L 380 95 L 32 95 Z" fill="#0369a1" opacity="0.85"/>
-      <text x="42" y="70" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-            font-size="8.5" font-weight="700" fill="#ffffff" letter-spacing="0.6">ARBEITSMITTEL</text>
+      <g clip-path="url(#screenClipA2)">
+        <!-- Screen Map Base Background -->
+        <rect width="1132" height="432" fill="url(#screenMapGrad)"/>
 
-      <!-- Tab 2: Emerald -->
-      <path d="M 120 60 L 195 60 L 205 74 L 380 74 L 380 95 L 120 95 Z" fill="#047857" opacity="0.85"/>
-      <text x="130" y="70" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-            font-size="8.5" font-weight="700" fill="#ffffff" letter-spacing="0.6">FAHRTKOSTEN</text>
-
-      <!-- Tab 3: Amber -->
-      <path d="M 210 60 L 285 60 L 295 74 L 380 74 L 380 95 L 210 95 Z" fill="#b45309" opacity="0.85"/>
-      <text x="220" y="70" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-            font-size="8.5" font-weight="700" fill="#ffffff" letter-spacing="0.6">FORTBILDUNG</text>
-
-      <!-- Tab 4: Purple -->
-      <path d="M 300 60 L 375 60 L 385 74 L 395 74 L 395 95 L 300 95 Z" fill="#6d28d9" opacity="0.85"/>
-      <text x="308" y="70" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-            font-size="8.5" font-weight="700" fill="#ffffff" letter-spacing="0.6">HOMEOFFICE</text>
-
-      <!-- THE PRISTINE MASTER WORKSHEET (Arbeitsunterlage) -->
-      <g transform="translate(28, 76)" filter="url(#softShadow)">
-        <rect width="400" height="432" rx="10" fill="#ffffff"/>
-
-        <!-- Header Banner with Integrated export.zip Badge -->
-        <path d="M 0 10 C 0 4.5 4.5 0 10 0 L 390 0 C 395.5 0 400 4.5 400 10 L 400 58 L 0 58 Z" fill="#0b2e21"/>
-        
-        <!-- Document Title & Icon -->
-        <g transform="translate(16, 16)">
-          <rect width="18" height="24" rx="2" fill="none" stroke="#34d399" stroke-width="1.8"/>
-          <line x1="4" y1="7" x2="14" y2="7" stroke="#34d399" stroke-width="1.5"/>
-          <line x1="4" y1="12" x2="14" y2="12" stroke="#34d399" stroke-width="1.5"/>
-          <line x1="4" y1="17" x2="10" y2="17" stroke="#34d399" stroke-width="1.5"/>
+        <!-- Topographic Contour Lines across Map Terrain -->
+        <g stroke="#10b981" stroke-width="1.5" fill="none" opacity="0.12">
+          <path d="M 0 120 C 250 60, 500 200, 800 90 C 950 30, 1050 150, 1140 110"/>
+          <path d="M 0 210 C 200 170, 450 300, 750 230 C 920 170, 1020 280, 1140 250"/>
+          <path d="M 0 310 C 300 250, 550 390, 850 330 C 1020 290, 1080 370, 1140 340"/>
+          <path d="M 0 400 C 200 370, 600 440, 900 390 C 1020 360, 1100 420, 1140 400"/>
         </g>
-        <text x="42" y="29" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-              font-size="12.5" font-weight="800" letter-spacing="0.5" fill="#ffffff">WERBUNGSKOSTEN-ÜBERSICHT</text>
-        <text x="42" y="46" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-              font-size="9.5" font-weight="600" letter-spacing="0.4" fill="#a7f3d0">Private Arbeitsunterlage • Nicht-amtlich</text>
 
-        <!-- Elegant Floating ZIP Export Badge in Document Header -->
-        <g transform="translate(276, 12)">
-          <rect width="112" height="34" rx="8" fill="#061d15" stroke="#fbbf24" stroke-width="1.5"/>
-          <g transform="translate(9, 8)">
-            <rect width="14" height="18" rx="2" fill="#d97706"/>
-            <line x1="7" y1="2" x2="7" y2="12" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="1.5 1.5"/>
-            <rect x="5.5" y="10" width="3" height="4" rx="1" fill="#fef3c7"/>
+        <!-- Secondary GPS Coordinate Grid -->
+        <g stroke="#34d399" stroke-width="1" stroke-dasharray="4 6" opacity="0.08">
+          <line x1="160" y1="0" x2="160" y2="432"/>
+          <line x1="350" y1="0" x2="350" y2="432"/>
+          <line x1="540" y1="0" x2="540" y2="432"/>
+          <line x1="730" y1="0" x2="730" y2="432"/>
+          <line x1="920" y1="0" x2="920" y2="432"/>
+          <line x1="0" y1="100" x2="1132" y2="100"/>
+          <line x1="0" y1="210" x2="1132" y2="210"/>
+          <line x1="0" y1="320" x2="1132" y2="320"/>
+        </g>
+
+        <!-- Background Jungle Foliage Leaves -->
+        <g opacity="0.32">
+          <use href="#jungle-frond" x="110" y="270" transform="scale(1.7) rotate(-25 110 270)"/>
+          <use href="#jungle-frond" x="260" y="110" transform="scale(1.5) rotate(35 260 110)"/>
+          <use href="#jungle-frond" x="450" y="310" transform="scale(1.9) rotate(-15 450 310)"/>
+          <use href="#jungle-frond" x="620" y="60" transform="scale(1.6) rotate(45 620 60)"/>
+          <use href="#jungle-frond" x="780" y="260" transform="scale(2.0) rotate(-30 780 260)"/>
+          <use href="#jungle-frond" x="960" y="120" transform="scale(1.8) rotate(20 960 120)"/>
+        </g>
+
+        <!-- =============================================== -->
+        <!-- THE TAX JUNGLE: § PARAGRAPHS, FORMS & RECEIPTS  -->
+        <!-- =============================================== -->
+        <!-- Obstacle Cluster 1 (Left Lower): Giant Mossy § & Receipt Stack -->
+        <g transform="translate(100, 240)" filter="url(#paperShadow)">
+          <use href="#tax-form-sheet" transform="rotate(-18)"/>
+          <use href="#receipt-tear" transform="translate(45, 20) rotate(14)"/>
+          <use href="#par-symbol" x="15" y="-30" transform="scale(1.8)" fill="#059669" opacity="0.95"/>
+          <use href="#jungle-frond" x="30" y="40" transform="scale(0.8) rotate(-40 30 40)"/>
+        </g>
+
+        <!-- Obstacle Cluster 2 (Upper Left): Complex Forms & Amber § -->
+        <g transform="translate(220, 20)" filter="url(#paperShadow)">
+          <use href="#tax-form-sheet" transform="rotate(12)"/>
+          <use href="#tax-form-sheet" transform="translate(30, 15) rotate(-8)"/>
+          <use href="#par-symbol" x="70" y="10" transform="scale(1.5)" fill="#d97706" opacity="0.9"/>
+          <use href="#jungle-frond" x="110" y="60" transform="scale(0.7) rotate(30 110 60)"/>
+        </g>
+
+        <!-- Obstacle Cluster 3 (Mid-Left Canyon): Receipt Forest & Emerald § -->
+        <g transform="translate(380, 170)" filter="url(#paperShadow)">
+          <use href="#receipt-tear" transform="rotate(-15)"/>
+          <use href="#receipt-tear" transform="translate(50, 10) rotate(18)"/>
+          <use href="#par-symbol" x="25" y="-15" transform="scale(1.6)" fill="#047857"/>
+        </g>
+
+        <!-- Obstacle Cluster 4 (Center Basin): The Golden Paragraph Mountain -->
+        <g transform="translate(540, 80)" filter="url(#paperShadow)">
+          <use href="#tax-form-sheet" transform="scale(1.1) rotate(6)"/>
+          <use href="#par-symbol" x="15" y="-35" transform="scale(2.2)" fill="#fbbf24" filter="url(#glowGreen)"/>
+          <use href="#receipt-tear" transform="translate(65, 55) rotate(-22)"/>
+          <use href="#jungle-frond" x="75" y="20" transform="scale(1) rotate(60 75 20)"/>
+        </g>
+
+        <!-- Obstacle Cluster 5 (Center Lower): Sprawling Folders & Foliage -->
+        <g transform="translate(640, 270)" filter="url(#paperShadow)">
+          <use href="#tax-form-sheet" transform="rotate(-24)"/>
+          <use href="#tax-form-sheet" transform="translate(40, -10) rotate(14)"/>
+          <use href="#par-symbol" x="30" y="-10" transform="scale(1.7)" fill="#059669"/>
+        </g>
+
+        <!-- Obstacle Cluster 6 (Upper Right): Dense § Thicket -->
+        <g transform="translate(810, 30)" filter="url(#paperShadow)">
+          <use href="#receipt-tear" transform="rotate(16)"/>
+          <use href="#tax-form-sheet" transform="translate(40, 20) rotate(-12)"/>
+          <use href="#par-symbol" x="55" y="-20" transform="scale(1.9)" fill="#d97706" opacity="0.95"/>
+          <use href="#par-symbol" x="100" y="20" transform="scale(1.4)" fill="#047857"/>
+          <use href="#jungle-frond" x="110" y="50" transform="scale(0.9) rotate(-35 110 50)"/>
+        </g>
+
+        <!-- Obstacle Cluster 7 (Far Right Edge): Labyrinth Barrier -->
+        <g transform="translate(980, 160)" filter="url(#paperShadow)">
+          <use href="#tax-form-sheet" transform="rotate(-15)"/>
+          <use href="#receipt-tear" transform="translate(30, 40) rotate(20)"/>
+          <use href="#par-symbol" x="20" y="-25" transform="scale(1.7)" fill="#059669"/>
+        </g>
+
+        <!-- =============================================== -->
+        <!-- THE ILLUMINATED STEUER-NAVI OPTIMAL ROUTE       -->
+        <!-- =============================================== -->
+        <!-- Start: (70, 380) -> (190, 350) -> (330, 310) -> (470, 360) -> (640, 250) -> (760, 280) -> (880, 180) -> Finish: (1020, 110) -->
+
+        <!-- Outer Glowing Halos -->
+        <path d="M 70 380 C 140 380, 180 340, 250 330 C 330 320, 370 390, 460 390 C 550 390, 580 260, 660 260 C 720 260, 750 310, 820 270 C 880 230, 920 130, 1020 110" 
+              fill="none" stroke="#10b981" stroke-width="26" stroke-linecap="round" stroke-linejoin="round" opacity="0.25" filter="url(#laserGlow)"/>
+
+        <!-- Middle High-Intensity Neon Track -->
+        <path d="M 70 380 C 140 380, 180 340, 250 330 C 330 320, 370 390, 460 390 C 550 390, 580 260, 660 260 C 720 260, 750 310, 820 270 C 880 230, 920 130, 1020 110" 
+              fill="none" stroke="url(#routeGrad)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" filter="url(#glowGreen)"/>
+
+        <!-- Core Pulse Guidance Line -->
+        <path d="M 70 380 C 140 380, 180 340, 250 330 C 330 320, 370 390, 460 390 C 550 390, 580 260, 660 260 C 720 260, 750 310, 820 270 C 880 230, 920 130, 1020 110" 
+              fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="14 10"/>
+
+        <!-- Route Guidance Golden Waypoint Coins (€) Along the Optimal Path -->
+        <use href="#waypoint-coin" x="180" y="345"/>
+        <use href="#waypoint-coin" x="300" y="325"/>
+        <use href="#waypoint-coin" x="410" y="375"/>
+        <use href="#waypoint-coin" x="510" y="380"/>
+        <use href="#waypoint-coin" x="610" y="295"/>
+        <use href="#waypoint-coin" x="710" y="260"/>
+        <use href="#waypoint-coin" x="800" y="285"/>
+        <use href="#waypoint-coin" x="900" y="195"/>
+
+        <!-- START POSITION: High-Tech 3D GPS Navigation Arrow / Chevron -->
+        <g transform="translate(70, 380) rotate(-22)" filter="url(#glowGreen)">
+          <ellipse cx="0" cy="8" rx="26" ry="12" fill="#000000" opacity="0.5"/>
+          <polygon points="0,-30 22,16 0,6 -22,16" fill="#38bdf8" stroke="#ffffff" stroke-width="2.5" stroke-linejoin="round"/>
+          <polygon points="0,-30 0,6 -22,16" fill="#0284c7" opacity="0.6"/>
+          <circle cx="0" cy="0" r="3" fill="#ffffff"/>
+        </g>
+
+        <!-- DESTINATION: TARGET ZONE & TRIUMPHANT GOAL FLAG (Ziel-Fähnchen) -->
+        <g transform="translate(1020, 110)">
+          <!-- Concentric Target Radar Rings -->
+          <circle cx="0" cy="0" r="38" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="6 4" opacity="0.6"/>
+          <circle cx="0" cy="0" r="26" fill="#10b981" fill-opacity="0.15" stroke="#34d399" stroke-width="2" filter="url(#glowGreen)"/>
+          <circle cx="0" cy="0" r="13" fill="#34d399" fill-opacity="0.3"/>
+          <circle cx="0" cy="0" r="5" fill="#fbbf24"/>
+
+          <!-- Flagpole Standing in Target Center -->
+          <line x1="0" y1="0" x2="0" y2="-80" stroke="#f8fafc" stroke-width="4" stroke-linecap="round"/>
+          <!-- Golden Finial Ball -->
+          <circle cx="0" cy="-80" r="5.5" fill="#fbbf24" stroke="#78350f" stroke-width="1.5"/>
+
+          <!-- The Ziel-Fähnchen Flag (Waving Emerald & Golden Pennant) -->
+          <g filter="url(#softShadow)">
+            <path d="M 0 -78 C 22 -87 40 -69 62 -78 L 62 -42 C 40 -33 22 -51 0 -42 Z" 
+                  fill="#10b981" stroke="#34d399" stroke-width="2" stroke-linejoin="round"/>
+            <!-- Checkered Gold Accents on Flag -->
+            <path d="M 0 -78 C 11 -82 21 -78 31 -69 L 31 -42 C 21 -51 11 -47 0 -42 Z" fill="#fbbf24"/>
+            <path d="M 31 -69 C 42 -60 51 -69 62 -78 L 62 -42 C 51 -33 42 -42 31 -42 Z" fill="#047857"/>
+            <!-- Inner Goal Star Motif on Flag -->
+            <polygon points="16,-62 18,-57 23,-57 19,-53 21,-48 16,-51 12,-48 14,-53 9,-57 15,-57" fill="#ffffff"/>
           </g>
-          <text x="30" y="18" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-                font-size="11" font-weight="800" fill="#ffffff" letter-spacing="0.5">export.zip</text>
-          <text x="30" y="28" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-                font-size="7.5" font-weight="600" fill="#fbbf24">CSV + SUMMARY</text>
+
+          <!-- Triumphant Starburst Sparkles around Flag -->
+          <g fill="#fbbf24" opacity="0.85">
+            <polygon points="70,-85 73,-81 77,-81 74,-78 75,-74 70,-77 65,-74 66,-78 63,-81 67,-81"/>
+            <polygon points="-14,-95 -12,-91 -8,-91 -11,-88 -10,-84 -14,-87 -18,-84 -17,-88 -20,-91 -16,-91"/>
+          </g>
         </g>
 
-        <!-- Table Column Headers -->
-        <g transform="translate(0, 58)">
-          <rect width="400" height="28" fill="#f1f5f9"/>
-          <text x="18" y="18" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-                font-size="9.5" font-weight="800" fill="#64748b" letter-spacing="0.8">KAT.</text>
-          <text x="60" y="18" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-                font-size="9.5" font-weight="800" fill="#64748b" letter-spacing="0.8">BELEGE / POSTEN</text>
-          <text x="235" y="18" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-                font-size="9.5" font-weight="800" fill="#64748b" letter-spacing="0.8">ANZAHL</text>
-          <text x="325" y="18" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-                font-size="9.5" font-weight="800" fill="#64748b" letter-spacing="0.8">SUMME</text>
+        <!-- =============================================== -->
+        <!-- HIGH-TECH HUD NAVIGATION CONTROLS (NO TEXT)     -->
+        <!-- =============================================== -->
+        <!-- Top-Left Navigation Widget Card: Next Maneuver Arrow HUD -->
+        <g transform="translate(25, 25)" filter="url(#cardShadow)">
+          <rect width="90" height="85" rx="14" fill="#041d14" fill-opacity="0.88" stroke="#10b981" stroke-width="1.8"/>
+          <!-- Curved Maneuver Arrow: Sharp Turn Right into Clear Path -->
+          <path d="M 28 64 L 28 42 C 28 32, 38 24, 50 24 L 64 24" 
+                fill="none" stroke="#34d399" stroke-width="5.5" stroke-linecap="round"/>
+          <polygon points="60,15 76,24 60,33" fill="#34d399" filter="url(#glowGreen)"/>
+          <!-- Distance Scale Indicator Bars below arrow -->
+          <rect x="22" y="70" width="46" height="4" rx="2" fill="#10b981"/>
         </g>
 
-        <!-- 4 Categorized Rows (Abstract placeholder lines - NO fake money/tax amounts) -->
-        <!-- Row 1: Arbeitsmittel (y = 86) -->
-        <g transform="translate(0, 86)">
-          <rect width="400" height="48" fill="#ffffff"/>
-          <rect x="18" y="14" width="20" height="20" rx="5" fill="#0284c7"/>
-          <text x="28" y="28" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-                font-size="11" font-weight="800" fill="#ffffff" text-anchor="middle">A</text>
-          <rect x="60" y="15" width="115" height="8" rx="4" fill="#1e293b"/>
-          <rect x="60" y="27" width="75" height="6" rx="3" fill="#94a3b8"/>
-          <rect x="235" y="19" width="36" height="11" rx="3" fill="#e2e8f0"/>
-          <rect x="310" y="17" width="74" height="15" rx="3.5" fill="#0284c7" fill-opacity="0.15"/>
-          <rect x="318" y="21" width="58" height="7" rx="3.5" fill="#0369a1"/>
-          <line x1="16" y1="48" x2="384" y2="48" stroke="#f1f5f9" stroke-width="1.5"/>
+        <!-- Top-Right Status Indicators (Satellite Signal, Compass, Offline Mode) -->
+        <g transform="translate(960, 25)" filter="url(#cardShadow)">
+          <rect width="145" height="38" rx="12" fill="#041d14" fill-opacity="0.88" stroke="#1e293b" stroke-width="1.5"/>
+          
+          <!-- Satellite Dish / Connectivity Icon -->
+          <g transform="translate(18, 19)" stroke="#38bdf8" stroke-width="1.8" fill="none">
+            <path d="M -5 3 A 9 9 0 0 1 5 3"/>
+            <path d="M -9 7 A 14 14 0 0 1 9 7"/>
+            <circle cx="0" cy="0" r="1.8" fill="#38bdf8"/>
+          </g>
+
+          <!-- 4 GPS Signal Strength Bars (Full Reception) -->
+          <g transform="translate(52, 12)" fill="#10b981">
+            <rect x="0" y="14" width="3.5" height="5" rx="1"/>
+            <rect x="6" y="10" width="3.5" height="9" rx="1"/>
+            <rect x="12" y="6" width="3.5" height="13" rx="1"/>
+            <rect x="18" y="0" width="3.5" height="19" rx="1"/>
+          </g>
+
+          <!-- Battery / Offline Enclave Shield -->
+          <g transform="translate(102, 11)">
+            <path d="M 12 2 L 20 5 L 20 12 C 20 17 12 20 12 20 C 12 20 4 17 4 12 L 4 5 Z" 
+                  fill="#064e3b" stroke="#34d399" stroke-width="1.6" stroke-linejoin="round"/>
+            <circle cx="12" cy="10" r="2.5" fill="#34d399" filter="url(#glowGreen)"/>
+          </g>
         </g>
 
-        <!-- Row 2: Fahrtkosten (y = 134) -->
-        <g transform="translate(0, 134)">
-          <rect width="400" height="48" fill="#f8fafc"/>
-          <rect x="18" y="14" width="20" height="20" rx="5" fill="#059669"/>
-          <text x="28" y="28" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-                font-size="11" font-weight="800" fill="#ffffff" text-anchor="middle">F</text>
-          <rect x="60" y="15" width="105" height="8" rx="4" fill="#1e293b"/>
-          <rect x="60" y="27" width="85" height="6" rx="3" fill="#94a3b8"/>
-          <rect x="235" y="19" width="32" height="11" rx="3" fill="#e2e8f0"/>
-          <rect x="310" y="17" width="74" height="15" rx="3.5" fill="#059669" fill-opacity="0.15"/>
-          <rect x="318" y="21" width="58" height="7" rx="3.5" fill="#047857"/>
-          <line x1="16" y1="48" x2="384" y2="48" stroke="#f1f5f9" stroke-width="1.5"/>
+        <!-- Bottom-Left Map Scale Ruler -->
+        <g transform="translate(25, 395)">
+          <line x1="0" y1="0" x2="70" y2="0" stroke="#94a3b8" stroke-width="2"/>
+          <line x1="0" y1="-5" x2="0" y2="5" stroke="#94a3b8" stroke-width="2"/>
+          <line x1="35" y1="-3" x2="35" y2="3" stroke="#94a3b8" stroke-width="1.2"/>
+          <line x1="70" y1="-5" x2="70" y2="5" stroke="#94a3b8" stroke-width="2"/>
         </g>
 
-        <!-- Row 3: Fortbildung (y = 182) -->
-        <g transform="translate(0, 182)">
-          <rect width="400" height="48" fill="#ffffff"/>
-          <rect x="18" y="14" width="20" height="20" rx="5" fill="#d97706"/>
-          <text x="28" y="28" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-                font-size="11" font-weight="800" fill="#ffffff" text-anchor="middle">B</text>
-          <rect x="60" y="15" width="95" height="8" rx="4" fill="#1e293b"/>
-          <rect x="60" y="27" width="65" height="6" rx="3" fill="#94a3b8"/>
-          <rect x="235" y="19" width="28" height="11" rx="3" fill="#e2e8f0"/>
-          <rect x="310" y="17" width="74" height="15" rx="3.5" fill="#d97706" fill-opacity="0.15"/>
-          <rect x="318" y="21" width="58" height="7" rx="3.5" fill="#b45309"/>
-          <line x1="16" y1="48" x2="384" y2="48" stroke="#f1f5f9" stroke-width="1.5"/>
+        <!-- Bottom-Right Compass Rose HUD -->
+        <g transform="translate(1075, 385)">
+          <circle cx="0" cy="0" r="22" fill="#041d14" fill-opacity="0.8" stroke="#164d38" stroke-width="1.5"/>
+          <polygon points="0,-16 4.5,-2 0,0 -4.5,-2" fill="#38bdf8"/>
+          <polygon points="0,16 4.5,2 0,0 -4.5,2" fill="#64748b"/>
+          <circle cx="0" cy="0" r="2.5" fill="#ffffff"/>
         </g>
 
-        <!-- Row 4: Homeoffice (y = 230) -->
-        <g transform="translate(0, 230)">
-          <rect width="400" height="48" fill="#f8fafc"/>
-          <rect x="18" y="14" width="20" height="20" rx="5" fill="#7c3aed"/>
-          <text x="28" y="28" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-                font-size="11" font-weight="800" fill="#ffffff" text-anchor="middle">H</text>
-          <rect x="60" y="15" width="110" height="8" rx="4" fill="#1e293b"/>
-          <rect x="60" y="27" width="70" height="6" rx="3" fill="#94a3b8"/>
-          <rect x="235" y="19" width="40" height="11" rx="3" fill="#e2e8f0"/>
-          <rect x="310" y="17" width="74" height="15" rx="3.5" fill="#7c3aed" fill-opacity="0.15"/>
-          <rect x="318" y="21" width="58" height="7" rx="3.5" fill="#6d28d9"/>
-          <line x1="16" y1="48" x2="384" y2="48" stroke="#cbd5e1" stroke-width="1.5"/>
-        </g>
-
-        <!-- Grand Total Row -->
-        <g transform="translate(0, 284)">
-          <line x1="16" y1="0" x2="384" y2="0" stroke="#f59e0b" stroke-width="2.5"/>
-          <line x1="16" y1="4" x2="384" y2="4" stroke="#cbd5e1" stroke-width="1"/>
-          <rect x="16" y="14" width="368" height="44" rx="6" fill="#09281d"/>
-          <text x="32" y="41" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-              font-size="12.5" font-weight="800" fill="#ffffff" letter-spacing="1">SUMME GESAMT</text>
-          <rect x="252" y="24" width="118" height="24" rx="5" fill="#10b981"/>
-          <text x="311" y="40" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-                font-size="11.5" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="1">EXACT CENT</text>
-        </g>
-
-        <!-- Golden Embossed Verified Seal / Stamp (Inside bottom-right of worksheet) -->
-        <g transform="translate(305, 336)">
-          <circle cx="34" cy="34" r="30" fill="url(#goldDial)" stroke="#78350f" stroke-width="1.5" filter="url(#cardShadow)"/>
-          <circle cx="34" cy="34" r="24" fill="none" stroke="#fef3c7" stroke-width="1.5" stroke-dasharray="3 2"/>
-          <path d="M 34 18 L 44 23 L 44 33 C 44 41 34 45 34 45 C 34 45 24 41 24 33 L 24 23 Z" fill="#78350f"/>
-          <path d="M 29 31 L 33 35 L 40 27" fill="none" stroke="#fef3c7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-          <rect x="4" y="44" width="60" height="13" rx="3.5" fill="#451a03"/>
-          <text x="34" y="54" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-                font-size="7" font-weight="800" fill="#fde68a" text-anchor="middle" letter-spacing="0.5">SEALED LOCAL</text>
-        </g>
-
-        <!-- Documentation & Offline Note -->
-        <g transform="translate(24, 355)">
-          <line x1="0" y1="30" x2="180" y2="30" stroke="#94a3b8" stroke-width="1.5"/>
-          <text x="0" y="44" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-                font-size="10" font-weight="600" fill="#64748b">Private Dokumentation (Offline)</text>
-          <text x="0" y="58" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-                font-size="9" font-weight="500" fill="#94a3b8">Nicht-amtliche Vorbereitung</text>
-        </g>
+        <!-- Glass Screen Angle Reflection Highlight -->
+        <path d="M 0 0 L 650 0 L 320 432 L 0 432 Z" fill="url(#glassReflection)" pointer-events="none"/>
       </g>
     </g>
-
-    <!-- HEAVY VAULT DOOR & LOCKING MECHANISM (Swung open right in 3D perspective) -->
-    <g id="vault-door-perspective" transform="translate(2195, 65)">
-      <!-- 3 Heavy Cylindrical Chrome Locking Pins / Bolts Extended from Door Edge -->
-      <g transform="translate(-18, 150)">
-        <rect width="28" height="24" rx="4" fill="url(#chromeBolt)" stroke="#334155" stroke-width="1" filter="url(#cardShadow)"/>
-        <ellipse cx="6" cy="12" rx="3" ry="9" fill="#ffffff" opacity="0.8"/>
-      </g>
-      <g transform="translate(-18, 280)">
-        <rect width="28" height="24" rx="4" fill="url(#chromeBolt)" stroke="#334155" stroke-width="1" filter="url(#cardShadow)"/>
-        <ellipse cx="6" cy="12" rx="3" ry="9" fill="#ffffff" opacity="0.8"/>
-      </g>
-      <g transform="translate(-18, 410)">
-        <rect width="28" height="24" rx="4" fill="url(#chromeBolt)" stroke="#334155" stroke-width="1" filter="url(#cardShadow)"/>
-        <ellipse cx="6" cy="12" rx="3" ry="9" fill="#ffffff" opacity="0.8"/>
-      </g>
-
-      <!-- Vault Door Outer Body (3D Perspective Slab) -->
-      <path d="M 5 20 L 135 60 L 135 490 L 5 530 Z" fill="url(#vaultSteel)" stroke="url(#vaultDoorRim)" stroke-width="3" filter="url(#doorShadow)"/>
-      <path d="M 5 20 L 16 24 L 16 525 L 5 530 Z" fill="#34d399" opacity="0.3"/>
-
-      <!-- Door Heavy Industrial Hinges (connecting left edge of door to chassis) -->
-      <g transform="translate(-8, 70)">
-        <rect width="20" height="42" rx="5" fill="url(#chromeBolt)" stroke="#0f172a" stroke-width="1.5"/>
-        <line x1="0" y1="21" x2="20" y2="21" stroke="#334155" stroke-width="1.5"/>
-      </g>
-      <g transform="translate(-8, 440)">
-        <rect width="20" height="42" rx="5" fill="url(#chromeBolt)" stroke="#0f172a" stroke-width="1.5"/>
-        <line x1="0" y1="21" x2="20" y2="21" stroke="#334155" stroke-width="1.5"/>
-      </g>
-
-      <!-- Brass Vault Combination Dial (Perspective) -->
-      <g transform="translate(70, 275)">
-        <ellipse cx="0" cy="0" rx="35" ry="40" fill="#04120d" stroke="#fbbf24" stroke-width="2"/>
-        <ellipse cx="0" cy="0" rx="29" ry="34" fill="url(#goldDial)" stroke="#78350f" stroke-width="1.5"/>
-        <ellipse cx="0" cy="0" rx="23" ry="27" fill="none" stroke="#fef3c7" stroke-width="1.5" stroke-dasharray="3 4"/>
-        <!-- Turning Wheel Spokes -->
-        <g stroke="url(#chromeBolt)" stroke-width="5" stroke-linecap="round">
-          <line x1="0" y1="0" x2="0" y2="-21"/>
-          <line x1="0" y1="0" x2="17" y2="11"/>
-          <line x1="0" y1="0" x2="-17" y2="11"/>
-        </g>
-        <ellipse cx="0" cy="0" rx="8.5" ry="10.5" fill="url(#chromeBolt)" stroke="#1e293b" stroke-width="1"/>
-        <ellipse cx="0" cy="0" rx="4" ry="5" fill="#0f172a"/>
-      </g>
-
-      <!-- Vault Engraved Brass Plaque below Dial -->
-      <g transform="translate(28, 355)">
-        <rect width="84" height="34" rx="5" fill="url(#goldDial)" stroke="#78350f" stroke-width="1.5"/>
-        <text x="42" y="16" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-              font-size="9" font-weight="800" fill="#451a03" text-anchor="middle" letter-spacing="0.8">SQLITE</text>
-        <text x="42" y="27" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-              font-size="7.5" font-weight="800" fill="#78350f" text-anchor="middle" letter-spacing="0.6">LOCAL ONLY</text>
-      </g>
-    </g>
+  </g>
   </g>
 </svg>
