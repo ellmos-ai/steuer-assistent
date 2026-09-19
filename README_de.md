@@ -1,4 +1,4 @@
-![steuer-assistent Banner](assets/banner.png)
+![steuer-assistent Banner](assets/banner.svg)
 
 # steuer-assistent
 

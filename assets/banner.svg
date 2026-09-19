@@ -1,0 +1,693 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 680" width="2400" height="680">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#03120c"/>
+      <stop offset="25%" stop-color="#061c14"/>
+      <stop offset="65%" stop-color="#0b2c20"/>
+      <stop offset="100%" stop-color="#04140e"/>
+    </linearGradient>
+    
+    <radialGradient id="radialGlow" cx="74%" cy="46%" r="55%">
+      <stop offset="0%" stop-color="#17543d" stop-opacity="0.55"/>
+      <stop offset="50%" stop-color="#0a2e22" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#03120c" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="brandGlow" cx="18%" cy="35%" r="42%">
+      <stop offset="0%" stop-color="#144633" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#03120c" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Metal & Material Gradients -->
+    <linearGradient id="goldAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="40%" stop-color="#fbbf24"/>
+      <stop offset="80%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+
+    <linearGradient id="goldDial" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef3c7"/>
+      <stop offset="30%" stop-color="#f59e0b"/>
+      <stop offset="70%" stop-color="#b45309"/>
+      <stop offset="100%" stop-color="#78350f"/>
+    </linearGradient>
+
+    <linearGradient id="vaultSteel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a4738"/>
+      <stop offset="35%" stop-color="#103327"/>
+      <stop offset="75%" stop-color="#09221a"/>
+      <stop offset="100%" stop-color="#051510"/>
+    </linearGradient>
+
+    <linearGradient id="vaultDoorRim" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="50%" stop-color="#1d664c"/>
+      <stop offset="100%" stop-color="#0a291f"/>
+    </linearGradient>
+
+    <linearGradient id="chromeBolt" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="25%" stop-color="#cbd5e1"/>
+      <stop offset="55%" stop-color="#64748b"/>
+      <stop offset="80%" stop-color="#e2e8f0"/>
+      <stop offset="100%" stop-color="#475569"/>
+    </linearGradient>
+
+    <linearGradient id="scanBeamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#34d399" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- 4 Dedicated Stream Flow Gradients -->
+    <linearGradient id="streamCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#94a3b8" stop-opacity="0.2"/>
+      <stop offset="30%" stop-color="#38bdf8" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#0284c7" stop-opacity="0.95"/>
+    </linearGradient>
+
+    <linearGradient id="streamGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#94a3b8" stop-opacity="0.2"/>
+      <stop offset="30%" stop-color="#34d399" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#059669" stop-opacity="0.95"/>
+    </linearGradient>
+
+    <linearGradient id="streamAmber" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#94a3b8" stop-opacity="0.2"/>
+      <stop offset="30%" stop-color="#fbbf24" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#d97706" stop-opacity="0.95"/>
+    </linearGradient>
+
+    <linearGradient id="streamPurple" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#94a3b8" stop-opacity="0.2"/>
+      <stop offset="30%" stop-color="#a78bfa" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#7c3aed" stop-opacity="0.95"/>
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="softShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+
+    <filter id="doorShadow" x="-20%" y="-10%" width="140%" height="130%">
+      <feDropShadow dx="14" dy="18" stdDeviation="18" flood-color="#000000" flood-opacity="0.75"/>
+    </filter>
+
+    <filter id="paperShadow" x="-15%" y="-15%" width="135%" height="135%">
+      <feDropShadow dx="4" dy="10" stdDeviation="10" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+
+    <filter id="cardShadow" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+
+    <filter id="glowGreen" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="laserGlow" x="-30%" y="-10%" width="160%" height="120%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Base Canvas Background -->
+  <rect width="2400" height="680" fill="url(#bgGrad)"/>
+  <rect width="2400" height="680" fill="url(#radialGlow)"/>
+  <rect width="2400" height="680" fill="url(#brandGlow)"/>
+
+  <!-- Architectural Precision Grid (Accounting & Ledger Theme) -->
+  <g opacity="0.04" stroke="#34d399" stroke-width="1">
+    <!-- Vertical grid lines -->
+    <line x1="120" y1="0" x2="120" y2="680"/>
+    <line x1="240" y1="0" x2="240" y2="680"/>
+    <line x1="360" y1="0" x2="360" y2="680"/>
+    <line x1="480" y1="0" x2="480" y2="680"/>
+    <line x1="600" y1="0" x2="600" y2="680"/>
+    <line x1="720" y1="0" x2="720" y2="680"/>
+    <line x1="840" y1="0" x2="840" y2="680"/>
+    <line x1="960" y1="0" x2="960" y2="680"/>
+    <line x1="1080" y1="0" x2="1080" y2="680"/>
+    <line x1="1200" y1="0" x2="1200" y2="680"/>
+    <line x1="1320" y1="0" x2="1320" y2="680"/>
+    <line x1="1440" y1="0" x2="1440" y2="680"/>
+    <line x1="1560" y1="0" x2="1560" y2="680"/>
+    <line x1="1680" y1="0" x2="1680" y2="680"/>
+    <line x1="1800" y1="0" x2="1800" y2="680"/>
+    <line x1="1920" y1="0" x2="1920" y2="680"/>
+    <line x1="2040" y1="0" x2="2040" y2="680"/>
+    <line x1="2160" y1="0" x2="2160" y2="680"/>
+    <line x1="2280" y1="0" x2="2280" y2="680"/>
+    <!-- Horizontal grid lines -->
+    <line x1="0" y1="85" x2="2400" y2="85"/>
+    <line x1="0" y1="170" x2="2400" y2="170"/>
+    <line x1="0" y1="255" x2="2400" y2="255"/>
+    <line x1="0" y1="340" x2="2400" y2="340"/>
+    <line x1="0" y1="425" x2="2400" y2="425"/>
+    <line x1="0" y1="510" x2="2400" y2="510"/>
+    <line x1="0" y1="595" x2="2400" y2="595"/>
+  </g>
+
+  <!-- Framing Registration Calipers -->
+  <g stroke="#fbbf24" stroke-width="2" fill="none" opacity="0.35">
+    <path d="M 40 70 L 40 40 L 70 40"/>
+    <path d="M 2330 40 L 2360 40 L 2360 70"/>
+    <path d="M 40 610 L 40 640 L 70 640"/>
+    <path d="M 2330 640 L 2360 640 L 2360 610"/>
+  </g>
+
+  <!-- ======================================================= -->
+  <!-- LEFT PANEL: BRAND WORDMARK & VALUE PROPOSITION          -->
+  <!-- ======================================================= -->
+  <g id="brand-panel">
+    <!-- Top Pill: Offline-first Security Enclave -->
+    <g transform="translate(90, 80)">
+      <rect width="365" height="36" rx="18" fill="#08251b" stroke="#10b981" stroke-width="1.5" stroke-opacity="0.6"/>
+      <circle cx="22" cy="18" r="4.5" fill="#34d399" filter="url(#glowGreen)"/>
+      <circle cx="22" cy="18" r="3" fill="#ffffff"/>
+      <!-- Padlock Icon -->
+      <path d="M 40 18 L 40 16 C 40 13 42 11 45 11 C 48 11 50 13 50 16 L 50 18 M 38 18 L 52 18 C 53 18 54 19 54 20 L 54 26 C 54 27 53 28 52 28 L 38 28 C 37 28 36 27 36 26 L 36 20 C 36 19 37 18 38 18 Z" 
+            fill="none" stroke="#6ee7b7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="64" y="23" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+            font-size="12" font-weight="700" letter-spacing="1.8" fill="#a7f3d0">OFFLINE-FIRST RECEIPT WORKSHEET</text>
+    </g>
+
+    <!-- Main Project Wordmark -->
+    <g transform="translate(90, 205)">
+      <text font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+            font-size="96" font-weight="800" letter-spacing="-1.5" fill="#ffffff">steuer-assistent</text>
+      <!-- Gradient underline accent bar -->
+      <rect y="22" width="710" height="6" rx="3" fill="url(#goldAccent)"/>
+    </g>
+
+    <!-- Tagline (from README) -->
+    <text x="90" y="295" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+          font-size="34" font-weight="400" fill="#f1f5f9" letter-spacing="-0.3">
+      Local receipt worksheet for employee income-related expenses
+    </text>
+
+    <!-- Secondary Invariant Proposition -->
+    <text x="90" y="348" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+          font-size="22" font-weight="500" fill="#94a3b8" letter-spacing="0.2">
+      Cent-precise SQLite store <tspan fill="#34d399">•</tspan> Zero cloud dependencies <tspan fill="#34d399">•</tspan> Your receipts never leave your machine
+    </text>
+
+    <!-- 3 Value Proposition Cards -->
+    <g transform="translate(90, 420)">
+      <!-- Card 1: 100% Offline -->
+      <g transform="translate(0, 0)">
+        <rect width="270" height="135" rx="16" fill="#061d15" stroke="#164d38" stroke-width="1.5" filter="url(#cardShadow)"/>
+        <g transform="translate(22, 22)">
+          <rect width="44" height="44" rx="11" fill="#0d3527"/>
+          <path d="M 22 11 L 33 15 L 33 24 C 33 31 22 35 22 35 C 22 35 11 31 11 24 L 11 15 Z" 
+                fill="none" stroke="#34d399" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M 18 23 L 21 26 L 27 20" 
+                fill="none" stroke="#34d399" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <text x="78" y="44" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+              font-size="19" font-weight="700" fill="#ffffff">100% Offline</text>
+        <text x="78" y="66" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+              font-size="13" font-weight="600" fill="#34d399">Air-Gapped Privacy</text>
+        <text x="22" y="102" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+              font-size="13" font-weight="400" fill="#94a3b8">Zero network calls, zero tracking</text>
+        <text x="22" y="120" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+              font-size="12" font-weight="500" fill="#6ee7b7">No cloud dependencies</text>
+      </g>
+
+      <!-- Card 2: Local SQLite Store -->
+      <g transform="translate(295, 0)">
+        <rect width="270" height="135" rx="16" fill="#061d15" stroke="#164d38" stroke-width="1.5" filter="url(#cardShadow)"/>
+        <g transform="translate(22, 22)">
+          <rect width="44" height="44" rx="11" fill="#2d1f08"/>
+          <ellipse cx="22" cy="17" rx="12" ry="4.5" fill="none" stroke="#fbbf24" stroke-width="2.2"/>
+          <path d="M 10 17 L 10 25 C 10 27.5 15.4 29.5 22 29.5 C 28.6 29.5 34 27.5 34 25 L 34 17" 
+                fill="none" stroke="#fbbf24" stroke-width="2.2"/>
+          <path d="M 10 25 L 10 33 C 10 35.5 15.4 37.5 22 37.5 C 28.6 37.5 34 35.5 34 33 L 34 25" 
+                fill="none" stroke="#fbbf24" stroke-width="2.2"/>
+        </g>
+        <text x="78" y="44" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+              font-size="19" font-weight="700" fill="#ffffff">Local SQLite</text>
+        <text x="78" y="66" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+              font-size="13" font-weight="600" fill="#fbbf24">Deterministic Math</text>
+        <text x="22" y="102" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+              font-size="13" font-weight="400" fill="#94a3b8">%USERPROFILE% store path</text>
+        <text x="22" y="120" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+              font-size="12" font-weight="500" fill="#fde68a">Cent-precise integer arithmetic</text>
+      </g>
+
+      <!-- Card 3: Private ZIP Export -->
+      <g transform="translate(590, 0)">
+        <rect width="270" height="135" rx="16" fill="#061d15" stroke="#164d38" stroke-width="1.5" filter="url(#cardShadow)"/>
+        <g transform="translate(22, 22)">
+          <rect width="44" height="44" rx="11" fill="#082535"/>
+          <path d="M 11 18 L 33 18 L 33 35 L 11 35 Z" fill="none" stroke="#38bdf8" stroke-width="2.2" stroke-linejoin="round"/>
+          <path d="M 8 13 L 36 13 L 33 18 L 11 18 Z" fill="none" stroke="#38bdf8" stroke-width="2.2" stroke-linejoin="round"/>
+          <path d="M 19 23 L 25 23 M 22 18 L 22 23" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/>
+        </g>
+        <text x="78" y="44" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+              font-size="19" font-weight="700" fill="#ffffff">Private Export</text>
+        <text x="78" y="66" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+              font-size="13" font-weight="600" fill="#38bdf8">ZIP Worksheet</text>
+        <text x="22" y="102" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+              font-size="13" font-weight="400" fill="#94a3b8">CSV + Zusammenfassung</text>
+        <text x="22" y="120" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+              font-size="12" font-weight="500" fill="#7dd3fc">Private tax preparation file</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ======================================================= -->
+  <!-- NARRATIVE SCENE: CHAOS TO CATEGORIZED LOCAL VAULT       -->
+  <!-- ======================================================= -->
+
+  <!-- STAGE 1: THE CHAOS OF RAW RECEIPTS (4 Distinct Receipts) -->
+  <g id="receipt-chaos">
+    <!-- Receipt A: Hardware/Laptop Slip (feeds Arbeitsmittel) -->
+    <g transform="translate(1030, 85) rotate(-16)" filter="url(#paperShadow)">
+      <path d="M 0 8 L 7 0 L 14 8 L 21 0 L 28 8 L 35 0 L 42 8 L 49 0 L 56 8 L 63 0 L 70 8 L 77 0 L 84 8 L 91 0 L 98 8 L 105 0 L 112 8 L 119 0 L 126 8 L 133 0 L 138 6
+               L 138 195 
+               L 133 201 L 126 193 L 119 201 L 112 193 L 105 201 L 98 193 L 91 201 L 84 193 L 77 201 L 70 193 L 63 201 L 56 193 L 49 201 L 42 193 L 35 201 L 28 193 L 21 201 L 14 193 L 7 201 L 0 193 Z" 
+            fill="#f8fafc"/>
+      <circle cx="26" cy="26" r="8" fill="#e2e8f0"/>
+      <rect x="42" y="21" width="60" height="5" rx="2.5" fill="#cbd5e1"/>
+      <rect x="42" y="29" width="40" height="4" rx="2" fill="#94a3b8"/>
+      <line x1="14" y1="42" x2="124" y2="42" stroke="#e2e8f0" stroke-width="1.5" stroke-dasharray="3 3"/>
+      <rect x="16" y="52" width="50" height="5" rx="2.5" fill="#cbd5e1"/>
+      <rect x="94" y="52" width="28" height="5" rx="2.5" fill="#94a3b8"/>
+      <rect x="16" y="66" width="60" height="5" rx="2.5" fill="#cbd5e1"/>
+      <rect x="98" y="66" width="24" height="5" rx="2.5" fill="#94a3b8"/>
+      <line x1="14" y1="84" x2="124" y2="84" stroke="#cbd5e1" stroke-width="1.5"/>
+      <rect x="16" y="95" width="34" height="6" rx="3" fill="#64748b"/>
+      <rect x="80" y="93" width="42" height="9" rx="3" fill="#0f382a"/>
+      <!-- Barcode simulation -->
+      <g transform="translate(18, 120)" fill="#64748b">
+        <rect x="0" y="0" width="3" height="28"/>
+        <rect x="6" y="0" width="1.5" height="28"/>
+        <rect x="10" y="0" width="4" height="28"/>
+        <rect x="17" y="0" width="2" height="28"/>
+        <rect x="22" y="0" width="1" height="28"/>
+        <rect x="26" y="0" width="3.5" height="28"/>
+        <rect x="33" y="0" width="2" height="28"/>
+        <rect x="38" y="0" width="4" height="28"/>
+        <rect x="45" y="0" width="1.5" height="28"/>
+        <rect x="50" y="0" width="3" height="28"/>
+        <rect x="56" y="0" width="2" height="28"/>
+        <rect x="61" y="0" width="4" height="28"/>
+        <rect x="68" y="0" width="1.5" height="28"/>
+        <rect x="73" y="0" width="3.5" height="28"/>
+        <rect x="80" y="0" width="2" height="28"/>
+        <rect x="85" y="0" width="4" height="28"/>
+        <rect x="92" y="0" width="2" height="28"/>
+      </g>
+    </g>
+
+    <!-- Receipt B: Commute / Transit Ticket (feeds Fahrtkosten) -->
+    <g transform="translate(1125, 185) rotate(14)" filter="url(#paperShadow)">
+      <path d="M 0 0 L 110 0 L 140 30 L 140 205 
+               L 133 211 L 125 203 L 117 211 L 109 203 L 101 211 L 93 203 L 85 211 L 77 203 L 69 211 L 61 203 L 53 211 L 45 203 L 37 211 L 29 203 L 21 211 L 13 203 L 0 211 Z" 
+            fill="#f1f5f9"/>
+      <path d="M 110 0 L 110 30 L 140 30 Z" fill="#cbd5e1"/>
+      <path d="M 110 30 L 140 30" stroke="#94a3b8" stroke-width="1"/>
+      <line x1="0" y1="95" x2="140" y2="95" stroke="#e2e8f0" stroke-width="2"/>
+      <rect x="16" y="20" width="65" height="6" rx="3" fill="#94a3b8"/>
+      <rect x="16" y="38" width="48" height="5" rx="2.5" fill="#cbd5e1"/>
+      <rect x="92" y="38" width="26" height="5" rx="2.5" fill="#94a3b8"/>
+      <rect x="16" y="52" width="55" height="5" rx="2.5" fill="#cbd5e1"/>
+      <rect x="96" y="52" width="22" height="5" rx="2.5" fill="#94a3b8"/>
+      <rect x="16" y="66" width="38" height="5" rx="2.5" fill="#cbd5e1"/>
+      <rect x="88" y="66" width="30" height="5" rx="2.5" fill="#94a3b8"/>
+      <line x1="14" y1="108" x2="126" y2="108" stroke="#cbd5e1" stroke-width="1.5"/>
+      <rect x="16" y="122" width="36" height="7" rx="3.5" fill="#64748b"/>
+      <rect x="80" y="120" width="42" height="10" rx="3" fill="#0f382a"/>
+      <rect x="16" y="150" width="50" height="16" rx="4" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="2 2"/>
+      <rect x="22" y="156" width="36" height="4" rx="2" fill="#94a3b8"/>
+    </g>
+
+    <!-- Receipt C: Specialist Book & Seminar Slip (feeds Fortbildung) -->
+    <g transform="translate(1045, 335) rotate(-9)" filter="url(#paperShadow)">
+      <path d="M 0 0 L 130 0 L 130 180 
+               L 123 186 L 115 178 L 107 186 L 99 178 L 91 186 L 83 178 L 75 186 L 67 178 L 59 186 L 51 178 L 43 186 L 35 178 L 27 186 L 19 178 L 11 186 L 0 176 Z" 
+            fill="#ffffff"/>
+      <rect x="16" y="18" width="50" height="6" rx="3" fill="#94a3b8"/>
+      <rect x="16" y="34" width="55" height="5" rx="2.5" fill="#cbd5e1"/>
+      <rect x="88" y="34" width="24" height="5" rx="2.5" fill="#94a3b8"/>
+      <rect x="16" y="48" width="45" height="5" rx="2.5" fill="#cbd5e1"/>
+      <rect x="84" y="48" width="28" height="5" rx="2.5" fill="#94a3b8"/>
+      <rect x="16" y="62" width="60" height="5" rx="2.5" fill="#cbd5e1"/>
+      <rect x="90" y="62" width="22" height="5" rx="2.5" fill="#94a3b8"/>
+      <line x1="14" y1="82" x2="116" y2="82" stroke="#cbd5e1" stroke-width="1.5"/>
+      <rect x="16" y="94" width="32" height="7" rx="3.5" fill="#64748b"/>
+      <rect x="72" y="92" width="40" height="10" rx="3" fill="#0f382a"/>
+    </g>
+
+    <!-- Receipt D: Desk & Peripherals Invoice (feeds Homeoffice) -->
+    <g transform="translate(1115, 465) rotate(11)" filter="url(#paperShadow)">
+      <path d="M 0 0 L 125 0 L 125 155 
+               L 119 161 L 111 153 L 103 161 L 95 153 L 87 161 L 79 153 L 71 161 L 63 153 L 55 161 L 47 153 L 39 161 L 31 153 L 23 161 L 15 153 L 0 160 Z" 
+            fill="#f8fafc"/>
+      <rect x="14" y="16" width="44" height="5" rx="2.5" fill="#94a3b8"/>
+      <rect x="14" y="30" width="52" height="4.5" rx="2" fill="#cbd5e1"/>
+      <rect x="82" y="30" width="26" height="4.5" rx="2" fill="#94a3b8"/>
+      <rect x="14" y="44" width="40" height="4.5" rx="2" fill="#cbd5e1"/>
+      <rect x="78" y="44" width="30" height="4.5" rx="2" fill="#94a3b8"/>
+      <line x1="12" y1="62" x2="112" y2="62" stroke="#cbd5e1" stroke-width="1.5"/>
+      <rect x="14" y="74" width="30" height="6" rx="3" fill="#64748b"/>
+      <rect x="70" y="72" width="38" height="9" rx="3" fill="#0f382a"/>
+    </g>
+  </g>
+
+  <!-- STAGE 2: CATEGORIZATION PIPELINE & PRECISION SCAN BEAM -->
+  <g id="categorization-pipeline">
+    <!-- 4 Structured Category Ribbon Conduits flowing directly to the ledger rows at (1740, y) -->
+    <!-- Ribbon 1: Arbeitsmittel (Cyan) -> y: 250 (Row 1) -->
+    <path d="M 1180 135 C 1270 135, 1330 250, 1740 250" fill="none" stroke="url(#streamCyan)" stroke-width="3" stroke-dasharray="6 6"/>
+    <!-- Ribbon 2: Fahrtkosten (Emerald) -> y: 298 (Row 2) -->
+    <path d="M 1235 245 C 1320 245, 1350 298, 1740 298" fill="none" stroke="url(#streamGreen)" stroke-width="3" stroke-dasharray="6 6"/>
+    <!-- Ribbon 3: Fortbildung (Amber) -> y: 346 (Row 3) -->
+    <path d="M 1205 385 C 1300 385, 1350 346, 1740 346" fill="none" stroke="url(#streamAmber)" stroke-width="3" stroke-dasharray="6 6"/>
+    <!-- Ribbon 4: Homeoffice (Purple) -> y: 394 (Row 4) -->
+    <path d="M 1190 495 C 1300 495, 1360 394, 1740 394" fill="none" stroke="url(#streamPurple)" stroke-width="3" stroke-dasharray="6 6"/>
+
+    <!-- Dynamic Flow Particles along trajectories -->
+    <circle cx="1250" cy="155" r="4" fill="#38bdf8" filter="url(#glowGreen)"/>
+    <circle cx="1340" cy="210" r="3.5" fill="#38bdf8" filter="url(#glowGreen)"/>
+    <circle cx="1295" cy="265" r="4" fill="#34d399" filter="url(#glowGreen)"/>
+    <circle cx="1265" cy="385" r="3.5" fill="#fbbf24" filter="url(#glowGreen)"/>
+    <circle cx="1340" cy="355" r="4" fill="#fbbf24" filter="url(#glowGreen)"/>
+    <circle cx="1255" cy="475" r="3.5" fill="#a78bfa" filter="url(#glowGreen)"/>
+    <circle cx="1345" cy="415" r="4" fill="#a78bfa" filter="url(#glowGreen)"/>
+
+    <!-- Vertical Optical Scan Beam (x: 1410) -->
+    <rect x="1395" y="75" width="30" height="530" fill="url(#scanBeamGrad)"/>
+    <line x1="1410" y1="70" x2="1410" y2="610" stroke="#34d399" stroke-width="2.5" filter="url(#laserGlow)"/>
+
+    <!-- Sensor Emitter Caliper Heads -->
+    <g transform="translate(1385, 55)">
+      <rect width="50" height="24" rx="6" fill="#061d15" stroke="#2d7a5e" stroke-width="1.5"/>
+      <circle cx="25" cy="12" r="5" fill="#10b981" filter="url(#glowGreen)"/>
+      <circle cx="25" cy="12" r="2.5" fill="#ffffff"/>
+    </g>
+    <g transform="translate(1385, 605)">
+      <rect width="50" height="24" rx="6" fill="#061d15" stroke="#2d7a5e" stroke-width="1.5"/>
+      <circle cx="25" cy="12" r="5" fill="#10b981" filter="url(#glowGreen)"/>
+      <circle cx="25" cy="12" r="2.5" fill="#ffffff"/>
+    </g>
+
+    <!-- 4 Clean Categorization Badges / Chips -->
+    <!-- Chip 1: Arbeitsmittel (Cyan) -->
+    <g transform="translate(1450, 110)" filter="url(#cardShadow)">
+      <rect width="180" height="40" rx="20" fill="#061f2d" stroke="#38bdf8" stroke-width="1.8"/>
+      <g transform="translate(16, 11)">
+        <rect width="20" height="14" rx="2" fill="none" stroke="#38bdf8" stroke-width="1.8"/>
+        <line x1="0" y1="18" x2="20" y2="18" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/>
+      </g>
+      <text x="48" y="25" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+            font-size="13.5" font-weight="700" fill="#e0f2fe" letter-spacing="0.5">Arbeitsmittel</text>
+    </g>
+
+    <!-- Chip 2: Fahrtkosten (Emerald) -->
+    <g transform="translate(1450, 215)" filter="url(#cardShadow)">
+      <rect width="180" height="40" rx="20" fill="#06271c" stroke="#34d399" stroke-width="1.8"/>
+      <g transform="translate(18, 11)">
+        <rect width="16" height="18" rx="3" fill="none" stroke="#34d399" stroke-width="1.8"/>
+        <circle cx="4.5" cy="13" r="1.5" fill="#34d399"/>
+        <circle cx="11.5" cy="13" r="1.5" fill="#34d399"/>
+        <line x1="3" y1="7" x2="13" y2="7" stroke="#34d399" stroke-width="1.5"/>
+      </g>
+      <text x="48" y="25" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+            font-size="13.5" font-weight="700" fill="#d1fae5" letter-spacing="0.5">Fahrtkosten</text>
+    </g>
+
+    <!-- Chip 3: Fortbildung (Amber) -->
+    <g transform="translate(1450, 320)" filter="url(#cardShadow)">
+      <rect width="180" height="40" rx="20" fill="#2d1c06" stroke="#fbbf24" stroke-width="1.8"/>
+      <g transform="translate(17, 12)">
+        <path d="M 1 3 C 5 2 10 3 10 14 C 10 14 5 13 1 14 Z" fill="none" stroke="#fbbf24" stroke-width="1.8"/>
+        <path d="M 19 3 C 15 2 10 3 10 14 C 10 14 15 13 19 14 Z" fill="none" stroke="#fbbf24" stroke-width="1.8"/>
+      </g>
+      <text x="48" y="25" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+            font-size="13.5" font-weight="700" fill="#fef3c7" letter-spacing="0.5">Fortbildung</text>
+    </g>
+
+    <!-- Chip 4: Homeoffice (Purple) -->
+    <g transform="translate(1450, 425)" filter="url(#cardShadow)">
+      <rect width="180" height="40" rx="20" fill="#201235" stroke="#a78bfa" stroke-width="1.8"/>
+      <g transform="translate(17, 11)">
+        <path d="M 1 10 L 9 3 L 17 10 L 17 18 L 1 18 Z" fill="none" stroke="#a78bfa" stroke-width="1.8" stroke-linejoin="round"/>
+        <line x1="7" y1="18" x2="7" y2="13" stroke="#a78bfa" stroke-width="1.5"/>
+        <line x1="11" y1="18" x2="11" y2="13" stroke="#a78bfa" stroke-width="1.5"/>
+      </g>
+      <text x="48" y="25" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+            font-size="13.5" font-weight="700" fill="#ede9fe" letter-spacing="0.5">Homeoffice</text>
+    </g>
+  </g>
+
+  <!-- STAGE 3: THE SEALED LOCAL VAULT & MASTER WORKSHEET -->
+  <g id="local-vault-archive">
+    <!-- Heavy Outer Vault Enclosure Chassis (x: 1740 to 2200) -->
+    <g transform="translate(1740, 65)">
+      <rect width="455" height="545" rx="24" fill="url(#vaultSteel)" stroke="#23604b" stroke-width="3" filter="url(#softShadow)"/>
+      <rect x="4" y="4" width="447" height="537" rx="21" fill="none" stroke="#082017" stroke-width="2"/>
+
+      <!-- Vault Status Bar at Top -->
+      <g transform="translate(22, 18)">
+        <circle cx="10" cy="12" r="4.5" fill="#10b981" filter="url(#glowGreen)"/>
+        <circle cx="10" cy="12" r="2.5" fill="#ffffff"/>
+        <text x="24" y="16" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+              font-size="10.5" font-weight="800" letter-spacing="1.5" fill="#6ee7b7">
+          LOCAL VAULT ENCLAVE • ZERO OUTBOUND BYTES
+        </text>
+      </g>
+
+      <!-- Corner Security Rivets -->
+      <circle cx="20" cy="46" r="4.5" fill="url(#chromeBolt)"/>
+      <circle cx="435" cy="46" r="4.5" fill="url(#chromeBolt)"/>
+      <circle cx="20" cy="525" r="4.5" fill="url(#chromeBolt)"/>
+      <circle cx="435" cy="525" r="4.5" fill="url(#chromeBolt)"/>
+
+      <!-- Interior Recessed Chamber -->
+      <rect x="18" y="44" width="419" height="480" rx="16" fill="#04120d" stroke="#0a2a1f" stroke-width="2"/>
+
+      <!-- Archival Folder Tabs (Standing in background) -->
+      <!-- Tab 1: Cyan -->
+      <path d="M 32 60 L 105 60 L 115 74 L 380 74 L 380 95 L 32 95 Z" fill="#0369a1" opacity="0.85"/>
+      <text x="42" y="70" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+            font-size="8.5" font-weight="700" fill="#ffffff" letter-spacing="0.6">ARBEITSMITTEL</text>
+
+      <!-- Tab 2: Emerald -->
+      <path d="M 120 60 L 195 60 L 205 74 L 380 74 L 380 95 L 120 95 Z" fill="#047857" opacity="0.85"/>
+      <text x="130" y="70" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+            font-size="8.5" font-weight="700" fill="#ffffff" letter-spacing="0.6">FAHRTKOSTEN</text>
+
+      <!-- Tab 3: Amber -->
+      <path d="M 210 60 L 285 60 L 295 74 L 380 74 L 380 95 L 210 95 Z" fill="#b45309" opacity="0.85"/>
+      <text x="220" y="70" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+            font-size="8.5" font-weight="700" fill="#ffffff" letter-spacing="0.6">FORTBILDUNG</text>
+
+      <!-- Tab 4: Purple -->
+      <path d="M 300 60 L 375 60 L 385 74 L 395 74 L 395 95 L 300 95 Z" fill="#6d28d9" opacity="0.85"/>
+      <text x="308" y="70" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+            font-size="8.5" font-weight="700" fill="#ffffff" letter-spacing="0.6">HOMEOFFICE</text>
+
+      <!-- THE PRISTINE MASTER WORKSHEET (Arbeitsunterlage) -->
+      <g transform="translate(28, 76)" filter="url(#softShadow)">
+        <rect width="400" height="432" rx="10" fill="#ffffff"/>
+
+        <!-- Header Banner with Integrated export.zip Badge -->
+        <path d="M 0 10 C 0 4.5 4.5 0 10 0 L 390 0 C 395.5 0 400 4.5 400 10 L 400 58 L 0 58 Z" fill="#0b2e21"/>
+        
+        <!-- Document Title & Icon -->
+        <g transform="translate(16, 16)">
+          <rect width="18" height="24" rx="2" fill="none" stroke="#34d399" stroke-width="1.8"/>
+          <line x1="4" y1="7" x2="14" y2="7" stroke="#34d399" stroke-width="1.5"/>
+          <line x1="4" y1="12" x2="14" y2="12" stroke="#34d399" stroke-width="1.5"/>
+          <line x1="4" y1="17" x2="10" y2="17" stroke="#34d399" stroke-width="1.5"/>
+        </g>
+        <text x="42" y="29" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+              font-size="12.5" font-weight="800" letter-spacing="0.5" fill="#ffffff">WERBUNGSKOSTEN-ÜBERSICHT</text>
+        <text x="42" y="46" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+              font-size="9.5" font-weight="600" letter-spacing="0.4" fill="#a7f3d0">Private Arbeitsunterlage • Nicht-amtlich</text>
+
+        <!-- Elegant Floating ZIP Export Badge in Document Header -->
+        <g transform="translate(276, 12)">
+          <rect width="112" height="34" rx="8" fill="#061d15" stroke="#fbbf24" stroke-width="1.5"/>
+          <g transform="translate(9, 8)">
+            <rect width="14" height="18" rx="2" fill="#d97706"/>
+            <line x1="7" y1="2" x2="7" y2="12" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="1.5 1.5"/>
+            <rect x="5.5" y="10" width="3" height="4" rx="1" fill="#fef3c7"/>
+          </g>
+          <text x="30" y="18" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+                font-size="11" font-weight="800" fill="#ffffff" letter-spacing="0.5">export.zip</text>
+          <text x="30" y="28" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+                font-size="7.5" font-weight="600" fill="#fbbf24">CSV + SUMMARY</text>
+        </g>
+
+        <!-- Table Column Headers -->
+        <g transform="translate(0, 58)">
+          <rect width="400" height="28" fill="#f1f5f9"/>
+          <text x="18" y="18" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+                font-size="9.5" font-weight="800" fill="#64748b" letter-spacing="0.8">KAT.</text>
+          <text x="60" y="18" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+                font-size="9.5" font-weight="800" fill="#64748b" letter-spacing="0.8">BELEGE / POSTEN</text>
+          <text x="235" y="18" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+                font-size="9.5" font-weight="800" fill="#64748b" letter-spacing="0.8">ANZAHL</text>
+          <text x="325" y="18" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+                font-size="9.5" font-weight="800" fill="#64748b" letter-spacing="0.8">SUMME</text>
+        </g>
+
+        <!-- 4 Categorized Rows (Abstract placeholder lines - NO fake money/tax amounts) -->
+        <!-- Row 1: Arbeitsmittel (y = 86) -->
+        <g transform="translate(0, 86)">
+          <rect width="400" height="48" fill="#ffffff"/>
+          <rect x="18" y="14" width="20" height="20" rx="5" fill="#0284c7"/>
+          <text x="28" y="28" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+                font-size="11" font-weight="800" fill="#ffffff" text-anchor="middle">A</text>
+          <rect x="60" y="15" width="115" height="8" rx="4" fill="#1e293b"/>
+          <rect x="60" y="27" width="75" height="6" rx="3" fill="#94a3b8"/>
+          <rect x="235" y="19" width="36" height="11" rx="3" fill="#e2e8f0"/>
+          <rect x="310" y="17" width="74" height="15" rx="3.5" fill="#0284c7" fill-opacity="0.15"/>
+          <rect x="318" y="21" width="58" height="7" rx="3.5" fill="#0369a1"/>
+          <line x1="16" y1="48" x2="384" y2="48" stroke="#f1f5f9" stroke-width="1.5"/>
+        </g>
+
+        <!-- Row 2: Fahrtkosten (y = 134) -->
+        <g transform="translate(0, 134)">
+          <rect width="400" height="48" fill="#f8fafc"/>
+          <rect x="18" y="14" width="20" height="20" rx="5" fill="#059669"/>
+          <text x="28" y="28" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+                font-size="11" font-weight="800" fill="#ffffff" text-anchor="middle">F</text>
+          <rect x="60" y="15" width="105" height="8" rx="4" fill="#1e293b"/>
+          <rect x="60" y="27" width="85" height="6" rx="3" fill="#94a3b8"/>
+          <rect x="235" y="19" width="32" height="11" rx="3" fill="#e2e8f0"/>
+          <rect x="310" y="17" width="74" height="15" rx="3.5" fill="#059669" fill-opacity="0.15"/>
+          <rect x="318" y="21" width="58" height="7" rx="3.5" fill="#047857"/>
+          <line x1="16" y1="48" x2="384" y2="48" stroke="#f1f5f9" stroke-width="1.5"/>
+        </g>
+
+        <!-- Row 3: Fortbildung (y = 182) -->
+        <g transform="translate(0, 182)">
+          <rect width="400" height="48" fill="#ffffff"/>
+          <rect x="18" y="14" width="20" height="20" rx="5" fill="#d97706"/>
+          <text x="28" y="28" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+                font-size="11" font-weight="800" fill="#ffffff" text-anchor="middle">B</text>
+          <rect x="60" y="15" width="95" height="8" rx="4" fill="#1e293b"/>
+          <rect x="60" y="27" width="65" height="6" rx="3" fill="#94a3b8"/>
+          <rect x="235" y="19" width="28" height="11" rx="3" fill="#e2e8f0"/>
+          <rect x="310" y="17" width="74" height="15" rx="3.5" fill="#d97706" fill-opacity="0.15"/>
+          <rect x="318" y="21" width="58" height="7" rx="3.5" fill="#b45309"/>
+          <line x1="16" y1="48" x2="384" y2="48" stroke="#f1f5f9" stroke-width="1.5"/>
+        </g>
+
+        <!-- Row 4: Homeoffice (y = 230) -->
+        <g transform="translate(0, 230)">
+          <rect width="400" height="48" fill="#f8fafc"/>
+          <rect x="18" y="14" width="20" height="20" rx="5" fill="#7c3aed"/>
+          <text x="28" y="28" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+                font-size="11" font-weight="800" fill="#ffffff" text-anchor="middle">H</text>
+          <rect x="60" y="15" width="110" height="8" rx="4" fill="#1e293b"/>
+          <rect x="60" y="27" width="70" height="6" rx="3" fill="#94a3b8"/>
+          <rect x="235" y="19" width="40" height="11" rx="3" fill="#e2e8f0"/>
+          <rect x="310" y="17" width="74" height="15" rx="3.5" fill="#7c3aed" fill-opacity="0.15"/>
+          <rect x="318" y="21" width="58" height="7" rx="3.5" fill="#6d28d9"/>
+          <line x1="16" y1="48" x2="384" y2="48" stroke="#cbd5e1" stroke-width="1.5"/>
+        </g>
+
+        <!-- Grand Total Row -->
+        <g transform="translate(0, 284)">
+          <line x1="16" y1="0" x2="384" y2="0" stroke="#f59e0b" stroke-width="2.5"/>
+          <line x1="16" y1="4" x2="384" y2="4" stroke="#cbd5e1" stroke-width="1"/>
+          <rect x="16" y="14" width="368" height="44" rx="6" fill="#09281d"/>
+          <text x="32" y="41" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+              font-size="12.5" font-weight="800" fill="#ffffff" letter-spacing="1">SUMME GESAMT</text>
+          <rect x="252" y="24" width="118" height="24" rx="5" fill="#10b981"/>
+          <text x="311" y="40" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+                font-size="11.5" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="1">EXACT CENT</text>
+        </g>
+
+        <!-- Golden Embossed Verified Seal / Stamp (Inside bottom-right of worksheet) -->
+        <g transform="translate(305, 336)">
+          <circle cx="34" cy="34" r="30" fill="url(#goldDial)" stroke="#78350f" stroke-width="1.5" filter="url(#cardShadow)"/>
+          <circle cx="34" cy="34" r="24" fill="none" stroke="#fef3c7" stroke-width="1.5" stroke-dasharray="3 2"/>
+          <path d="M 34 18 L 44 23 L 44 33 C 44 41 34 45 34 45 C 34 45 24 41 24 33 L 24 23 Z" fill="#78350f"/>
+          <path d="M 29 31 L 33 35 L 40 27" fill="none" stroke="#fef3c7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="4" y="44" width="60" height="13" rx="3.5" fill="#451a03"/>
+          <text x="34" y="54" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+                font-size="7" font-weight="800" fill="#fde68a" text-anchor="middle" letter-spacing="0.5">SEALED LOCAL</text>
+        </g>
+
+        <!-- Documentation & Offline Note -->
+        <g transform="translate(24, 355)">
+          <line x1="0" y1="30" x2="180" y2="30" stroke="#94a3b8" stroke-width="1.5"/>
+          <text x="0" y="44" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+                font-size="10" font-weight="600" fill="#64748b">Private Dokumentation (Offline)</text>
+          <text x="0" y="58" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+                font-size="9" font-weight="500" fill="#94a3b8">Nicht-amtliche Vorbereitung</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- HEAVY VAULT DOOR & LOCKING MECHANISM (Swung open right in 3D perspective) -->
+    <g id="vault-door-perspective" transform="translate(2195, 65)">
+      <!-- 3 Heavy Cylindrical Chrome Locking Pins / Bolts Extended from Door Edge -->
+      <g transform="translate(-18, 150)">
+        <rect width="28" height="24" rx="4" fill="url(#chromeBolt)" stroke="#334155" stroke-width="1" filter="url(#cardShadow)"/>
+        <ellipse cx="6" cy="12" rx="3" ry="9" fill="#ffffff" opacity="0.8"/>
+      </g>
+      <g transform="translate(-18, 280)">
+        <rect width="28" height="24" rx="4" fill="url(#chromeBolt)" stroke="#334155" stroke-width="1" filter="url(#cardShadow)"/>
+        <ellipse cx="6" cy="12" rx="3" ry="9" fill="#ffffff" opacity="0.8"/>
+      </g>
+      <g transform="translate(-18, 410)">
+        <rect width="28" height="24" rx="4" fill="url(#chromeBolt)" stroke="#334155" stroke-width="1" filter="url(#cardShadow)"/>
+        <ellipse cx="6" cy="12" rx="3" ry="9" fill="#ffffff" opacity="0.8"/>
+      </g>
+
+      <!-- Vault Door Outer Body (3D Perspective Slab) -->
+      <path d="M 5 20 L 135 60 L 135 490 L 5 530 Z" fill="url(#vaultSteel)" stroke="url(#vaultDoorRim)" stroke-width="3" filter="url(#doorShadow)"/>
+      <path d="M 5 20 L 16 24 L 16 525 L 5 530 Z" fill="#34d399" opacity="0.3"/>
+
+      <!-- Door Heavy Industrial Hinges (connecting left edge of door to chassis) -->
+      <g transform="translate(-8, 70)">
+        <rect width="20" height="42" rx="5" fill="url(#chromeBolt)" stroke="#0f172a" stroke-width="1.5"/>
+        <line x1="0" y1="21" x2="20" y2="21" stroke="#334155" stroke-width="1.5"/>
+      </g>
+      <g transform="translate(-8, 440)">
+        <rect width="20" height="42" rx="5" fill="url(#chromeBolt)" stroke="#0f172a" stroke-width="1.5"/>
+        <line x1="0" y1="21" x2="20" y2="21" stroke="#334155" stroke-width="1.5"/>
+      </g>
+
+      <!-- Brass Vault Combination Dial (Perspective) -->
+      <g transform="translate(70, 275)">
+        <ellipse cx="0" cy="0" rx="35" ry="40" fill="#04120d" stroke="#fbbf24" stroke-width="2"/>
+        <ellipse cx="0" cy="0" rx="29" ry="34" fill="url(#goldDial)" stroke="#78350f" stroke-width="1.5"/>
+        <ellipse cx="0" cy="0" rx="23" ry="27" fill="none" stroke="#fef3c7" stroke-width="1.5" stroke-dasharray="3 4"/>
+        <!-- Turning Wheel Spokes -->
+        <g stroke="url(#chromeBolt)" stroke-width="5" stroke-linecap="round">
+          <line x1="0" y1="0" x2="0" y2="-21"/>
+          <line x1="0" y1="0" x2="17" y2="11"/>
+          <line x1="0" y1="0" x2="-17" y2="11"/>
+        </g>
+        <ellipse cx="0" cy="0" rx="8.5" ry="10.5" fill="url(#chromeBolt)" stroke="#1e293b" stroke-width="1"/>
+        <ellipse cx="0" cy="0" rx="4" ry="5" fill="#0f172a"/>
+      </g>
+
+      <!-- Vault Engraved Brass Plaque below Dial -->
+      <g transform="translate(28, 355)">
+        <rect width="84" height="34" rx="5" fill="url(#goldDial)" stroke="#78350f" stroke-width="1.5"/>
+        <text x="42" y="16" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+              font-size="9" font-weight="800" fill="#451a03" text-anchor="middle" letter-spacing="0.8">SQLITE</text>
+        <text x="42" y="27" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+              font-size="7.5" font-weight="800" fill="#78350f" text-anchor="middle" letter-spacing="0.6">LOCAL ONLY</text>
+      </g>
+    </g>
+  </g>
+</svg>
