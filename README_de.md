@@ -223,6 +223,10 @@ python -B -m pytest tests -q -p no:cacheprovider
 | **[LaunchBoards](https://github.com/file-bricks/LaunchBoards)** | file-bricks | Desktop-Orchestrierung | Arbeitsbereich-Launcher & App-Profilverwaltung |
 | **[WikiStub-Seed](https://github.com/dev-bricks/WikiStub-Seed)** | dev-bricks | Wissensbasis-Tooling | Statische Wissens- und Notiz-Vaults |
 
+### FolderHome-Verbraucher mit festgelegter Source-Revision
+
+Im FolderHome-Source-Commit [51d5dc71](https://github.com/ellmos-ai/FolderHome/commit/51d5dc71ec11f1cde4598c528323483a50f6e52c) pinnt die Komponente `steuer-assistent` dieses Repository auf [Revision 5d39aeec](https://github.com/ellmos-ai/steuer-assistent/commit/5d39aeec98bf0a5734bf07dc35a58aa9e1331309). Die Bridge ruft die lokalen Funktionen `SteuerAssistent.add_beleg` und `export_arbeitsunterlage` mit den vom Nutzer bereitgestellten Werten auf, um Belege zu erfassen und eine lokale Arbeitsunterlage vorzubereiten. Das FolderHome-Manifest setzt `default_mode` auf `dry-run` und `live_enabled` auf `false`. Wenn der FolderHome-Anwendungspfad die Aufrufe freigibt, können diese Funktionen Belege und Arbeitsunterlagen lokal schreiben; das Gate setzt die Anwendung durch, nicht die Bridge. Beschrieben wird die gepinnte lokale Grenze, keine Steuerberatung, Steuerübermittlung oder Kompatibilität mit späteren Revisionen.
+
 ## Sicherheit und Schwachstellenmeldung
 
 Sicherheit und Datenschutz für persönliche Finanzdaten sind oberste Entwurfsprinzipien:
