@@ -67,3 +67,7 @@ export_zip = sa.export_arbeitsunterlage(jahr=2026)
 - [SECURITY.md](SECURITY.md): Security and vulnerability reporting policies with 48h SLA.
 - [MARKETING-LOG.txt](MARKETING-LOG.txt): Local discoverability log, persona definitions, and SEO positioning.
 - [LICENSE](LICENSE): MIT License.
+
+## Documented consumer
+
+- FolderHome source commit [51d5dc71](https://github.com/ellmos-ai/FolderHome/commit/51d5dc71ec11f1cde4598c528323483a50f6e52c) pins this repository as `steuer-assistent` at revision [5d39aeec](https://github.com/ellmos-ai/steuer-assistent/commit/5d39aeec98bf0a5734bf07dc35a58aa9e1331309). Its bridge calls local receipt-entry and worksheet-export functions using user-provided values. The FolderHome manifest sets `default_mode` to `dry-run` and `live_enabled` to `false`. The application path gates locally authorized receipt and worksheet writes; the bridge itself does not enforce that gate. This is not tax advice, filing, or a later-revision compatibility claim.

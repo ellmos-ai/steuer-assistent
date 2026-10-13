@@ -223,6 +223,10 @@ python -B -m pytest tests -q -p no:cacheprovider
 | **[LaunchBoards](https://github.com/file-bricks/LaunchBoards)** | file-bricks | Desktop orchestration | Workspace launcher and app profile manager |
 | **[WikiStub-Seed](https://github.com/dev-bricks/WikiStub-Seed)** | dev-bricks | Knowledge base tooling | Static site and local vault generation |
 
+### FolderHome consumer (pinned source)
+
+At FolderHome source commit [51d5dc71](https://github.com/ellmos-ai/FolderHome/commit/51d5dc71ec11f1cde4598c528323483a50f6e52c), its `steuer-assistent` component pins this repository at [revision 5d39aeec](https://github.com/ellmos-ai/steuer-assistent/commit/5d39aeec98bf0a5734bf07dc35a58aa9e1331309). The bridge calls the local `SteuerAssistent.add_beleg` and `export_arbeitsunterlage` functions with user-supplied values to record receipts and prepare a local worksheet. FolderHome's manifest sets `default_mode` to `dry-run` and `live_enabled` to `false`. When the FolderHome application path authorizes them, these functions can write receipt and worksheet data locally; the application path enforces the gate, not the bridge. This describes the pinned local boundary, not tax advice, tax filing, or compatibility with later revisions.
+
 ## Security and Vulnerability Reporting
 
 Security and user data privacy are core design principles:
