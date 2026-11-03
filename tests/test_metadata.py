@@ -167,6 +167,22 @@ class MetadataDiscoverabilityContractCase(unittest.TestCase):
         self.assertIn(f"Version: {expected}", self.llms)
         self.assertIn(f"## [{expected}]", self.changelog)
 
+    def test_cli_session_preview_asset_and_parity(self) -> None:
+        preview = ROOT / "assets" / "cli-session-preview.svg"
+        self.assertTrue(preview.is_file(), "cli-session-preview.svg must exist")
+        self.assertIn("assets/cli-session-preview.svg", self.readme_en)
+        self.assertIn("assets/cli-session-preview.svg", self.readme_de)
+
+    def test_badge_and_discoverability_currency(self) -> None:
+        self.assertIn("tests-47%20passed", self.readme_en)
+        self.assertIn("tests-47%20passed", self.readme_de)
+        self.assertIn("checked-2026--11--03", self.readme_en)
+        self.assertIn("checked-2026--11--03", self.readme_de)
+        self.assertIn("receipt-manager", self.pyproject)
+        self.assertIn("local-first", self.pyproject)
+        self.assertIn("Last-checked: 2026-11-03", self.llms)
+        self.assertIn("## [Unreleased]", self.changelog)
+
 
 if __name__ == "__main__":
     unittest.main()

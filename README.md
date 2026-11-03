@@ -8,7 +8,7 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Platform: Windows | Linux | macOS](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](#architecture)
-[![Tests: 35+ Passed](https://img.shields.io/badge/tests-35%2B%20passed-brightgreen.svg)](#installation-and-testing)
+[![Tests: 47 Passed](https://img.shields.io/badge/tests-47%20passed-brightgreen.svg)](#installation-and-testing)
 [![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
 [![Privacy: Offline--First](https://img.shields.io/badge/Privacy-Offline--First-green.svg)](#store-and-data-privacy)
 [![Legal: Non--Official](https://img.shields.io/badge/Status-Private--Worksheet-orange.svg)](#legal-framework-and-operating-mode)
@@ -16,7 +16,7 @@
 [![Ecosystem: ellmos--ai](https://img.shields.io/badge/ecosystem-ellmos--ai-blue.svg)](https://github.com/ellmos-ai)
 [![Umbrella: open--bricks](https://img.shields.io/badge/umbrella-open--bricks-orange.svg)](https://github.com/open-bricks)
 [![LLM-Ready: llms.txt](https://img.shields.io/badge/LLM--Ready-llms.txt-purple.svg)](llms.txt)
-[![Audit: 2026--09--18](https://img.shields.io/badge/checked-2026--09--18-success.svg)](CHANGELOG.md)
+[![Audit: 2026--11--03](https://img.shields.io/badge/checked-2026--11--03-success.svg)](CHANGELOG.md)
 
 *Local receipt worksheet for employee income-related expenses — not tax advice.*
 
@@ -150,6 +150,10 @@ sequenceDiagram
 | **Standard Library Only** | Requires only Python 3.10+ and standard library modules (`sqlite3`). Zero third-party runtime dependencies. |
 
 ## Usage
+
+### Visual CLI Workflow
+
+![steuer-assistent CLI Preview](assets/cli-session-preview.svg)
 
 ### Command Line Interface (CLI)
 

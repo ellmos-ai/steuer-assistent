@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 510" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <!-- Terminal Window Container -->
+  <g filter="url(#shadow)">
+    <!-- Window Body -->
+    <rect x="25" y="20" width="800" height="470" rx="10" fill="url(#bgGrad)" stroke="#334155" stroke-width="1.5"/>
+
+    <!-- Window Titlebar -->
+    <path d="M 25 30 Q 25 20 35 20 L 815 20 Q 825 20 825 30 L 825 58 L 25 58 Z" fill="#0f172a"/>
+    <line x1="25" y1="58" x2="825" y2="58" stroke="#334155" stroke-width="1"/>
+
+    <!-- Window Controls (Traffic Lights) -->
+    <circle cx="48" cy="39" r="6" fill="#ef4444" stroke="#dc2626" stroke-width="0.5"/>
+    <circle cx="68" cy="39" r="6" fill="#f59e0b" stroke="#d97706" stroke-width="0.5"/>
+    <circle cx="88" cy="39" r="6" fill="#10b981" stroke="#059669" stroke-width="0.5"/>
+
+    <!-- Titlebar Title -->
+    <text x="425" y="43" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="600" text-anchor="middle">
+      steuer-assistent — CLI Session Preview (Offline-First &amp; Cent-Exact Math)
+    </text>
+  </g>
+
+  <!-- Terminal Content -->
+  <g font-family="'JetBrains Mono', 'Fira Code', 'Cascadia Code', Menlo, Monaco, Consolas, monospace" font-size="12" xml:space="preserve">
+    <!-- Command 1: add beleg 1 -->
+    <text x="50" y="85">
+      <tspan fill="#38bdf8" font-weight="bold">❯</tspan>
+      <tspan fill="#94a3b8"> </tspan>
+      <tspan fill="#f1f5f9">steuer-assistent add --kategorie Arbeitsmittel --betrag 49.90 --datum 2026-03-15 --notiz "USB-Hub"</tspan>
+    </text>
+    <text x="50" y="106">
+      <tspan fill="#34d399">✓</tspan>
+      <tspan fill="#cbd5e1"> Beleg </tspan>
+      <tspan fill="#38bdf8" font-weight="bold">B-20260315-001</tspan>
+      <tspan fill="#cbd5e1"> hinzugefügt: </tspan>
+      <tspan fill="#f59e0b" font-weight="bold">49.90 EUR</tspan>
+      <tspan fill="#94a3b8"> (Arbeitsmittel | Notiz: maskiert)</tspan>
+    </text>
+
+    <!-- Command 2: add beleg 2 -->
+    <text x="50" y="140">
+      <tspan fill="#38bdf8" font-weight="bold">❯</tspan>
+      <tspan fill="#94a3b8"> </tspan>
+      <tspan fill="#f1f5f9">steuer-assistent add --kategorie Fachliteratur --betrag 34.50 --datum 2026-04-10 --notiz "Python Handbuch"</tspan>
+    </text>
+    <text x="50" y="161">
+      <tspan fill="#34d399">✓</tspan>
+      <tspan fill="#cbd5e1"> Beleg </tspan>
+      <tspan fill="#38bdf8" font-weight="bold">B-20260410-001</tspan>
+      <tspan fill="#cbd5e1"> hinzugefügt: </tspan>
+      <tspan fill="#f59e0b" font-weight="bold">34.50 EUR</tspan>
+      <tspan fill="#94a3b8"> (Fachliteratur | Notiz: maskiert)</tspan>
+    </text>
+
+    <!-- Command 3: werbungskosten -->
+    <text x="50" y="198">
+      <tspan fill="#38bdf8" font-weight="bold">❯</tspan>
+      <tspan fill="#94a3b8"> </tspan>
+      <tspan fill="#f1f5f9">steuer-assistent werbungskosten --jahr 2026</tspan>
+    </text>
+    <text x="50" y="220" fill="#38bdf8" font-weight="bold">Vom Nutzer erfasste Werbungskosten 2026</text>
+    <text x="50" y="238" fill="#475569">─────────────────────────────────────────────────────────────────</text>
+    <text x="50" y="256">
+      <tspan fill="#cbd5e1">  Arbeitsmittel           </tspan>
+      <tspan fill="#94a3b8">1 Belege       </tspan>
+      <tspan fill="#f8fafc" font-weight="bold">49.90 EUR</tspan>
+    </text>
+    <text x="50" y="274">
+      <tspan fill="#cbd5e1">  Fachliteratur           </tspan>
+      <tspan fill="#94a3b8">1 Belege       </tspan>
+      <tspan fill="#f8fafc" font-weight="bold">34.50 EUR</tspan>
+    </text>
+    <text x="50" y="292" fill="#475569">─────────────────────────────────────────────────────────────────</text>
+    <text x="50" y="310">
+      <tspan fill="#34d399" font-weight="bold">  GESAMT                  </tspan>
+      <tspan fill="#94a3b8">2 Belege       </tspan>
+      <tspan fill="#34d399" font-weight="bold">84.40 EUR</tspan>
+      <tspan fill="#64748b"> (Integer-Cent: 8440 Cent)</tspan>
+    </text>
+
+    <!-- Command 4: export -->
+    <text x="50" y="352">
+      <tspan fill="#38bdf8" font-weight="bold">❯</tspan>
+      <tspan fill="#94a3b8"> </tspan>
+      <tspan fill="#f1f5f9">steuer-assistent export --jahr 2026</tspan>
+    </text>
+    <text x="50" y="374">
+      <tspan fill="#34d399">✓</tspan>
+      <tspan fill="#cbd5e1"> Private Arbeitsunterlage erstellt: </tspan>
+      <tspan fill="#fbbf24" font-weight="bold">STEUER_UNTERLAGEN_2026.zip</tspan>
+    </text>
+    <text x="50" y="394" fill="#94a3b8">  ↳ CSV-Export (UTF-8 BOM, Formelinjektionsschutz für =, +, -, @)</text>
+    <text x="50" y="412" fill="#94a3b8">  ↳ Strukturierte TXT-Zusammenfassung mit Rechtsrahmen-Hinweis</text>
+
+    <!-- Command 5: prompt ready -->
+    <text x="50" y="450">
+      <tspan fill="#38bdf8" font-weight="bold">❯</tspan>
+      <tspan fill="#94a3b8"> </tspan>
+      <tspan fill="#64748b"># Local store: ~/.steuer-assistent/steuer.db (0 Network calls)</tspan>
+    </text>
+  </g>
+</svg>

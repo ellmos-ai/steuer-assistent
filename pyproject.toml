@@ -19,6 +19,10 @@ keywords = [
     "offline-first",
     "privacy-first",
     "elster-helper",
+    "receipt-manager",
+    "income-expenses",
+    "local-first",
+    "sqlite",
 ]
 classifiers = [
     "Development Status :: 4 - Beta",
