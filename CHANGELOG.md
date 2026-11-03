@@ -3,6 +3,15 @@
 Alle nennenswerten Änderungen an `steuer-assistent`. Format angelehnt an
 [Keep a Changelog](https://keepachangelog.com/).
 
+## [Unreleased]
+
+### Dokumentation & Discoverability (Pfad B) [2026-11-03]
+
+- **Visuelle CLI-Vorschau & Terminal Asset:** Neues Vektor-Asset `assets/cli-session-preview.svg` mit Dark-Mode Syntax-Highlighting für Beleg-Erfassung, Werbungskosten-Summierung und formelgeschützten ZIP-Arbeitsunterlagen-Export erstellt und in beiden READMEs (`README.md` und `README_de.md`) im Abschnitt "Usage" / "Verwendung" eingebettet.
+- **Badge- & Metadaten-Währung:** Test-Badges auf 47 passed Tests (100% grün via pytest) aktualisiert, Audit-Prüfbadge auf Stand 2026-11-03 synchronisiert und RAG-Kontext in `llms.txt` aktualisiert.
+- **PEP 621 Keywords für GitHub-Discoverability:** `pyproject.toml` um zusätzliche Discoverability-Keywords (`receipt-manager`, `income-expenses`, `local-first`, `sqlite`) erweitert.
+- **Vertragstest-Erweiterung:** `tests/test_metadata.py` um Validierungen für das SVG-Terminal-Asset, die erweiterten Keywords und die Badge-Währung ausgebaut.
+
 ## [0.2.4] — 2026-09-18
 
 ### Hinzugefügt (Pfad A — Hygiene & CI-Matrix-Härtung)
