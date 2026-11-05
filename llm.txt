@@ -1,0 +1,4 @@
+# steuer-assistent — LLM Guidance Pointer
+
+This repository provides canonical LLM guidance, architecture notes, and machine-readable navigation in **[llms.txt](llms.txt)**.
+For autonomous agent workflows, invariants (`INV-LOCAL-01` to `INV-LOCAL-10`), and CLI/API usage examples, see **[llms.txt](llms.txt)** and **[README.md](README.md)**.

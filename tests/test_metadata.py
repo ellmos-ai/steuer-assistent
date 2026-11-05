@@ -24,6 +24,9 @@ class MetadataDiscoverabilityContractCase(unittest.TestCase):
         self.stale_workflow = (ROOT / ".github" / "workflows" / "stale.yml").read_text(encoding="utf-8")
         self.welcome_workflow = (ROOT / ".github" / "workflows" / "welcome.yml").read_text(encoding="utf-8")
         self.changelog = (ROOT / "CHANGELOG.md").read_text(encoding="utf-8")
+        self.contributing = (ROOT / "CONTRIBUTING.md").read_text(encoding="utf-8")
+        self.code_of_conduct = (ROOT / "CODE_OF_CONDUCT.md").read_text(encoding="utf-8")
+        self.llm_pointer = (ROOT / "llm.txt").read_text(encoding="utf-8")
 
     def test_quick_navigation_anchors_exist(self) -> None:
         en_anchors = re.findall(r"\[([^\]]+)\]\(#([^\)]+)\)", self.readme_en)
@@ -174,14 +177,40 @@ class MetadataDiscoverabilityContractCase(unittest.TestCase):
         self.assertIn("assets/cli-session-preview.svg", self.readme_de)
 
     def test_badge_and_discoverability_currency(self) -> None:
-        self.assertIn("tests-47%20passed", self.readme_en)
-        self.assertIn("tests-47%20passed", self.readme_de)
-        self.assertIn("checked-2026--11--03", self.readme_en)
-        self.assertIn("checked-2026--11--03", self.readme_de)
+        self.assertIn("tests-49%20passed", self.readme_en)
+        self.assertIn("tests-49%20passed", self.readme_de)
+        self.assertIn("checked-2026--11--05", self.readme_en)
+        self.assertIn("checked-2026--11--05", self.readme_de)
         self.assertIn("receipt-manager", self.pyproject)
         self.assertIn("local-first", self.pyproject)
-        self.assertIn("Last-checked: 2026-11-03", self.llms)
+        self.assertIn("Last-checked: 2026-11-05", self.llms)
         self.assertIn("## [Unreleased]", self.changelog)
+
+    def test_community_health_files_and_governance(self) -> None:
+        self.assertTrue((ROOT / ".github" / "ISSUE_TEMPLATE" / "bug_report.md").is_file())
+        self.assertTrue((ROOT / ".github" / "ISSUE_TEMPLATE" / "feature_request.md").is_file())
+        self.assertIn("Contributor Covenant v2.1", self.code_of_conduct)
+        self.assertIn("## Deutsch", self.code_of_conduct)
+        self.assertIn("## English", self.code_of_conduct)
+        self.assertIn("## Deutsch", self.contributing)
+        self.assertIn("## English", self.contributing)
+        self.assertIn("INV-LOCAL-01", self.contributing)
+        self.assertIn("INV-LOCAL-02", self.contributing)
+        self.assertIn("llms.txt", self.llm_pointer)
+        self.assertIn("Contributing =", self.pyproject)
+        self.assertIn('"Code of Conduct" =', self.pyproject)
+        self.assertIn('"LLM Guidance Pointer" =', self.pyproject)
+        self.assertIn("CONTRIBUTING.md", self.readme_en)
+        self.assertIn("CONTRIBUTING.md", self.readme_de)
+        self.assertIn("CODE_OF_CONDUCT.md", self.readme_en)
+        self.assertIn("CODE_OF_CONDUCT.md", self.readme_de)
+        self.assertIn("llm.txt", self.readme_en)
+        self.assertIn("llm.txt", self.readme_de)
+
+    def test_ci_matrix_platforms_full_parity(self) -> None:
+        self.assertIn("ubuntu-latest", self.tests_workflow)
+        self.assertIn("windows-latest", self.tests_workflow)
+        self.assertIn("macos-latest", self.tests_workflow)
 
 
 if __name__ == "__main__":

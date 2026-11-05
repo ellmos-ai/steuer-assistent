@@ -5,6 +5,17 @@ Alle nennenswerten Änderungen an `steuer-assistent`. Format angelehnt an
 
 ## [Unreleased]
 
+### Repository-Hygiene & CI-Matrix-Härtung (Pfad A) [2026-11-05]
+
+- **CI-Matrix-Vollabdeckung (macOS):** `.github/workflows/tests.yml` um `macos-latest` erweitert (`os: [ubuntu-latest, windows-latest, macos-latest]`), sodass alle in `pyproject.toml` deklarierten Zielsysteme (Windows, POSIX/Linux, macOS) automatisiert im CI getestet werden.
+- **Bilinguale Community-Health-Standards (GITHUB-POLICY §1 & §2):**
+  - `CODE_OF_CONDUCT.md` (Verhaltenskodex) nach Ökosystem-Standard auf Deutsch und Englisch implementiert mit klaren Meldewegen (`security@ellmos.ai`, `security@open-bricks.org` und GitHub Private Advisories).
+  - `CONTRIBUTING.md` (Beitragsrichtlinie) auf Deutsch und Englisch mit PR-Workflow, PEP 8 Richtlinien, Cent-Exaktheit (`INV-LOCAL-02`) und Zero-Third-Party-Dependencies-Vorgabe (`INV-LOCAL-09`) angelegt.
+  - `.github/ISSUE_TEMPLATE/bug_report.md` und `feature_request.md` für strukturierte Fehlermeldungen und Feature-Requests eingerichtet.
+- **LLM-Kompatibilitätsverweis (P-022):** `llm.txt` als direkter kanonischer Pointer auf `llms.txt` ergänzt.
+- **Ecosystem & Community Links:** `pyproject.toml` URLs um `Contributing`, `Code of Conduct` und `LLM Guidance Pointer` erweitert; Dokumentationsverweise in `README.md` und `README_de.md` harmonisiert.
+- **Vertragstest-Erweiterung:** `tests/test_metadata.py` um Validierungen für Community-Health-Dateien, zweisprachige Parität, CI-Matrix-Abdeckung aller drei Betriebssysteme und LLM-Pointer-Integrität erweitert (49 passed Tests, 100% grün).
+
 ### Dokumentation & Discoverability (Pfad B) [2026-11-03]
 
 - **Visuelle CLI-Vorschau & Terminal Asset:** Neues Vektor-Asset `assets/cli-session-preview.svg` mit Dark-Mode Syntax-Highlighting für Beleg-Erfassung, Werbungskosten-Summierung und formelgeschützten ZIP-Arbeitsunterlagen-Export erstellt und in beiden READMEs (`README.md` und `README_de.md`) im Abschnitt "Usage" / "Verwendung" eingebettet.
