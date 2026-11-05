@@ -8,7 +8,7 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Platform: Windows | Linux | macOS](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](#architecture)
-[![Tests: 47 Passed](https://img.shields.io/badge/tests-47%20passed-brightgreen.svg)](#installation-and-testing)
+[![Tests: 49 Passed](https://img.shields.io/badge/tests-49%20passed-brightgreen.svg)](#installation-and-testing)
 [![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
 [![Privacy: Offline--First](https://img.shields.io/badge/Privacy-Offline--First-green.svg)](#store-and-data-privacy)
 [![Legal: Non--Official](https://img.shields.io/badge/Status-Private--Worksheet-orange.svg)](#legal-framework-and-operating-mode)
@@ -16,7 +16,7 @@
 [![Ecosystem: ellmos--ai](https://img.shields.io/badge/ecosystem-ellmos--ai-blue.svg)](https://github.com/ellmos-ai)
 [![Umbrella: open--bricks](https://img.shields.io/badge/umbrella-open--bricks-orange.svg)](https://github.com/open-bricks)
 [![LLM-Ready: llms.txt](https://img.shields.io/badge/LLM--Ready-llms.txt-purple.svg)](llms.txt)
-[![Audit: 2026--11--03](https://img.shields.io/badge/checked-2026--11--03-success.svg)](CHANGELOG.md)
+[![Audit: 2026--11--05](https://img.shields.io/badge/checked-2026--11--05-success.svg)](CHANGELOG.md)
 
 *Local receipt worksheet for employee income-related expenses — not tax advice.*
 
@@ -271,5 +271,8 @@ AI-assisted initial legal assessment (as of 2026-07-23, not a substitute for for
 ## License
 
 MIT — see [`LICENSE`](LICENSE). Changes: see [`CHANGELOG.md`](CHANGELOG.md).
+Contributing guidelines: see [`CONTRIBUTING.md`](CONTRIBUTING.md).
+Code of Conduct: see [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md).
 Security policies: see [`SECURITY.md`](SECURITY.md).
 Third-Party Licenses & Invariants: see [`THIRD_PARTY_LICENSES.md`](THIRD_PARTY_LICENSES.md).
+Machine-readable LLM guidance: [`llms.txt`](llms.txt) (pointer: [`llm.txt`](llm.txt)).

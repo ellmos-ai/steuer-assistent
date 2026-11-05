@@ -1,7 +1,7 @@
 # steuer-assistent
 
 > Offline-first local receipt worksheet module for employee income-related expenses (Werbungskosten) — not tax advice.
-> Last-checked: 2026-11-03 | Version: 0.2.4
+> Last-checked: 2026-11-05 | Version: 0.2.4
 
 ## Overview
 
@@ -64,6 +64,9 @@ export_zip = sa.export_arbeitsunterlage(jahr=2026)
 - [README_de.md](README_de.md): Deutsche Dokumentation mit vollständiger Funktionsübersicht, Ablaufdiagramm und Rechtsrahmen.
 - [SKILL.md](SKILL.md) / [SKILL.en.md](SKILL.en.md): Agent skill definitions (DE / EN).
 - [CHANGELOG.md](CHANGELOG.md): Version history and release notes.
+- [CONTRIBUTING.md](CONTRIBUTING.md): Contribution guidelines and architecture constraints (DE / EN).
+- [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md): Contributor Covenant v2.1 code of conduct (DE / EN).
+- [llm.txt](llm.txt): Compatibility pointer referencing this file.
 - [SECURITY.md](SECURITY.md): Security and vulnerability reporting policies with 48h SLA.
 - [MARKETING-LOG.txt](MARKETING-LOG.txt): Local discoverability log, persona definitions, and SEO positioning.
 - [LICENSE](LICENSE): MIT License.
